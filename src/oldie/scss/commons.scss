@@ -1,0 +1,10 @@
+@import 'globals';
+
+$transparency-pattern: 45deg, $transparency-primary-color 25%, transparent 25%, transparent 75%, $transparency-primary-color 75%, $transparency-primary-color;
+
+.transparency-pattern {
+	background-image: linear-gradient($transparency-pattern), linear-gradient($transparency-pattern);
+	background-size: $transparency-pattern-size $transparency-pattern-size;
+	background-position: 0 0, ($transparency-pattern-size / 2) ($transparency-pattern-size / 2);
+	background-color: $transparency-secondary-color;
+}

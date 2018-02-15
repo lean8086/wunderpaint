@@ -1,0 +1,118 @@
+@import 'globals';
+
+/* Globals
+---------------------------------------------------------------*/
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+	font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	user-drag: inherit;
+	user-select: inherit;
+}
+
+html,
+body {
+	height: 100%
+}
+
+body {
+	background-color: white;
+	font: Arial, sans-serif;
+	margin: 0;
+	overflow: hidden;
+	user-drag: none;
+	user-select: none;
+	width: 100%;
+}
+
+/* Base structure
+---------------------------------------------------------------*/
+
+#toolbox,
+#workspace,
+#panels {
+	overflow: hidden;
+	position: relative;
+}
+
+/* Header + Toolbox
+---------------------------------------------------------------*/
+
+@mixin tool-icon() {
+	cursor: pointer;
+	display: block;
+	overflow: hidden;
+	position: relative;
+}
+
+#header {
+	z-index: 3;
+
+	.logo {
+		background: red;
+		width: 32px;
+		height: 32px;
+	}
+}
+
+#toolbox {
+	overflow: hidden;
+
+	input {
+		display: none;
+
+		/* Active state */
+		&:checked + label {}
+	}
+
+	label {
+		@include tool-icon();
+	}
+}
+
+#edit-toolbox {
+	@include tool-icon();
+}
+
+/* Workspace
+---------------------------------------------------------------*/
+
+#workspace {
+	cursor: crosshair;
+	z-index: 1;
+
+	&[data-cursor="grab"]{
+		cursor: grab;
+	}
+
+	&[data-cursor="grabbing"]{
+		cursor: grabbing;
+	}
+}
+
+#layers {
+	border: 1px solid;
+	cursor: inherit;
+	overflow: hidden;
+	position: absolute;
+
+	.layer {
+		@include fill();
+		cursor: inherit;
+		pointer-events: none;
+	}
+}
+
+#screen {
+	cursor: default;
+}
+
+/* Panels
+---------------------------------------------------------------*/
+
+#panels {
+	z-index: 2;
+}

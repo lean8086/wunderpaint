@@ -1,0 +1,37 @@
+@mixin fill() {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+}
+
+@mixin simetric($size) {
+	width: $size;
+	height: $size;
+	line-height: $size;
+	text-align: center;
+}
+
+// Base
+// $body-bgcolor: #fff;
+// $font-stack: 16px Helvetica;
+// $transition: 400ms ease;
+
+// Toolbox
+// $toolbox-size: 3em;
+// $toolbox-primary-color: #eee;
+// $toolbox-bgcolor: red;
+// $toolbox-selected-bgcolor: green;
+// $toolbox-hover-bgcolor: pink;
+
+// Workspace - Transparency
+$transparency-primary-color: #f1f1f1;
+$transparency-secondary-color: #fff;
+$transparency-pattern-size: 1em;
+
+// Workspace - Grid
+// $grid-weight: 1px;
+// $grid-primary-color: rgba(255, 255, 255, .5);
+
+// Workspace - Layer

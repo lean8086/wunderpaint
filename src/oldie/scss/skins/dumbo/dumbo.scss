@@ -1,0 +1,125 @@
+@import 'globals';
+
+$body-bgcolor: #fff;
+$font-stack: 16px Helvetica;
+$transition: 400ms ease;
+
+// Toolbox
+$toolbox-size: 3em;
+$toolbox-primary-color: #eee;
+$toolbox-bgcolor: red;
+$toolbox-selected-bgcolor: green;
+$toolbox-hover-bgcolor: pink;
+
+// Workspace - Transparency
+$transparency-primary-color: #f1f1f1;
+$transparency-secondary-color: #fff;
+$transparency-pattern-size: 1em;
+
+// Workspace - Grid
+$grid-weight: 1px;
+$grid-primary-color: rgba(255, 255, 255, .5);
+
+// Workspace - Layer
+
+[skin='dumbo'] {
+	body {
+		display: table;
+	}
+
+	#toolbox,
+	#workspace,
+	#panels {
+		display: table-cell;
+		vertical-align: top;
+	}
+
+	#toolbox {
+		width: $toolbox-size;
+		background-color: $toolbox-bgcolor;
+
+		input {
+			display: none;
+
+			&:checked + label {
+				background-color: $toolbox-selected-bgcolor;
+			}
+		}
+
+		label {
+			cursor: pointer;
+			width: $toolbox-size;
+			height: $toolbox-size;
+			line-height: $toolbox-size;
+			text-align: center;
+			overflow: hidden;
+			display: block;
+			color: $toolbox-primary-color;
+
+			// TEMP
+			&:before {
+				content: attr(title);
+			}
+
+			&:hover {
+				background-color: $toolbox-hover-bgcolor;
+			}
+		}
+	}
+
+	#workspace {
+		background-color: green;
+		cursor: crosshair;
+
+		&[data-cursor="grab"]{
+			cursor: grab;
+		}
+
+		&[data-cursor="grabbing"]{
+			cursor: grabbing;
+		}
+
+	}
+
+	#layers {
+		position: absolute;
+		overflow: hidden;
+		border: 1px solid;
+		cursor: inherit;
+	}
+
+		.layer {
+			@include fill();
+			cursor: inherit;
+		}
+
+		$grid-pattern: $grid-primary-color $grid-weight, transparent $grid-weight;
+		#grid {
+			@include fill();
+			background-image: linear-gradient($grid-pattern), linear-gradient(90deg, $grid-pattern);
+			background-position: (-1 * $grid-weight) (-1 * $grid-weight);
+			pointer-events: none;
+			z-index: 999;
+			cursor: inherit;
+		}
+
+	#screen {
+		background-color: #fff;
+		padding: 3em;
+		cursor: default;
+	}
+
+	#panels {
+		width: 20em;
+		background-color: blue;
+		color: #eee;
+
+		.panel {
+			border-bottom: 1px solid white;
+		}
+
+		h2 {
+			display: inline;
+		}
+	}
+}
