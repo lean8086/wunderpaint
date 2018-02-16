@@ -18,7 +18,7 @@ class Canvas extends Component {
     const x = ev.pageX || ev.touches[0].pageX;
     const y = ev.pageY || ev.touches[0].pageY;
 
-    this.layer.ctx.scale(scale, scale);
+    this.layer.setScale(scale);
 
     selectedTool[eventName]({
       x: Math.floor((x - this.layer.canvas.offsetLeft) / scale),
@@ -29,8 +29,7 @@ class Canvas extends Component {
       selectedLayer: this.layer,
     });
 
-    // Reset current transformation matrix to the identity matrix
-    this.layer.ctx.setTransform(1, 0, 0, 1, 0, 0);
+    this.layer.resetScale();
   }
 
   handleClick(ev) {
