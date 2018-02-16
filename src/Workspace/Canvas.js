@@ -16,8 +16,8 @@ class Canvas extends Component {
     }
 
     selectedTool[eventName]({
-      x: (ev.pageX || ev.touches[0].pageX) - this.layer.canvas.offsetLeft - (scale / 2),
-      y: (ev.pageY || ev.touches[0].pageY) - this.layer.canvas.offsetTop - (scale / 2),
+      x: (ev.pageX || ev.touches[0].pageX) - this.layer.canvas.offsetLeft,
+      y: (ev.pageY || ev.touches[0].pageY) - this.layer.canvas.offsetTop,
       color,
       scale,
       layers: this.layer,

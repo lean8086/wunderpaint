@@ -18,6 +18,6 @@
 
 export default {
   handleMouseDown: ({ x, y, scale, selectedLayer }) => {
-    selectedLayer.ctx.clearRect(x, y, scale, scale);
+    selectedLayer.ctx.clearRect(x, y, 1, 1);
   }
 }
