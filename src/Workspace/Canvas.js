@@ -3,14 +3,22 @@ import React, { Component } from 'react';
 import Layer from './Layer';
 
 class Canvas extends Component {
-  algo() {
-    console.log(this.props.selectedTool);
+  // constructor(props) {
+  //   super(props);
+  //   // this.layers = [];
+  // }
+
+  handleClick() {
+    this.props.selectedTool.handleClick({
+      layers: this.layer,
+      selectedLayer: this.layer,
+    });
   }
 
   render() {
     return (
-      <div onClick={() => this.algo()}>
-        <Layer />
+      <div onClick={() => this.handleClick()}>
+        <Layer ref={l => this.layer = l} />
       </div>
     );
   }

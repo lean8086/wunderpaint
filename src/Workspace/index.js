@@ -3,28 +3,38 @@ import React, { Component } from 'react';
 import Toolbox from './Toolbox';
 import Canvas from './Canvas';
 
+import Pencil from './tools/Pencil';
+
 class Workspace extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTool: null,
+      selectedTool: Pencil,
       primaryColor: null,
       secondaryColor: null,
       selectedColor: null,
-      selectedLayers: [],
+      selectedLayer: null,
     };
   }
 
-  selectTool(toolname) {
-    this.setState({ selectedTool: toolname });
+  selectTool(tool) {
+    this.setState({ selectedTool: tool.default });
+  }
+
+  selectLayer(layer) {
+    this.setState({ selectedLayer: layer });
   }
 
   render() {
     return (
       <div>
-        <Toolbox onClick={(toolname) => this.selectTool(toolname)} />
-        <Canvas {...this.state} />
-        workspace -> {this.state.selectedTool}
+        <Canvas
+          {...this.state}
+        />
+        <Toolbox
+          // selectLayer={(layer) => this.selectLayer(layer)}
+          selectTool={(tool) => this.selectTool(tool)}
+        />
       </div>
     );
   }
