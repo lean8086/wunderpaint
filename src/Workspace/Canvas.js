@@ -15,14 +15,22 @@ class Canvas extends Component {
       return;
     }
 
+    const x = ev.pageX || ev.touches[0].pageX;
+    const y = ev.pageY || ev.touches[0].pageY;
+
+    this.layer.ctx.scale(scale, scale);
+
     selectedTool[eventName]({
-      x: (ev.pageX || ev.touches[0].pageX) - this.layer.canvas.offsetLeft,
-      y: (ev.pageY || ev.touches[0].pageY) - this.layer.canvas.offsetTop,
+      x: Math.floor((x - this.layer.canvas.offsetLeft) / scale),
+      y: Math.floor((y - this.layer.canvas.offsetTop) / scale),
       color,
       scale,
       layers: this.layer,
       selectedLayer: this.layer,
     });
+
+    // Reset current transformation matrix to the identity matrix
+    this.layer.ctx.setTransform(1, 0, 0, 1, 0, 0);
   }
 
   handleClick(ev) {
