@@ -10,10 +10,9 @@ class Workspace extends Component {
     super(props);
     this.state = {
       selectedTool: Pencil,
-      primaryColor: null,
-      secondaryColor: null,
-      selectedColor: null,
+      color: '#000',
       selectedLayer: null,
+      scale: 10,
     };
   }
 

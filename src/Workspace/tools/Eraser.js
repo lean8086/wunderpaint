@@ -17,7 +17,7 @@
 // export default Pencil;
 
 export default {
-  handleClick: (algo) => {
-    console.log('eraser clic!', algo);
+  handleMouseDown: ({ x, y, scale, selectedLayer }) => {
+    selectedLayer.ctx.clearRect(x, y, scale, scale);
   }
 }

@@ -8,16 +8,38 @@ class Canvas extends Component {
   //   // this.layers = [];
   // }
 
-  handleClick() {
-    this.props.selectedTool.handleClick({
+  handleEvent(eventName, ev) {
+    const { selectedTool, color, scale } = this.props;
+
+    if (!selectedTool[eventName]) {
+      return;
+    }
+
+    selectedTool[eventName]({
+      x: (ev.pageX || ev.touches[0].pageX) - this.layer.canvas.offsetLeft - (scale / 2),
+      y: (ev.pageY || ev.touches[0].pageY) - this.layer.canvas.offsetTop - (scale / 2),
+      color,
+      scale,
       layers: this.layer,
       selectedLayer: this.layer,
     });
   }
 
+  handleClick(ev) {
+    this.handleEvent('handleClick', ev);
+  }
+
+  handleMouseDown(ev) {
+    this.handleEvent('handleMouseDown', ev);
+  }
+
   render() {
     return (
-      <div onClick={() => this.handleClick()}>
+      <div
+        onClick={(ev) => this.handleClick(ev)}
+        onMouseDown={(ev) => this.handleMouseDown(ev)}
+        // onMouseUp={() => this.handleMouseUp()}
+      >
         <Layer ref={l => this.layer = l} />
       </div>
     );

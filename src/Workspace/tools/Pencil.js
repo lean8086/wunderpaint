@@ -17,7 +17,7 @@
 // export default Pencil;
 
 export default {
-  handleClick: (algo) => {
-    console.log('pencil clic!', algo);
+  handleMouseDown: ({ x, y, scale, selectedLayer }) => {
+    selectedLayer.ctx.fillRect(x, y, scale, scale);
   }
 }
