@@ -16,12 +16,14 @@ class Layer extends Component {
 
   render() {
     return (
-      <canvas
-        width="200"
-        height="200"
-        style={{border: '1px solid black'}}
-        ref={c => this.canvas = c}
-      />
+      <div>
+        <canvas
+          width="200"
+          height="200"
+          style={{border: '1px solid black', zIndex: 10}}
+          ref={c => this.canvas = c}
+        />
+      </div>
     );
   }
 }
