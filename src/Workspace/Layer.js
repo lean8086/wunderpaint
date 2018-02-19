@@ -14,13 +14,17 @@ class Layer extends Component {
     this.ctx.setTransform(1, 0, 0, 1, 0, 0);
   }
 
+  clear() {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  }
+
   render() {
     return (
       <div>
         <canvas
           width="200"
           height="200"
-          style={{border: '1px solid black', zIndex: 10}}
+          style={{border: '1px solid black', position: 'absolute' }}
           ref={c => this.canvas = c}
         />
       </div>

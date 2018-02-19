@@ -21,6 +21,7 @@ class Canvas extends Component {
     const y = ev.pageY || ev.touches[0].pageY;
 
     this.layer.setScale(scale);
+    this.shadowLayer.setScale(scale);
 
     selectedTool[eventName]({
       x: Math.floor((x - this.layer.canvas.offsetLeft) / scale),
@@ -28,10 +29,12 @@ class Canvas extends Component {
       color,
       scale,
       layers: this.layer,
+      shadowLayer: this.shadowLayer,
       selectedLayer: this.layer,
     });
 
     this.layer.resetScale();
+    this.shadowLayer.resetScale();
   }
 
   handleClick(ev) {
@@ -46,7 +49,7 @@ class Canvas extends Component {
 
   handleMouseUp(ev) {
     this.setState({ isToolExecuting: false });
-    // this.handleEvent('handleMouseDown', ev);
+    this.handleEvent('handleMouseUp', ev);
   }
 
   handleMouseMove(ev) {
@@ -64,6 +67,7 @@ class Canvas extends Component {
         onMouseMove={(ev) => this.handleMouseMove(ev)}
       >
         <Layer ref={l => this.layer = l} />
+        <Layer ref={l => this.shadowLayer = l} />
       </div>
     );
   }

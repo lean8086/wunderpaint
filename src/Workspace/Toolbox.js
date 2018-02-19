@@ -11,6 +11,7 @@ class Toolbox extends Component {
   render() {
     return (
       <div>
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         <ColorPicker selectColor={(color) => this.props.selectColor(color)} />
         <button onClick={() => this.props.selectTool(tools.Pencil)}>P</button>
         <button onClick={() => this.props.selectTool(tools.Eraser)}>E</button>
