@@ -20,6 +20,10 @@ class Workspace extends Component {
     this.setState({ selectedTool: tool.default });
   }
 
+  selectColor(color) {
+    this.setState({ color });
+  }
+
   selectLayer(layer) {
     this.setState({ selectedLayer: layer });
   }
@@ -33,6 +37,7 @@ class Workspace extends Component {
         <Toolbox
           // selectLayer={(layer) => this.selectLayer(layer)}
           selectTool={(tool) => this.selectTool(tool)}
+          selectColor={(color) => this.selectColor(color)}
         />
       </div>
     );
