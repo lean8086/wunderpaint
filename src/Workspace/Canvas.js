@@ -3,10 +3,12 @@ import React, { Component } from 'react';
 import Layer from './Layer';
 
 class Canvas extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   // this.layers = [];
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      isToolExecuting: false,
+    };
+  }
 
   handleEvent(eventName, ev) {
     const { selectedTool, color, scale } = this.props;
@@ -33,11 +35,24 @@ class Canvas extends Component {
   }
 
   handleClick(ev) {
+    this.setState({ isToolExecuting: false });
     this.handleEvent('handleClick', ev);
   }
 
   handleMouseDown(ev) {
+    this.setState({ isToolExecuting: true });
     this.handleEvent('handleMouseDown', ev);
+  }
+
+  handleMouseUp(ev) {
+    this.setState({ isToolExecuting: false });
+    // this.handleEvent('handleMouseDown', ev);
+  }
+
+  handleMouseMove(ev) {
+    if (this.state.isToolExecuting) {
+      this.handleEvent('handleMouseMove', ev);
+    }
   }
 
   render() {
@@ -45,7 +60,8 @@ class Canvas extends Component {
       <div
         onClick={(ev) => this.handleClick(ev)}
         onMouseDown={(ev) => this.handleMouseDown(ev)}
-        // onMouseUp={() => this.handleMouseUp()}
+        onMouseUp={(ev) => this.handleMouseUp(ev)}
+        onMouseMove={(ev) => this.handleMouseMove(ev)}
       >
         <Layer ref={l => this.layer = l} />
       </div>
