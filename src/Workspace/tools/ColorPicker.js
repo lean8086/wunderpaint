@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-const palette = {
-
-};
+// const palette = {
+//
+// };
 
 class ColorPicker extends Component {
   render() {
