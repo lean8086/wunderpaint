@@ -3,7 +3,8 @@ import { draw } from './Pencil';
 
 let x0 = 0;
 let y0 = 0;
-let line = [];
+let x1 = 0;
+let y1 = 0;
 
 function start({ x, y, color, shadowLayer }) {
   draw({ x, y, color, shadowLayer });
@@ -11,23 +12,26 @@ function start({ x, y, color, shadowLayer }) {
   y0 = y;
 }
 
-function doBresenham({ x, y, color, shadowLayer }) {
-  shadowLayer.clear();
-  line = [];
-  for (const point of bresenham(x0, y0, x, y)) {
-    draw({ x: point.x, y: point.y, color, shadowLayer });
-    line.push({ x: point.x, y: point.y });
+function move({ x, y, shadowLayer }) {
+  if (x1 !== x || y1 !== y) {
+    shadowLayer.clear();
+    for (const point of bresenham(x0, y0, x, y)) {
+      draw({ x: point.x, y: point.y, shadowLayer });
+    }
+    x1 = x;
+    y1 = y;
   }
 }
 
 function end({ x, y, color, shadowLayer, selectedLayer }) {
-  line.forEach(point => draw({ x: point.x, y: point.y, color, selectedLayer }));
+  for (const point of bresenham(x0, y0, x, y)) {
+    draw({ x: point.x, y: point.y, color, selectedLayer });
+  }
   shadowLayer.clear();
-  line = [];
 }
 
 export default {
   handleMouseDown: start,
-  handleMouseMove: doBresenham,
+  handleMouseMove: move,
   handleMouseUp: end,
 };
