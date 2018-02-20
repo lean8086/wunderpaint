@@ -1,10 +1,9 @@
-export default {
-  handleMouseDown: draw,
-  handleMouseMove: draw,
+function render({ x, y, color, selectedLayer }) {
+  selectedLayer.ctx.fillStyle = color;
+  selectedLayer.ctx.fillRect(x, y, 1, 1);
 }
 
-export function draw(props) {
-  const layer = props.selectedLayer || props.shadowLayer;
-  layer.ctx.fillStyle = props.color;
-  layer.ctx.fillRect(props.x, props.y, 1, 1);
-}
+export default {
+  handleMouseDown: render,
+  handleMouseMove: render,
+};
