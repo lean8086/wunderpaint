@@ -6,6 +6,7 @@ const tools = {
   Eraser: require('./tools/Eraser'),
   Line: require('./tools/Line'),
   Rectangle: require('./tools/Rectangle'),
+  Ellipse: require('./tools/Ellipse'),
 };
 
 class Toolbox extends Component {
@@ -18,6 +19,7 @@ class Toolbox extends Component {
         <button onClick={() => this.props.selectTool(tools.Eraser)}>E</button>
         <button onClick={() => this.props.selectTool(tools.Line)}>L</button>
         <button onClick={() => this.props.selectTool(tools.Rectangle)}>R</button>
+        <button onClick={() => this.props.selectTool(tools.Ellipse)}>C</button>
       </div>
     );
   }
