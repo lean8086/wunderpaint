@@ -10,17 +10,21 @@ function start({ x, y, color, shadowLayer }) {
   y0 = y;
 }
 
+function render(x, y, layer) {
+  // Horizontal
+  const hSize = x - x0 + 1;
+  layer.ctx.fillRect(x0, y0, hSize, 1);
+  layer.ctx.fillRect(x0, y, hSize, 1);
+  // Vertical
+  const vSize = y - y0 + 1;
+  layer.ctx.fillRect(x0, y0, 1, vSize);
+  layer.ctx.fillRect(x, y0, 1, vSize);
+}
+
 function move({ x, y, shadowLayer }) {
   if (x1 !== x || y1 !== y) {
     shadowLayer.clear();
-    // Horizontal
-    const hSize = x - x0 + 1;
-    shadowLayer.ctx.fillRect(x0, y0, hSize, 1);
-    shadowLayer.ctx.fillRect(x0, y, hSize, 1);
-    // Vertical
-    const vSize = y - y0 + 1;
-    shadowLayer.ctx.fillRect(x0, y0, 1, vSize);
-    shadowLayer.ctx.fillRect(x, y0, 1, vSize);
+    render(x, y, shadowLayer);
     x1 = x;
     y1 = y;
   }
@@ -28,13 +32,7 @@ function move({ x, y, shadowLayer }) {
 
 function end({ x, y, color, shadowLayer, selectedLayer }) {
   selectedLayer.ctx.fillStyle = color;
-  // Horizontal
-  selectedLayer.ctx.fillRect(x0, y0, x - x0, 1);
-  selectedLayer.ctx.fillRect(x0, y, x - x0, 1);
-  // Vertical
-  selectedLayer.ctx.fillRect(x0, y0, 1, y - y0);
-  selectedLayer.ctx.fillRect(x, y0, 1, y - y0 + 1);
-
+  render(x, y, selectedLayer);
   shadowLayer.clear();
 }
 
