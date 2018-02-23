@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Toolbox from './Toolbox';
 import Workspace from './Workspace';
+import firebase from '../firebase';
 
 class App extends Component {
   constructor(props) {
@@ -10,12 +11,16 @@ class App extends Component {
       color: null,
       selectedLayer: null,
       scale: 10,
+      meta: null,
     };
+    this.ref = firebase.database().ref('works/rJKkFx0DM');
+    this.ref.on('value', snapshot => this.updateFromDatabase(snapshot.val()));
   }
 
   render() {
     return (
       <div>
+        {this.state.meta ? this.state.meta.layers['Layer 1'] : null}
         {this.props.match.params.id}
         <Workspace {...this.state} />
         <Toolbox
@@ -25,6 +30,10 @@ class App extends Component {
         />
       </div>
     );
+  }
+
+  updateFromDatabase(meta) {
+    this.setState({ meta });
   }
 
   selectTool(selectedTool) {
