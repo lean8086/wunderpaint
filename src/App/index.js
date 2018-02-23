@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import Toolbox from './Toolbox';
 import Workspace from './Workspace';
-import Pencil from './tools/Pencil';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTool: Pencil,
-      color: '#000',
+      selectedTool: null,
+      color: null,
       selectedLayer: null,
       scale: 10,
     };

@@ -5,6 +5,10 @@ import React, { Component } from 'react';
 // };
 
 class ColorPicker extends Component {
+  componentDidMount() {
+    this.props.selectColor('#000');
+  }
+
   render() {
     return (
       <div>

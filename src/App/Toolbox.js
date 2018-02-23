@@ -10,6 +10,10 @@ const tools = {
 };
 
 class Toolbox extends Component {
+  componentDidMount() {
+    this.props.selectTool(tools.Pencil);
+  }
+
   render() {
     return (
       <div>
