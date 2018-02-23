@@ -27,16 +27,16 @@ class App extends Component {
     );
   }
 
-  selectTool(tool) {
-    this.setState({ selectedTool: tool.default });
+  selectTool(selectedTool) {
+    this.setState({ selectedTool: selectedTool.default });
   }
 
   selectColor(color) {
     this.setState({ color });
   }
 
-  selectLayer(layer) {
-    this.setState({ selectedLayer: layer });
+  selectLayer(selectedLayer) {
+    this.setState({ selectedLayer });
   }
 }
 
