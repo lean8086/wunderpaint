@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Toolbox from './Toolbox';
-import Canvas from './Canvas';
+import Workspace from './Workspace';
 import Pencil from './tools/Pencil';
 
 class App extends Component {
@@ -18,9 +18,7 @@ class App extends Component {
     return (
       <div>
         {this.props.match.params.id}
-        <Canvas
-          {...this.state}
-        />
+        <Workspace {...this.state} />
         <Toolbox
           // selectLayer={(layer) => this.selectLayer(layer)}
           selectTool={(tool) => this.selectTool(tool)}

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Layer from './Layer';
 
-class Canvas extends Component {
+class Workspace extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -73,4 +73,4 @@ class Canvas extends Component {
   }
 }
 
-export default Canvas;
+export default Workspace;
