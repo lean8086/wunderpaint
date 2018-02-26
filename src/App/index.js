@@ -13,8 +13,8 @@ class App extends Component {
       scale: 10,
       meta: null,
     };
-    this.ref = firebase.database().ref(`works/${props.match.params.id}`);
-    this.ref.on('value', snapshot => this.updateFromDatabase(snapshot.val()));
+    // this.ref = firebase.database().ref(`works/${props.match.params.id}`);
+    // this.ref.on('value', snapshot => this.updateFromDatabase(snapshot.val()));
   }
 
   render() {

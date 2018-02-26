@@ -17,24 +17,18 @@ class Workspace extends Component {
       return;
     }
 
-    const x = ev.pageX || ev.touches[0].pageX;
-    const y = ev.pageY || ev.touches[0].pageY;
-
-    this.layer.setScale(scale);
-    this.shadowLayer.setScale(scale);
+    const pageX = ev.pageX || ev.touches[0].pageX;
+    const pageY = ev.pageY || ev.touches[0].pageY;
 
     selectedTool[eventName]({
-      x: Math.floor((x - this.layer.canvas.offsetLeft) / scale),
-      y: Math.floor((y - this.layer.canvas.offsetTop) / scale),
+      x: Math.round((pageX - this.layer.canvas.offsetLeft) / scale),
+      y: Math.round((pageY - this.layer.canvas.offsetTop) / scale),
       color,
       scale,
       layers: this.layer,
       shadowLayer: this.shadowLayer,
       selectedLayer: this.layer,
     });
-
-    this.layer.resetScale();
-    this.shadowLayer.resetScale();
   }
 
   handleClick(ev) {
@@ -66,8 +60,15 @@ class Workspace extends Component {
         onMouseUp={(ev) => this.handleMouseUp(ev)}
         onMouseMove={(ev) => this.handleMouseMove(ev)}
       >
-        <Layer ref={l => this.layer = l} />
-        <Layer ref={l => this.shadowLayer = l} />
+        <Layer
+          ref={l => this.layer = l}
+          data={this.props.meta ? this.props.meta.layers['Layer 1'] : null}
+          scale={this.props.scale}
+        />
+        <Layer
+          ref={l => this.shadowLayer = l}
+          scale={this.props.scale}
+        />
       </div>
     );
   }

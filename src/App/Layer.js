@@ -1,12 +1,35 @@
 import React, { Component } from 'react';
 
 class Layer extends Component {
-  componentDidMount() {
-    this.ctx = this.canvas.getContext('2d');
+  constructor(props) {
+    super(props);
+    this.state = {
+      scale: props.scale,
+    };
   }
 
-  setScale(n) {
-    this.ctx.scale(n, n);
+  componentDidMount() {
+    this.ctx = this.canvas.getContext('2d');
+    this.ctx.webkitImageSmoothingEnabled = false;
+  	this.ctx.mozImageSmoothingEnabled = false;
+  	this.ctx.msImageSmoothingEnabled = false;
+  	this.ctx.oImageSmoothingEnabled = false;
+  	this.ctx.imageSmoothingEnabled = false;
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.data !== this.props.data) {
+      // Get a pointer to the current location in the image (x,y,w,h).
+      const palette = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
+      // Wrap array as a Uint8ClampedArray. Assuming values 0..255, RGBA, pre-mult.
+      palette.data.set(new Uint8ClampedArray(nextProps.data));
+      // Repost the data.
+      this.ctx.putImageData(palette, 0, 0);
+    }
+  }
+
+  setScale(scale) {
+    this.setState({ scale });
   }
 
   resetScale() {
@@ -22,9 +45,20 @@ class Layer extends Component {
     return (
       <div>
         <canvas
-          width="200"
-          height="200"
-          style={{border: '1px solid black', position: 'absolute' }}
+          width="20"
+          height="20"
+          style={{
+            boxShadow: 'inset 0 0 .1px cyan',
+            position: 'absolute',
+            // image-rendering: -moz-crisp-edges;         /* Firefox */
+            // image-rendering: -webkit-crisp-edges;      /* Webkit */
+            // -ms-interpolation-mode: nearest-neighbor;  /* IE (non-standard property) */
+            imageRendering: 'pixelated',
+            left: 0,
+            top: 0,
+            transform: `scale(${this.state.scale})`,
+            transformOrigin: '0 0',
+          }}
           ref={c => this.canvas = c}
         />
       </div>
