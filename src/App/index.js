@@ -13,15 +13,14 @@ class App extends Component {
       scale: 10,
       meta: null,
     };
-    // this.ref = firebase.database().ref(`works/${props.match.params.id}`);
-    // this.ref.on('value', snapshot => this.updateFromDatabase(snapshot.val()));
+    this.ref = firebase.database().ref(`works/${props.match.params.id}`);
+    this.ref.on('value', snapshot => this.updateFromDatabase(snapshot.val()));
   }
 
   render() {
     return (
       <div>
-        {this.state.meta ? this.state.meta.layers['Layer 1'] : null}
-        {this.props.match.params.id}
+        {this.props.match.params.id} - {this.state.meta ? this.state.meta.name : null}
         <Workspace {...this.state} />
         <Toolbox
           // selectLayer={(layer) => this.selectLayer(layer)}

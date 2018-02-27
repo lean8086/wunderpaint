@@ -5,6 +5,8 @@ class Layer extends Component {
     super(props);
     this.state = {
       scale: props.scale,
+      width: props.width,
+      height: props.height,
     };
   }
 
@@ -43,25 +45,23 @@ class Layer extends Component {
 
   render() {
     return (
-      <div>
-        <canvas
-          width="20"
-          height="20"
-          style={{
-            boxShadow: 'inset 0 0 .1px cyan',
-            position: 'absolute',
-            // image-rendering: -moz-crisp-edges;         /* Firefox */
-            // image-rendering: -webkit-crisp-edges;      /* Webkit */
-            // -ms-interpolation-mode: nearest-neighbor;  /* IE (non-standard property) */
-            imageRendering: 'pixelated',
-            left: 0,
-            top: 0,
-            transform: `scale(${this.state.scale})`,
-            transformOrigin: '0 0',
-          }}
-          ref={c => this.canvas = c}
-        />
-      </div>
+      <canvas
+        width={this.state.width}
+        height={this.state.height}
+        style={{
+          boxShadow: 'inset 0 0 .1px cyan',
+          position: 'absolute',
+          // image-rendering: -moz-crisp-edges;         /* Firefox */
+          // image-rendering: -webkit-crisp-edges;      /* Webkit */
+          // -ms-interpolation-mode: nearest-neighbor;  /* IE (non-standard property) */
+          imageRendering: 'pixelated',
+          left: 0,
+          top: 0,
+          transform: `scale(${this.state.scale})`,
+          transformOrigin: '0 0',
+        }}
+        ref={c => this.canvas = c}
+      />
     );
   }
 }

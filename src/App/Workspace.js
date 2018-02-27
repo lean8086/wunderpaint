@@ -62,12 +62,16 @@ class Workspace extends Component {
       >
         <Layer
           ref={l => this.layer = l}
-          data={this.props.meta ? this.props.meta.layers['Layer 1'] : null}
-          scale={this.props.scale}
+          data={this.props.meta ? this.props.meta.layers[0] : null}
+          scale={this.props.meta ? this.props.meta.scale : null}
+          width={this.props.meta ? this.props.meta.width : null}
+          height={this.props.meta ? this.props.meta.height : null}
         />
         <Layer
           ref={l => this.shadowLayer = l}
-          scale={this.props.scale}
+          scale={this.props.meta ? this.props.meta.scale : null}
+          width={this.props.meta ? this.props.meta.width : null}
+          height={this.props.meta ? this.props.meta.height : null}
         />
       </div>
     );
