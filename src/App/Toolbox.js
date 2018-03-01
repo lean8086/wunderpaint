@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
-import ColorPicker from './tools/ColorPicker';
+import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { selectTool } from './modules/counter';
 
 const tools = {
   Pencil: require('./tools/Pencil'),
@@ -9,24 +11,28 @@ const tools = {
   Ellipse: require('./tools/Ellipse'),
 };
 
-class Toolbox extends Component {
-  componentDidMount() {
-    this.props.selectTool(tools.Pencil);
-  }
+const Tool = ({ toolName, selectTool }) => (
+  <button onMouseDown={() => selectTool(toolName)}>{toolName}</button>
+);
 
-  render() {
-    return (
-      <div>
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <ColorPicker selectColor={(color) => this.props.selectColor(color)} />
-        <button onClick={() => this.props.selectTool(tools.Pencil)}>P</button>
-        <button onClick={() => this.props.selectTool(tools.Eraser)}>E</button>
-        <button onClick={() => this.props.selectTool(tools.Line)}>L</button>
-        <button onClick={() => this.props.selectTool(tools.Rectangle)}>R</button>
-        <button onClick={() => this.props.selectTool(tools.Ellipse)}>C</button>
-      </div>
-    );
-  }
-}
+const Toolbox = (props) => (
+  <div>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    {
+      Object.keys(tools).map((toolName, i) => (
+        <Tool selectTool={props.selectTool} toolName={toolName} key={i} />
+      ))
+    }
+    Tool: {props.tool}
+  </div>
+);
 
-export default Toolbox;
+const mapStateToProps = (state) => ({
+  tool: state.counter.tool,
+});
+
+const mapDispatchToProps = (dispatch) => (
+  bindActionCreators({ selectTool }, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Toolbox);
