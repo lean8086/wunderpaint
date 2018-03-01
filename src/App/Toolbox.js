@@ -4,8 +4,11 @@ import { connect } from 'react-redux';
 import { selectTool } from './modules/counter';
 import { list as tools } from './tools';
 
-const Tool = ({ name, selectTool }) => (
-  <button onMouseDown={() => selectTool(name)}>{name}</button>
+const Tool = ({ name, selectTool, selected }) => (
+  <button
+    onMouseDown={() => selectTool(name)}
+    style={selected ? { background: 'cyan' } : null}
+  >{name}</button>
 );
 
 const Toolbox = (props) => (
@@ -13,10 +16,14 @@ const Toolbox = (props) => (
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
     {
       tools.map((name, i) => (
-        <Tool selectTool={props.selectTool} name={name} key={i} />
+        <Tool
+          selectTool={props.selectTool}
+          name={name}
+          key={i}
+          selected={props.tool === name}
+        />
       ))
     }
-    Tool: {props.tool}
   </div>
 );
 
