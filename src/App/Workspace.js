@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import Layer from './Layer';
 
 class Workspace extends Component {

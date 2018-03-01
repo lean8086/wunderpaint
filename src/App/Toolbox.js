@@ -2,25 +2,18 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { selectTool } from './modules/counter';
+import { list as tools } from './tools';
 
-const tools = {
-  Pencil: require('./tools/Pencil'),
-  Eraser: require('./tools/Eraser'),
-  Line: require('./tools/Line'),
-  Rectangle: require('./tools/Rectangle'),
-  Ellipse: require('./tools/Ellipse'),
-};
-
-const Tool = ({ toolName, selectTool }) => (
-  <button onMouseDown={() => selectTool(toolName)}>{toolName}</button>
+const Tool = ({ name, selectTool }) => (
+  <button onMouseDown={() => selectTool(name)}>{name}</button>
 );
 
 const Toolbox = (props) => (
   <div>
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
     {
-      Object.keys(tools).map((toolName, i) => (
-        <Tool selectTool={props.selectTool} toolName={toolName} key={i} />
+      tools.map((name, i) => (
+        <Tool selectTool={props.selectTool} name={name} key={i} />
       ))
     }
     Tool: {props.tool}
