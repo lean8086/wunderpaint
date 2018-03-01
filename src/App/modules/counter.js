@@ -1,6 +1,9 @@
+import { list as tools } from '../tools';
+import { list as colors } from '../sideTools/palette';
+
 const initialState = {
-  tool: 'null',
-  color: 'null',
+  tool: tools[0],
+  color: colors[0],
   selectedLayer: null,
   scale: 10,
   meta: null,

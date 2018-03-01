@@ -2,14 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { selectColor } from '../modules/counter';
-
-const palette = {
-  'Black': '#000',
-  'White': '#fff',
-  'Red': '#f00',
-  'Green': '#0f0',
-  'Blue': '#00f',
-};
+import palette from './palette';
 
 const Color = ({ colorName, selectColor }) => (
   <button onMouseDown={() => selectColor(palette[colorName])}>{colorName}</button>
