@@ -5,6 +5,8 @@ const initialState = {
   tool: tools[0],
   color: colors[0],
   scale: 10,
+  width: 16,
+  height: 16,
   meta: null,
 }
 
