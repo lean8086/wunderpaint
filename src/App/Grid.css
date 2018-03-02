@@ -1,0 +1,14 @@
+.Grid {
+  position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background-image:
+    linear-gradient(rgba(200, 200, 200, .5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 200, 200, .5) 1px, transparent 1px);
+	background-position: -1px -1px;
+	pointer-events: none;
+	z-index: 98;
+	cursor: inherit;
+}

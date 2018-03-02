@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Layer from './Layer';
+import Grid from './Grid';
 import tools from './tools';
 
 import './Workspace.css';
@@ -62,13 +63,9 @@ class Workspace extends Component {
         onMouseUp={(ev) => this.handleMouseUp(ev)}
         onMouseMove={(ev) => this.handleMouseMove(ev)}
       >
-        <Layer
-          ref={l => this.layer = l}
-          data={this.props.meta ? this.props.meta.layers['Layer 1'] : null}
-        />
-        <Layer
-          ref={l => this.shadowLayer = l}
-        />
+        <Layer ref={l => this.layer = l} />
+        <Layer ref={l => this.shadowLayer = l} />
+        {1 === 1 && <Grid />}
       </div>
     );
   }
