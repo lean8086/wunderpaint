@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
+import store from '../store';
 
 import './Layer.css';
 
 class Layer extends Component {
   constructor(props) {
     super(props);
+    const { scale } = store.getState().counter;
     this.state = {
-      scale: props.scale,
+      scale,
     };
+    store.subscribe(() => this.updateState());
+  }
+
+  updateState() {
+    const { scale } = store.getState().counter;
+    this.setState({
+      scale,
+    });
   }
 
   componentDidMount() {

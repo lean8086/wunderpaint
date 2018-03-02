@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { selectTool } from './modules/counter';
 import { list as tools } from './tools';
 
+import './Toolbox.css';
+
 const Tool = ({ name, selectTool, selected }) => (
   <button
     className='tool'
@@ -13,8 +15,7 @@ const Tool = ({ name, selectTool, selected }) => (
 );
 
 const Toolbox = (props) => (
-  <div className='toolbox'>
-    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+  <div className='Toolbox'>
     {
       tools.map((name, i) => (
         <Tool

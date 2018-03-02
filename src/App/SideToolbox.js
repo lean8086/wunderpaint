@@ -1,8 +1,10 @@
 import React from 'react';
 import ColorPicker from './sideTools/ColorPicker';
 
+import './SideToolbox.css';
+
 const SideToolbox = (props) => (
-  <div className='sideToolbox'>
+  <div className='SideToolbox'>
     <ColorPicker />
   </div>
 );
