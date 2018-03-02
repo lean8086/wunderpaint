@@ -1,9 +1,9 @@
 import { list as tools } from '../tools';
-import { list as colors } from '../sideTools/palette';
+import palette, { list as colors } from '../sideTools/palette';
 
 const initialState = {
   tool: tools[0],
-  color: colors[0],
+  color: palette[colors[0]],
   scale: 10,
   width: 16,
   height: 16,
