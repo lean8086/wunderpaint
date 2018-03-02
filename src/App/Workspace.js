@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
 import Layer from './Layer';
+import Grid from './Grid';
+import tools from './tools';
+
+import './Workspace.css';
 
 class Workspace extends Component {
   constructor(props) {
@@ -10,31 +14,23 @@ class Workspace extends Component {
     };
   }
 
-  handleEvent(eventName, ev) {
-    const { selectedTool, color, scale } = this.props;
-
-    if (!selectedTool[eventName]) {
+  handleEvent(actionName, ev) {
+    if (!tools[this.props.tool][actionName]) {
       return;
     }
 
-    const x = ev.pageX || ev.touches[0].pageX;
-    const y = ev.pageY || ev.touches[0].pageY;
+    const { tool, color, scale } = this.props;
+    const pageX = ev.pageX || ev.touches[0].pageX || 0;
+    const pageY = ev.pageY || ev.touches[0].pageY || 0;
 
-    this.layer.setScale(scale);
-    this.shadowLayer.setScale(scale);
-
-    selectedTool[eventName]({
-      x: Math.floor((x - this.layer.canvas.offsetLeft) / scale),
-      y: Math.floor((y - this.layer.canvas.offsetTop) / scale),
+    tools[tool][actionName]({
+      x: Math.round((pageX - this.layer.canvas.offsetLeft) / scale),
+      y: Math.round((pageY - this.layer.canvas.offsetTop) / scale),
       color,
       scale,
-      layers: this.layer,
       shadowLayer: this.shadowLayer,
-      selectedLayer: this.layer,
+      layer: this.layer,
     });
-
-    this.layer.resetScale();
-    this.shadowLayer.resetScale();
   }
 
   handleClick(ev) {
@@ -61,6 +57,7 @@ class Workspace extends Component {
   render() {
     return (
       <div
+        className='Workspace'
         onClick={(ev) => this.handleClick(ev)}
         onMouseDown={(ev) => this.handleMouseDown(ev)}
         onMouseUp={(ev) => this.handleMouseUp(ev)}
@@ -68,9 +65,16 @@ class Workspace extends Component {
       >
         <Layer ref={l => this.layer = l} />
         <Layer ref={l => this.shadowLayer = l} />
+        {1 === 1 && <Grid />}
       </div>
     );
   }
 }
 
-export default Workspace;
+const mapStateToProps = (state) => ({
+  color: state.counter.color,
+  scale: state.counter.scale,
+  tool: state.counter.tool,
+});
+
+export default connect(mapStateToProps)(Workspace);

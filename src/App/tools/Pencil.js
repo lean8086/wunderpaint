@@ -1,6 +1,6 @@
-function render({ x, y, color, selectedLayer }) {
-  selectedLayer.ctx.fillStyle = color;
-  selectedLayer.ctx.fillRect(x, y, 1, 1);
+function render({ x, y, color, layer }) {
+  layer.ctx.fillStyle = color;
+  layer.ctx.fillRect(x, y, 1, 1);
 }
 
 export default {
