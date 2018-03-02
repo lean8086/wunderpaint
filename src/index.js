@@ -9,9 +9,9 @@ import registerServiceWorker from './registerServiceWorker';
 render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <div>
+      <main>
         <Root />
-      </div>
+      </main>
     </ConnectedRouter>
   </Provider>,
   document.getElementById('root'),

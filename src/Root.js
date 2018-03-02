@@ -5,7 +5,7 @@ import App from './App';
 
 const Root = () => (
   <Router>
-    <div>
+    <div className='root'>
       <Route exact path='/' component={Home} />
       <Route path='/:id' component={App} />
     </div>

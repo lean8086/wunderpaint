@@ -6,13 +6,14 @@ import { list as tools } from './tools';
 
 const Tool = ({ name, selectTool, selected }) => (
   <button
+    className='tool'
     onMouseDown={() => selectTool(name)}
     style={selected ? { background: 'cyan' } : null}
   >{name}</button>
 );
 
 const Toolbox = (props) => (
-  <div>
+  <div className='toolbox'>
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
     {
       tools.map((name, i) => (

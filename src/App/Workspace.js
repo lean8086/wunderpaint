@@ -56,6 +56,7 @@ class Workspace extends Component {
   render() {
     return (
       <div
+        className='workspace'
         onClick={(ev) => this.handleClick(ev)}
         onMouseDown={(ev) => this.handleMouseDown(ev)}
         onMouseUp={(ev) => this.handleMouseUp(ev)}

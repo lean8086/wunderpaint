@@ -12,7 +12,7 @@ const Color = ({ name, selectColor, selected }) => (
 );
 
 const ColorPicker = (props) => (
-  <div>
+  <div className='colorPicker'>
     {
       colors.map((name, i) => (
         <Color
