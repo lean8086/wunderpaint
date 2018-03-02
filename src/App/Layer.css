@@ -1,5 +1,4 @@
 .Layer {
-  box-shadow: inset 0 0 .1px cyan;
   position: absolute;
   transform-origin: 0 0;
   image-rendering: -moz-crisp-edges;          /* Firefox */
