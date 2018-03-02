@@ -8,7 +8,7 @@ import './Toolbox.css';
 
 const Tool = ({ name, selectTool, selected }) => (
   <button
-    className='tool'
+    className='Tool'
     onMouseDown={() => selectTool(name)}
     style={selected ? { background: 'cyan' } : null}
   >{name}</button>
