@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Layer from './Layer';
 import tools from './tools';
-import store from '../store';
 
 import './Workspace.css';
 
@@ -10,17 +10,15 @@ class Workspace extends Component {
     super(props);
     this.state = {
       isToolExecuting: false,
-      ...store.getState().counter,
     };
-    store.subscribe(() => this.setState(store.getState().counter));
   }
 
   handleEvent(actionName, ev) {
-    if (!tools[this.state.tool][actionName]) {
+    if (!tools[this.props.tool][actionName]) {
       return;
     }
 
-    const { tool, color, scale } = this.state;
+    const { tool, color, scale } = this.props;
     const pageX = ev.pageX || ev.touches[0].pageX || 0;
     const pageY = ev.pageY || ev.touches[0].pageY || 0;
 
@@ -67,15 +65,19 @@ class Workspace extends Component {
         <Layer
           ref={l => this.layer = l}
           data={this.props.meta ? this.props.meta.layers['Layer 1'] : null}
-          scale={this.props.scale}
         />
         <Layer
           ref={l => this.shadowLayer = l}
-          scale={this.props.scale}
         />
       </div>
     );
   }
 }
 
-export default Workspace;
+const mapStateToProps = (state) => ({
+  color: state.counter.color,
+  scale: state.counter.scale,
+  tool: state.counter.tool,
+});
+
+export default connect(mapStateToProps)(Workspace);
