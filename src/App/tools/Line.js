@@ -23,10 +23,10 @@ function move({ x, y, shadowLayer }) {
   }
 }
 
-function end({ x, y, color, shadowLayer, selectedLayer }) {
-  selectedLayer.ctx.fillStyle = color;
+function end({ x, y, color, shadowLayer, layer }) {
+  layer.ctx.fillStyle = color;
   for (const point of bresenham(x0, y0, x, y)) {
-    selectedLayer.ctx.fillRect(point.x, point.y, 1, 1);
+    layer.ctx.fillRect(point.x, point.y, 1, 1);
   }
   shadowLayer.clear();
 }

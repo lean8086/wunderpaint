@@ -1,32 +1,34 @@
 import React, { Component } from 'react';
 import Layer from './Layer';
+import tools from './tools';
+import store from '../store';
 
 class Workspace extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isToolExecuting: false,
+      ...store.getState().counter,
     };
+    store.subscribe(() => this.setState(store.getState().counter));
   }
 
-  handleEvent(eventName, ev) {
-    const { selectedTool, color, scale } = this.props;
-
-    if (!selectedTool[eventName]) {
+  handleEvent(actionName, ev) {
+    if (!tools[this.state.tool][actionName]) {
       return;
     }
 
-    const pageX = ev.pageX || ev.touches[0].pageX;
-    const pageY = ev.pageY || ev.touches[0].pageY;
+    const { tool, color, scale } = this.state;
+    const pageX = ev.pageX || ev.touches[0].pageX || 0;
+    const pageY = ev.pageY || ev.touches[0].pageY || 0;
 
-    selectedTool[eventName]({
+    tools[tool][actionName]({
       x: Math.round((pageX - this.layer.canvas.offsetLeft) / scale),
       y: Math.round((pageY - this.layer.canvas.offsetTop) / scale),
       color,
       scale,
-      layers: this.layer,
       shadowLayer: this.shadowLayer,
-      selectedLayer: this.layer,
+      layer: this.layer,
     });
   }
 

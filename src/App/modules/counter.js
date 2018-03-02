@@ -4,7 +4,6 @@ import { list as colors } from '../sideTools/palette';
 const initialState = {
   tool: tools[0],
   color: colors[0],
-  selectedLayer: null,
   scale: 10,
   meta: null,
 }

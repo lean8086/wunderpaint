@@ -30,9 +30,9 @@ function move({ x, y, shadowLayer }) {
   }
 }
 
-function end({ x, y, color, shadowLayer, selectedLayer }) {
-  selectedLayer.ctx.fillStyle = color;
-  render(x, y, selectedLayer);
+function end({ x, y, color, shadowLayer, layer }) {
+  layer.ctx.fillStyle = color;
+  render(x, y, layer);
   shadowLayer.clear();
 }
 

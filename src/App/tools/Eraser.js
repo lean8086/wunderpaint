@@ -1,5 +1,5 @@
-function erase({ x, y, selectedLayer }) {
-  selectedLayer.ctx.clearRect(x, y, 1, 1);
+function erase({ x, y, layer }) {
+  layer.ctx.clearRect(x, y, 1, 1);
 }
 
 export default {
