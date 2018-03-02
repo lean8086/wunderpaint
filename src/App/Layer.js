@@ -22,11 +22,6 @@ class Layer extends Component {
 
   componentDidMount() {
     this.ctx = this.canvas.getContext('2d');
-    this.ctx.webkitImageSmoothingEnabled = false;
-  	this.ctx.mozImageSmoothingEnabled = false;
-  	this.ctx.msImageSmoothingEnabled = false;
-  	this.ctx.oImageSmoothingEnabled = false;
-  	this.ctx.imageSmoothingEnabled = false;
   }
 
   componentWillReceiveProps(nextProps) {
