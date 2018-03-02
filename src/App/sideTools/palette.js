@@ -7,4 +7,4 @@ const palette = {
 };
 
 export default palette;
-export const list = Object.keys(palette).map(name => palette[name]);
+export const list = Object.keys(palette);

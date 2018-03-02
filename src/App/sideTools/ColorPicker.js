@@ -2,11 +2,11 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { selectColor } from '../modules/counter';
-import { list as colors } from './palette';
+import palette, { list } from './palette';
 
-const Color = ({ name, selectColor, selected }) => (
+const Color = ({ name, value, selectColor, selected }) => (
   <button
-    onMouseDown={() => selectColor(name)}
+    onMouseDown={() => selectColor(value)}
     style={selected ? { background: 'cyan' } : null}
   >{name}</button>
 );
@@ -14,12 +14,13 @@ const Color = ({ name, selectColor, selected }) => (
 const ColorPicker = (props) => (
   <div className='colorPicker'>
     {
-      colors.map((name, i) => (
+      list.map((name, i) => (
         <Color
           selectColor={props.selectColor}
           name={name}
+          value={palette[name]}
           key={i}
-          selected={props.color === name}
+          selected={props.color === palette[name]}
         />
       ))
     }
