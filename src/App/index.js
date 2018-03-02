@@ -4,7 +4,7 @@ import Toolbox from './Toolbox';
 import Workspace from './Workspace';
 
 const App = (props) => (
-  <div className='app'>
+  <div className='App'>
     {props.match.params.id}
     <SideToolbox />
     <Workspace />

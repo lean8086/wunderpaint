@@ -3,6 +3,8 @@ import Layer from './Layer';
 import tools from './tools';
 import store from '../store';
 
+import './Workspace.css';
+
 class Workspace extends Component {
   constructor(props) {
     super(props);
@@ -56,7 +58,7 @@ class Workspace extends Component {
   render() {
     return (
       <div
-        className='workspace'
+        className='Workspace'
         onClick={(ev) => this.handleClick(ev)}
         onMouseDown={(ev) => this.handleMouseDown(ev)}
         onMouseUp={(ev) => this.handleMouseUp(ev)}
