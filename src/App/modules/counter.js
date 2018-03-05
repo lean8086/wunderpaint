@@ -28,6 +28,16 @@ export default (state = initialState, action) => {
         ...state,
         grid: !state.grid,
       }
+    case 'INCREASE_SCALE':
+      return {
+        ...state,
+        scale: state.scale += 1,
+      }
+    case 'DECREASE_SCALE':
+      return {
+        ...state,
+        scale: state.scale -= 1,
+      }
     default:
       return state;
   }
@@ -49,6 +59,18 @@ export const selectColor = (colorValue) => (dispatch) => (
 
 export const toggleGrid = () => (dispatch) => (
   dispatch({
-    type: 'TOGGLE_GRID'
+    type: 'TOGGLE_GRID',
+  })
+);
+
+export const increaseScale = () => (dispatch) => (
+  dispatch({
+    type: 'INCREASE_SCALE',
+  })
+);
+
+export const decreaseScale = () => (dispatch) => (
+  dispatch({
+    type: 'DECREASE_SCALE',
   })
 );
