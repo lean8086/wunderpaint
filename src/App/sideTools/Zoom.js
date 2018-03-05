@@ -3,8 +3,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { increaseScale, decreaseScale } from '../modules/counter';
 
-const Z = (props) => (
-  <div className='Z'>
+const Zoom = (props) => (
+  <div className='Zoom'>
     <button onMouseDown={() => props.increaseScale()}>+</button>
     <span>{100 * props.scale}%</span>
     <button onMouseDown={() => props.decreaseScale()}>-</button>
@@ -19,4 +19,4 @@ const mapDispatchToProps = (dispatch) => (
   bindActionCreators({ increaseScale, decreaseScale }, dispatch)
 );
 
-export default connect(mapStateToProps, mapDispatchToProps)(Z);
+export default connect(mapStateToProps, mapDispatchToProps)(Zoom);
