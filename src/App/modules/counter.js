@@ -8,6 +8,7 @@ const initialState = {
   width: 16,
   height: 16,
   meta: null,
+  grid: true,
 }
 
 export default (state = initialState, action) => {
@@ -21,6 +22,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         color: action.colorValue,
+      }
+    case 'TOGGLE_GRID':
+      return {
+        ...state,
+        grid: !state.grid,
       }
     default:
       return state;
@@ -38,5 +44,11 @@ export const selectColor = (colorValue) => (dispatch) => (
   dispatch({
     type: 'SELECT_COLOR',
     colorValue,
+  })
+);
+
+export const toggleGrid = () => (dispatch) => (
+  dispatch({
+    type: 'TOGGLE_GRID'
   })
 );
