@@ -7,7 +7,6 @@ import './index.css';
 
 const App = (props) => (
   <div className='App'>
-    {props.match.params.id}
     <SideToolbox />
     <Workspace />
     <Toolbox />
