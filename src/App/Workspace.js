@@ -24,8 +24,8 @@ class Workspace extends Component {
     const pageY = ev.pageY || ev.touches[0].pageY || 0;
 
     tools[tool][actionName]({
-      x: Math.round((pageX - this.layer.canvas.offsetLeft) / scale - .5),
-      y: Math.round((pageY - this.layer.canvas.offsetTop) / scale - .5),
+      x: Math.round((pageX - this.layer.canvas.offsetLeft + this.element.scrollLeft) / scale - .5),
+      y: Math.round((pageY - this.layer.canvas.offsetTop + this.element.scrollTop) / scale - .5),
       color,
       scale,
       shadowLayer: this.shadowLayer,
@@ -54,18 +54,28 @@ class Workspace extends Component {
     }
   }
 
+  componentDidMount() {
+    // Center scroll
+    const { offsetTop, offsetLeft } = this.layer.canvas;
+    this.element.scrollTop = (this.element.clientHeight - offsetTop) / 2;
+    this.element.scrollLeft = (this.element.clientWidth - offsetLeft) / 2;
+  }
+
   render() {
     return (
       <div
         className='Workspace'
+        ref={w => this.element = w}
         onClick={(ev) => this.handleClick(ev)}
         onMouseDown={(ev) => this.handleMouseDown(ev)}
         onMouseUp={(ev) => this.handleMouseUp(ev)}
         onMouseMove={(ev) => this.handleMouseMove(ev)}
       >
-        <Layer ref={l => this.layer = l} />
-        <Layer ref={l => this.shadowLayer = l} />
-        {1 === 1 && <Grid />}
+        <div className='Canvas'>
+          <Layer ref={l => this.layer = l} />
+          <Layer ref={l => this.shadowLayer = l} />
+          <Grid />
+        </div>
       </div>
     );
   }

@@ -28,7 +28,7 @@ class Grid extends Component {
     const { scale, width, height } = this.state;
     return (
       <div
-        className='Grid'
+        className='Grid Layer'
         style={{
           backgroundSize: `${scale}px ${scale}px`,
           width: `${width * scale}px`,
