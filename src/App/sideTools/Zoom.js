@@ -5,9 +5,15 @@ import { increaseScale, decreaseScale } from '../modules/counter';
 
 const Zoom = (props) => (
   <div className='Zoom'>
-    <button onMouseDown={() => props.increaseScale()}>+</button>
+    <button
+      onMouseDown={() => props.increaseScale()}
+      disabled={props.scale >= 32}
+    >+</button>
     <span>{100 * props.scale}%</span>
-    <button onMouseDown={() => props.decreaseScale()}>-</button>
+    <button
+      onMouseDown={() => props.decreaseScale()}
+      disabled={props.scale <= 0}
+    >-</button>
   </div>
 );
 

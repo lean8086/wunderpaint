@@ -6,7 +6,7 @@ import './Grid.css';
 const Grid = (props) => (
   <div
     className='Grid Layer'
-    hidden={!props.grid}
+    hidden={!props.grid || props.scale <= 3}
     style={{
       backgroundSize: `${props.scale}px ${props.scale}px`,
       width: `${props.width * props.scale}px`,
