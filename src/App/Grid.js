@@ -1,45 +1,25 @@
-import React, { Component } from 'react';
-import store from '../store';
+import React from 'react';
+import { connect } from 'react-redux';
 
 import './Grid.css';
 
-class Grid extends Component {
-  constructor(props) {
-    super(props);
-    const { scale, width, height, grid } = store.getState().counter;
-    this.state = {
-      scale,
-      width,
-      height,
-      grid,
-    };
-    store.subscribe(() => this.updateState());
-  }
+const Grid = (props) => (
+  <div
+    className='Grid Layer'
+    hidden={!props.grid}
+    style={{
+      backgroundSize: `${props.scale}px ${props.scale}px`,
+      width: `${props.width * props.scale}px`,
+      height: `${props.height * props.scale}px`,
+    }}
+  />
+);
 
-  updateState() {
-    const { scale, width, height, grid } = store.getState().counter;
-    this.setState({
-      scale,
-      width,
-      height,
-      grid,
-    });
-  }
+const mapStateToProps = (state) => ({
+  grid: state.counter.grid,
+  scale: state.counter.scale,
+  width: state.counter.width,
+  height: state.counter.height,
+});
 
-  render() {
-    const { scale, width, height, grid } = this.state;
-    return (
-      <div
-        className='Grid Layer'
-        hidden={!grid}
-        style={{
-          backgroundSize: `${scale}px ${scale}px`,
-          width: `${width * scale}px`,
-          height: `${height * scale}px`,
-        }}
-      />
-    );
-  }
-}
-
-export default Grid;
+export default connect(mapStateToProps)(Grid);
