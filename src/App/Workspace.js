@@ -24,8 +24,8 @@ class Workspace extends Component {
     const pageY = ev.pageY || ev.touches[0].pageY || 0;
 
     tools[tool][actionName]({
-      x: Math.round((pageX - this.layer.canvas.offsetLeft) / scale),
-      y: Math.round((pageY - this.layer.canvas.offsetTop) / scale),
+      x: Math.round((pageX - this.layer.canvas.offsetLeft) / scale - .5),
+      y: Math.round((pageY - this.layer.canvas.offsetTop) / scale - .5),
       color,
       scale,
       shadowLayer: this.shadowLayer,
