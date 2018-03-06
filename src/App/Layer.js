@@ -32,6 +32,10 @@ class Layer extends Component {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 
+  getImageData() {
+    return this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height).data;
+  }
+
   render() {
     return (
       <canvas

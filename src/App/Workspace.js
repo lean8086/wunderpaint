@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { updateCanvas } from './modules/counter';
 import Layer from './Layer';
 import Grid from './Grid';
 import tools from './tools';
@@ -41,11 +43,13 @@ class Workspace extends Component {
   handleMouseDown(ev) {
     this.setState({ isToolExecuting: true });
     this.handleEvent('handleMouseDown', ev);
+    clearTimeout(this.timer);
   }
 
   handleMouseUp(ev) {
     this.setState({ isToolExecuting: false });
     this.handleEvent('handleMouseUp', ev);
+    this.timer = setTimeout(() => this.takeSnapshot(), 5 * 1000);
   }
 
   handleMouseMove(ev) {
@@ -59,6 +63,10 @@ class Workspace extends Component {
     const { offsetTop, offsetLeft } = this.layer.canvas;
     this.element.scrollTop = (this.element.clientHeight - offsetTop) / 2;
     this.element.scrollLeft = (this.element.clientWidth - offsetLeft) / 2;
+  }
+
+  takeSnapshot() {
+    this.props.updateCanvas(this.layer.getImageData());
   }
 
   render() {
@@ -85,6 +93,11 @@ const mapStateToProps = (state) => ({
   color: state.counter.color,
   scale: state.counter.scale,
   tool: state.counter.tool,
+  canvas: state.counter.canvas,
 });
 
-export default connect(mapStateToProps)(Workspace);
+const mapDispatchToProps = (dispatch) => (
+  bindActionCreators({ updateCanvas }, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Workspace);

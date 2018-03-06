@@ -9,6 +9,7 @@ const initialState = {
   height: 16,
   meta: null,
   grid: true,
+  canvas: null,
 }
 
 export default (state = initialState, action) => {
@@ -37,6 +38,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         scale: state.scale -= 1,
+      }
+    case 'UPDATE_CANVAS':
+      return {
+        ...state,
+        canvas: action.data,
       }
     default:
       return state;
@@ -72,5 +78,12 @@ export const increaseScale = () => (dispatch) => (
 export const decreaseScale = () => (dispatch) => (
   dispatch({
     type: 'DECREASE_SCALE',
+  })
+);
+
+export const updateCanvas = (data) => (dispatch) => (
+  dispatch({
+    type: 'UPDATE_CANVAS',
+    data,
   })
 );
