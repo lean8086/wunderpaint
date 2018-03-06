@@ -43,13 +43,13 @@ class Workspace extends Component {
   handleMouseDown(ev) {
     this.setState({ isToolExecuting: true });
     this.handleEvent('handleMouseDown', ev);
-    clearTimeout(this.timer);
   }
 
   handleMouseUp(ev) {
     this.setState({ isToolExecuting: false });
     this.handleEvent('handleMouseUp', ev);
-    this.timer = setTimeout(() => this.takeSnapshot(), 5 * 1000);
+    // Take snapshot
+    this.props.updateCanvas(this.layer.getImageData());
   }
 
   handleMouseMove(ev) {
@@ -63,10 +63,6 @@ class Workspace extends Component {
     const { offsetTop, offsetLeft } = this.layer.canvas;
     this.element.scrollTop = (this.element.clientHeight - offsetTop) / 2;
     this.element.scrollLeft = (this.element.clientWidth - offsetLeft) / 2;
-  }
-
-  takeSnapshot() {
-    this.props.updateCanvas(this.layer.getImageData());
   }
 
   render() {
