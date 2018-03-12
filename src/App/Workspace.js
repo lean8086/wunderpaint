@@ -5,6 +5,7 @@ import { updateCanvas } from './modules/counter';
 import Layer from './Layer';
 import Grid from './Grid';
 import tools from './tools';
+import firebase from '../firebase';
 
 import './Workspace.css';
 
@@ -14,6 +15,25 @@ class Workspace extends Component {
     this.state = {
       isToolExecuting: false,
     };
+    this.ref = firebase.database().ref(`works/${props.id}`);
+    this.ref.once('value', snapshot => this.updateFromDatabase(snapshot.val()));
+  }
+
+  updateFromDatabase(data) {
+    // Preload image
+    if (!!data && !!data.canvas) {
+      this.props.updateCanvas(data.canvas);
+      this.layer.putImageData(data.canvas);
+    }
+  }
+
+  updateToDatabase() {
+    console.log('Saved.');
+    this.ref.set({
+      canvas: this.props.canvas,
+      width: this.props.width,
+      height: this.props.height,
+    });
   }
 
   handleEvent(actionName, ev) {
@@ -43,6 +63,7 @@ class Workspace extends Component {
   handleMouseDown(ev) {
     this.setState({ isToolExecuting: true });
     this.handleEvent('handleMouseDown', ev);
+    if (this.timer) clearTimeout(this.timer);
   }
 
   handleMouseUp(ev) {
@@ -50,6 +71,7 @@ class Workspace extends Component {
     this.handleEvent('handleMouseUp', ev);
     // Take snapshot
     this.props.updateCanvas(this.layer.getImageData());
+    this.timer = setTimeout(() => this.updateToDatabase(), 3 * 1000);
   }
 
   handleMouseMove(ev) {
@@ -90,6 +112,8 @@ const mapStateToProps = (state) => ({
   scale: state.counter.scale,
   tool: state.counter.tool,
   canvas: state.counter.canvas,
+  width: state.counter.width,
+  height: state.counter.height,
 });
 
 const mapDispatchToProps = (dispatch) => (
