@@ -28,19 +28,16 @@ class Layer extends Component {
     this.ctx = this.canvas.getContext('2d');
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.data && this.props.data.length) {
-      console.log('hay data pa mostrar');
-      this.setImageData(this.ctx, this.props.data, 0, 0, 0, 0, this.canvas.width, this.canvas.height);
-    }
-  }
-
   clear() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 
   getImageData() {
     return this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height).data;
+  }
+
+  putImageData(data) {
+    this.setImageData(this.ctx, data, 0, 0, 0, 0, this.canvas.width, this.canvas.height);
   }
 
   setImageData(ctx, imageData, dx, dy, dirtyX, dirtyY, dirtyWidth, dirtyHeight) {
@@ -56,9 +53,6 @@ class Layer extends Component {
     for (var y = dirtyY; y < limitBottom; y++) {
       for (var x = dirtyX; x < limitRight; x++) {
         var pos = y * width + x;
-        // console.log('----------')
-        // console.log(data);
-        // console.log('----------')
         ctx.fillStyle = 'rgba(' + data[pos * 4 + 0]
           + ',' + data[pos * 4 + 1]
           + ',' + data[pos * 4 + 2]

@@ -14,20 +14,21 @@ class Workspace extends Component {
     super(props);
     this.state = {
       isToolExecuting: false,
-      canvas: [],
     };
     this.ref = firebase.database().ref(`works/${props.id}`);
-    this.ref.on('value', snapshot => this.updateFromDatabase(snapshot.val()));
+    this.ref.once('value', snapshot => this.updateFromDatabase(snapshot.val()));
   }
 
   updateFromDatabase(data) {
-    console.log('Update from ddbb');
-    this.props.updateCanvas(data.canvas);
-    this.setState({ canvas: data.canvas });
+    // Preload image
+    if (!!data && !!data.canvas) {
+      this.props.updateCanvas(data.canvas);
+      this.layer.putImageData(data.canvas);
+    }
   }
 
   updateToDatabase() {
-    console.log('Update to ddbb');
+    console.log('Saved.');
     this.ref.set({
       canvas: this.props.canvas,
       width: this.props.width,
@@ -97,7 +98,7 @@ class Workspace extends Component {
         onMouseMove={(ev) => this.handleMouseMove(ev)}
       >
         <div className='Canvas'>
-          <Layer ref={l => this.layer = l} data={this.state.canvas} />
+          <Layer ref={l => this.layer = l} />
           <Layer ref={l => this.shadowLayer = l} />
           <Grid />
         </div>
