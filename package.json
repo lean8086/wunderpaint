@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "array-equal": "^1.0.0",
     "bresenham": "0.0.4",
     "firebase": "^4.10.1",
     "history": "^4.7.2",

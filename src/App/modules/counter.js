@@ -7,7 +7,6 @@ const initialState = {
   scale: 10,
   width: 16,
   height: 16,
-  meta: null,
   grid: true,
   canvas: null,
 }

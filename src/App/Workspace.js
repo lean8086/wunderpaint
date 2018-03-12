@@ -5,6 +5,7 @@ import { updateCanvas } from './modules/counter';
 import Layer from './Layer';
 import Grid from './Grid';
 import tools from './tools';
+import firebase from '../firebase';
 
 import './Workspace.css';
 
@@ -13,7 +14,25 @@ class Workspace extends Component {
     super(props);
     this.state = {
       isToolExecuting: false,
+      canvas: [],
     };
+    this.ref = firebase.database().ref(`works/${props.id}`);
+    this.ref.on('value', snapshot => this.updateFromDatabase(snapshot.val()));
+  }
+
+  updateFromDatabase(data) {
+    console.log('Update from ddbb');
+    this.props.updateCanvas(data.canvas);
+    this.setState({ canvas: data.canvas });
+  }
+
+  updateToDatabase() {
+    console.log('Update to ddbb');
+    this.ref.set({
+      canvas: this.props.canvas,
+      width: this.props.width,
+      height: this.props.height,
+    });
   }
 
   handleEvent(actionName, ev) {
@@ -43,6 +62,7 @@ class Workspace extends Component {
   handleMouseDown(ev) {
     this.setState({ isToolExecuting: true });
     this.handleEvent('handleMouseDown', ev);
+    if (this.timer) clearTimeout(this.timer);
   }
 
   handleMouseUp(ev) {
@@ -50,6 +70,7 @@ class Workspace extends Component {
     this.handleEvent('handleMouseUp', ev);
     // Take snapshot
     this.props.updateCanvas(this.layer.getImageData());
+    this.timer = setTimeout(() => this.updateToDatabase(), 3 * 1000);
   }
 
   handleMouseMove(ev) {
@@ -76,7 +97,7 @@ class Workspace extends Component {
         onMouseMove={(ev) => this.handleMouseMove(ev)}
       >
         <div className='Canvas'>
-          <Layer ref={l => this.layer = l} />
+          <Layer ref={l => this.layer = l} data={this.state.canvas} />
           <Layer ref={l => this.shadowLayer = l} />
           <Grid />
         </div>
@@ -90,6 +111,8 @@ const mapStateToProps = (state) => ({
   scale: state.counter.scale,
   tool: state.counter.tool,
   canvas: state.counter.canvas,
+  width: state.counter.width,
+  height: state.counter.height,
 });
 
 const mapDispatchToProps = (dispatch) => (
