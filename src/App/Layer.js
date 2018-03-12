@@ -37,27 +37,18 @@ class Layer extends Component {
   }
 
   putImageData(data) {
-    this.setImageData(this.ctx, data, 0, 0, 0, 0, this.canvas.width, this.canvas.height);
-  }
-
-  setImageData(ctx, imageData, dx, dy, dirtyX, dirtyY, dirtyWidth, dirtyHeight) {
-    var data = imageData;
-    var height = dirtyHeight;
-    var width = dirtyWidth;
-    dirtyX = dirtyX || 0;
-    dirtyY = dirtyY || 0;
-    dirtyWidth = dirtyWidth !== undefined ? dirtyWidth : width;
-    dirtyHeight = dirtyHeight !== undefined ? dirtyHeight : height;
-    var limitBottom = Math.min(dirtyHeight, height);
-    var limitRight = Math.min(dirtyWidth, width);
-    for (var y = dirtyY; y < limitBottom; y++) {
-      for (var x = dirtyX; x < limitRight; x++) {
-        var pos = y * width + x;
-        ctx.fillStyle = 'rgba(' + data[pos * 4 + 0]
-          + ',' + data[pos * 4 + 1]
-          + ',' + data[pos * 4 + 2]
-          + ',' + (data[pos * 4 + 3] / 255) + ')';
-        ctx.fillRect(x + dx, y + dy, 1, 1);
+    const { width, height } = this.canvas;
+    for (let y = 0; y < height; y += 1) {
+      for (let x = 0; x < width; x += 1) {
+        const pos = (y * width + x) * 4;
+        const [r, g, b, a] = [
+          data[pos],
+          data[pos + 1],
+          data[pos + 2],
+          data[pos + 3] / 255,
+        ];
+        this.ctx.fillStyle = `rgba(${r},${g},${b},${a})`;
+        this.ctx.fillRect(x, y, 1, 1);
       }
     }
   }
