@@ -47,7 +47,7 @@ class Layer extends Component {
       }
     }
   }
-  
+
   slowAndSafePutImageData(data) {
     const { width, height } = this.canvas;
     for (let y = 0; y < height; y += 1) {

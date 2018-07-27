@@ -1,28 +1,24 @@
 import { withRouter } from 'next/router';
-import firebase from '../src/firebase';
-import Toolbar from '../components/Toolbar';
-// import Toolbox from '../components/Toolbox';
-// import Workspace from '../components/Workspace';
+import firebase from '../firebase';
+import { Provider } from 'react-redux';
+import store from '../store';
+import App from '../components/App';
 
-const Work = withRouter(({ router, ref, work }) => (
-  <div>
-    <Toolbar />
-
-  </div>
+const Work = withRouter(({ router, ref, preloaded }) => (
+  <Provider store={store}>
+    <App
+      id={router.query.id}
+      sync={() => ref.set(attrs)}
+      preloaded={preloaded}
+    />
+  </Provider>
 ));
 
-// <Workspace
-//   id={router.query.id}
-//   sync={() => ref.set(attrs)}
-//   {...work}
-// />
-// <Toolbox />
-
 Work.getInitialProps = async ({ query }) => {
-  let work;
+  let preloaded;
   const ref = await firebase.database().ref(`works/${query.id}`);
-  await ref.once('value', snapshot => work = snapshot.val());
-  return { ref, work };
+  await ref.once('value', snapshot => preloaded = snapshot.val());
+  return { ref, preloaded };
 };
 
 export default Work;
