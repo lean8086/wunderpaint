@@ -7,7 +7,7 @@ import Grid from './Grid';
 import tools from './tools';
 import firebase from '../firebase';
 
-import './Workspace.css';
+// import './Workspace.css';
 
 class Workspace extends Component {
   constructor(props) {

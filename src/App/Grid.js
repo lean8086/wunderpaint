@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import './Grid.css';
+// import './Grid.css';
 
 const Grid = (props) => (
   <div

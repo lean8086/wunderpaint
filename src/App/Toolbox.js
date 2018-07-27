@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { selectTool } from './modules/counter';
 import { list as tools } from './tools';
 
-import './Toolbox.css';
+// import './Toolbox.css';
 
 const Tool = ({ name, selectTool, selected }) => (
   <button

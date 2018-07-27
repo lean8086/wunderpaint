@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import store from '../store';
 
-import './Layer.css';
+// import './Layer.css';
 
 class Layer extends Component {
   constructor(props) {
