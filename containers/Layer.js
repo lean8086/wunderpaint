@@ -46,12 +46,24 @@ class LayerContainer extends Component {
   render() {
     return (
       <canvas
-        className='Layer'
         width={this.props.width}
         height={this.props.height}
         style={{ transform: `scale(${this.props.scale})` }}
         ref={c => this.canvas = c}
-      />
+      >
+        <style jsx>{`
+          canvas {
+            position: absolute;
+            left: 0;
+            top: 0;
+            transform-origin: 0 0;
+            image-rendering: -moz-crisp-edges; /* Firefox */
+            image-rendering: -webkit-crisp-edges; /* Webkit */
+            -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard property) */
+            image-rendering: pixelated; /* Chrome */
+          }
+        `}</style>
+      </canvas>
     );
   }
 }

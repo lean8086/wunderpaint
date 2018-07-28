@@ -27,8 +27,8 @@ class WorkspaceContainer extends Component {
 
     // TODO: move to state
     tools[tool][actionName]({
-      x: Math.round((pageX - this.layer.canvas.offsetLeft + this.element.scrollLeft) / scale - .5),
-      y: Math.round((pageY - this.layer.canvas.offsetTop + this.element.scrollTop) / scale - .5),
+      x: Math.round((pageX - this.element.querySelector('div').offsetLeft + this.element.scrollLeft) / scale - .5),
+      y: Math.round((pageY - this.element.querySelector('div').offsetTop + this.element.scrollTop) / scale - .5),
       color,
       scale,
       shadowLayer: this.shadowLayer,
@@ -62,16 +62,21 @@ class WorkspaceContainer extends Component {
   render() {
     return (
       <section
+        ref={w => this.element = w}
         onClick={(ev) => this.handleClick(ev)}
         onMouseDown={(ev) => this.handleMouseDown(ev)}
         onMouseUp={(ev) => this.handleMouseUp(ev)}
         onMouseMove={(ev) => this.handleMouseMove(ev)}
       >
-        <div>
+        <div style={{
+          width: `${this.props.width * this.props.scale}px`,
+          height: `${this.props.height * this.props.scale}px`,
+        }}>
           <Layer ref={l => this.layer = l} />
           <Layer ref={l => this.shadowLayer = l} />
           <Grid />
         </div>
+
         <style jsx>{`
           section {
             position: absolute;

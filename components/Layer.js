@@ -11,7 +11,6 @@ class Layer extends Component {
     const { width, height, scale } = this.props;
     return (
       <canvas
-        className='Layer'
         width={width}
         height={height}
         style={{ transform: `scale(${scale})` }}
