@@ -188,6 +188,31 @@ var id = Object(__WEBPACK_IMPORTED_MODULE_2_shortid__["generate"])();
 
 /***/ }),
 
+/***/ "./components/ToggleGrid.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+var _jsxFileName = "/Users/lean/development/lodpi/components/ToggleGrid.js";
+
+/* harmony default export */ __webpack_exports__["a"] = (function (_ref) {
+  var onMouseDown = _ref.onMouseDown,
+      selected = _ref.selected;
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
+    onMouseDown: onMouseDown,
+    style: selected ? {
+      background: 'cyan'
+    } : null,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 2
+    }
+  }, "Grid");
+});
+
+/***/ }),
+
 /***/ "./components/Toolbar.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -198,12 +223,13 @@ var id = Object(__WEBPACK_IMPORTED_MODULE_2_shortid__["generate"])();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__New__ = __webpack_require__("./components/New.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__containers_Zoom__ = __webpack_require__("./containers/Zoom.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__containers_ToggleGrid__ = __webpack_require__("./containers/ToggleGrid.js");
 var _jsxFileName = "/Users/lean/development/lodpi/components/Toolbar.js";
 
 
 
- // import ToggleGrid from './ToggleGrid';
-// import ColorPicker from './ColorPicker';
+
+ // import ColorPicker from './ColorPicker';
 
 var Toolbar = function Toolbar(props) {
   return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
@@ -222,14 +248,16 @@ var Toolbar = function Toolbar(props) {
       fileName: _jsxFileName,
       lineNumber: 9
     }
+  }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__containers_ToggleGrid__["a" /* default */], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10
+    }
   }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0_styled_jsx_style___default.a, {
     styleId: "1146633035",
-    css: "div.jsx-1146633035{z-index:99;position:absolute;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvVG9vbGJhci5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFTZ0IsQUFHb0IsV0FDTyxrQkFDcEIiLCJmaWxlIjoiY29tcG9uZW50cy9Ub29sYmFyLmpzIiwic291cmNlUm9vdCI6Ii9Vc2Vycy9sZWFuL2RldmVsb3BtZW50L2xvZHBpIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IE5ldyBmcm9tICcuL05ldyc7XG5pbXBvcnQgWm9vbSBmcm9tICcuLi9jb250YWluZXJzL1pvb20nO1xuLy8gaW1wb3J0IFRvZ2dsZUdyaWQgZnJvbSAnLi9Ub2dnbGVHcmlkJztcbi8vIGltcG9ydCBDb2xvclBpY2tlciBmcm9tICcuL0NvbG9yUGlja2VyJztcblxuY29uc3QgVG9vbGJhciA9IChwcm9wcykgPT4gKFxuICA8ZGl2PlxuICAgIDxOZXcgLz5cbiAgICA8Wm9vbSAvPlxuICAgIDxzdHlsZSBqc3g+e2BcbiAgICAgIGRpdiB7XG4gICAgICAgIHotaW5kZXg6IDk5O1xuICAgICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICB9XG4gICAgYH08L3N0eWxlPlxuICA8L2Rpdj5cbik7XG4vLyA8Q29sb3JQaWNrZXIgLz5cbi8vIDxUb2dnbGVHcmlkIC8+XG4vLyA8Wm9vbSAvPlxuXG5leHBvcnQgZGVmYXVsdCBUb29sYmFyO1xuIl19 */\n/*@ sourceURL=components/Toolbar.js */"
+    css: "div.jsx-1146633035{z-index:99;position:absolute;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvVG9vbGJhci5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFVZ0IsQUFHb0IsV0FDTyxrQkFDcEIiLCJmaWxlIjoiY29tcG9uZW50cy9Ub29sYmFyLmpzIiwic291cmNlUm9vdCI6Ii9Vc2Vycy9sZWFuL2RldmVsb3BtZW50L2xvZHBpIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IE5ldyBmcm9tICcuL05ldyc7XG5pbXBvcnQgWm9vbSBmcm9tICcuLi9jb250YWluZXJzL1pvb20nO1xuaW1wb3J0IFRvZ2dsZUdyaWQgZnJvbSAnLi4vY29udGFpbmVycy9Ub2dnbGVHcmlkJztcbi8vIGltcG9ydCBDb2xvclBpY2tlciBmcm9tICcuL0NvbG9yUGlja2VyJztcblxuY29uc3QgVG9vbGJhciA9IChwcm9wcykgPT4gKFxuICA8ZGl2PlxuICAgIDxOZXcgLz5cbiAgICA8Wm9vbSAvPlxuICAgIDxUb2dnbGVHcmlkIC8+XG4gICAgPHN0eWxlIGpzeD57YFxuICAgICAgZGl2IHtcbiAgICAgICAgei1pbmRleDogOTk7XG4gICAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgIH1cbiAgICBgfTwvc3R5bGU+XG4gIDwvZGl2PlxuKTtcblxuZXhwb3J0IGRlZmF1bHQgVG9vbGJhcjtcbiJdfQ== */\n/*@ sourceURL=components/Toolbar.js */"
   }));
-}; // <ColorPicker />
-// <ToggleGrid />
-// <Zoom />
-
+};
 
 /* harmony default export */ __webpack_exports__["a"] = (Toolbar);
 
@@ -757,6 +785,50 @@ var mapStateToProps = function mapStateToProps(state) {
 
 /***/ }),
 
+/***/ "./containers/ToggleGrid.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__("react-redux");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_redux__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store__ = __webpack_require__("./store.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_ToggleGrid__ = __webpack_require__("./components/ToggleGrid.js");
+var _jsxFileName = "/Users/lean/development/lodpi/containers/ToggleGrid.js";
+
+
+
+
+
+var ToggleGridContainer = function ToggleGridContainer(_ref) {
+  var grid = _ref.grid,
+      toggleGrid = _ref.toggleGrid;
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_ToggleGrid__["a" /* default */], {
+    onMouseDown: function onMouseDown() {
+      return toggleGrid();
+    },
+    selected: grid,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6
+    }
+  });
+};
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    grid: state.grid
+  };
+};
+
+var mapDispatchToProps = {
+  toggleGrid: __WEBPACK_IMPORTED_MODULE_2__store__["d" /* toggleGrid */]
+};
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(mapStateToProps, mapDispatchToProps)(ToggleGridContainer));
+
+/***/ }),
+
 /***/ "./containers/Workspace.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -953,7 +1025,7 @@ var mapStateToProps = function mapStateToProps(state) {
 };
 
 var mapDispatchToProps = {
-  updateCanvas: __WEBPACK_IMPORTED_MODULE_4__store__["d" /* updateCanvas */]
+  updateCanvas: __WEBPACK_IMPORTED_MODULE_4__store__["e" /* updateCanvas */]
 };
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_redux__["connect"])(mapStateToProps, mapDispatchToProps)(WorkspaceContainer));
 
@@ -1127,12 +1199,12 @@ function () {
 
 "use strict";
 /* unused harmony export reducer */
-/* unused harmony export toggleGrid */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return toggleGrid; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return increaseScale; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return decreaseScale; });
 /* unused harmony export selectTool */
 /* unused harmony export selectColor */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return updateCanvas; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return updateCanvas; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__("redux");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_redux__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_redux_devtools_extension__ = __webpack_require__("redux-devtools-extension");

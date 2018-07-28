@@ -1,12 +1,13 @@
 import New from './New';
 import Zoom from '../containers/Zoom';
-// import ToggleGrid from './ToggleGrid';
+import ToggleGrid from '../containers/ToggleGrid';
 // import ColorPicker from './ColorPicker';
 
 const Toolbar = (props) => (
   <div>
     <New />
     <Zoom />
+    <ToggleGrid />
     <style jsx>{`
       div {
         z-index: 99;
@@ -15,8 +16,5 @@ const Toolbar = (props) => (
     `}</style>
   </div>
 );
-// <ColorPicker />
-// <ToggleGrid />
-// <Zoom />
 
 export default Toolbar;
