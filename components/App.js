@@ -6,6 +6,13 @@ const App = ({ id, sync, preloaded }) => (
   <div>
     <Toolbar />
     <Workspace sync={sync}/>
+    <style jsx global>{`
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+    `}</style>
   </div>
 );
 

@@ -61,18 +61,30 @@ class WorkspaceContainer extends Component {
 
   render() {
     return (
-      <div
+      <section
         onClick={(ev) => this.handleClick(ev)}
         onMouseDown={(ev) => this.handleMouseDown(ev)}
         onMouseUp={(ev) => this.handleMouseUp(ev)}
         onMouseMove={(ev) => this.handleMouseMove(ev)}
       >
-        <div className='Canvas'>
+        <div>
           <Layer ref={l => this.layer = l} />
           <Layer ref={l => this.shadowLayer = l} />
           <Grid />
         </div>
-      </div>
+        <style jsx>{`
+          section {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            cursor: crosshair;
+            overflow: scroll;
+          }
+        `}</style>
+      </section>
     );
   };
 };

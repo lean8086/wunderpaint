@@ -17,6 +17,18 @@ class Layer extends Component {
         style={{ transform: `scale(${scale})` }}
         ref={this.canvas}
       />
+      <style jsx>{`
+        canvas {
+          position: absolute;
+          left: 0;
+          top: 0;
+          transform-origin: 0 0;
+          image-rendering: -moz-crisp-edges; /* Firefox */
+          image-rendering: -webkit-crisp-edges; /* Webkit */
+          -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard property) */
+          image-rendering: pixelated; /* Chrome */
+        }
+      `}</style>
     );
   }
 };

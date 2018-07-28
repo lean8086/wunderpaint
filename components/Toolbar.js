@@ -12,7 +12,7 @@ const Toolbar = (props) => (
         z-index: 99;
         position: absolute;
       }
-      `}</style>
+    `}</style>
   </div>
 );
 // <ColorPicker />
