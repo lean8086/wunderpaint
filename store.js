@@ -5,7 +5,7 @@ import thunkMiddleware from 'redux-thunk';
 const initialState = {
   grid: true,
   scale: 10,
-  tool: 'pencil',
+  tool: 'Pencil',
   color: '#000',
   canvas: [],
   width: 32,
