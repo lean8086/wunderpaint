@@ -6,8 +6,8 @@ const ZoomContainer = ({ increaseScale, decreaseScale, scale }) => (
   <Zoom
     increaseScale={() => increaseScale()}
     decreaseScale={() => decreaseScale()}
-    blockIncrease={scale <= 0}
-    blockDecrease={scale >= 32}
+    blockIncrease={scale >= 32}
+    blockDecrease={scale <= 0}
     percentage={100 * scale}
   />
 );

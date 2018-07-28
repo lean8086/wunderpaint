@@ -986,8 +986,8 @@ var ZoomContainer = function ZoomContainer(_ref) {
     decreaseScale: function decreaseScale() {
       return _decreaseScale();
     },
-    blockIncrease: scale <= 0,
-    blockDecrease: scale >= 32,
+    blockIncrease: scale >= 32,
+    blockDecrease: scale <= 0,
     percentage: 100 * scale,
     __source: {
       fileName: _jsxFileName,
