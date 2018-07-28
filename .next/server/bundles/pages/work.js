@@ -119,6 +119,32 @@ var App = function App(_ref) {
 
 /***/ }),
 
+/***/ "./components/ColorPicker.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+var _jsxFileName = "/Users/lean/development/lodpi/components/ColorPicker.js";
+
+/* harmony default export */ __webpack_exports__["a"] = (function (_ref) {
+  var name = _ref.name,
+      onMouseDown = _ref.onMouseDown,
+      selected = _ref.selected;
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
+    onMouseDown: onMouseDown,
+    style: selected ? {
+      background: 'cyan'
+    } : null,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 2
+    }
+  }, name);
+});
+
+/***/ }),
+
 /***/ "./components/Grid.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -224,12 +250,14 @@ var _jsxFileName = "/Users/lean/development/lodpi/components/ToggleGrid.js";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__New__ = __webpack_require__("./components/New.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__containers_Zoom__ = __webpack_require__("./containers/Zoom.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__containers_ToggleGrid__ = __webpack_require__("./containers/ToggleGrid.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__containers_ColorPicker__ = __webpack_require__("./containers/ColorPicker.js");
 var _jsxFileName = "/Users/lean/development/lodpi/components/Toolbar.js";
 
 
 
 
- // import ColorPicker from './ColorPicker';
+
+
 
 var Toolbar = function Toolbar(props) {
   return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
@@ -253,9 +281,14 @@ var Toolbar = function Toolbar(props) {
       fileName: _jsxFileName,
       lineNumber: 10
     }
+  }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__containers_ColorPicker__["a" /* default */], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 11
+    }
   }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0_styled_jsx_style___default.a, {
     styleId: "1146633035",
-    css: "div.jsx-1146633035{z-index:99;position:absolute;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvVG9vbGJhci5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFVZ0IsQUFHb0IsV0FDTyxrQkFDcEIiLCJmaWxlIjoiY29tcG9uZW50cy9Ub29sYmFyLmpzIiwic291cmNlUm9vdCI6Ii9Vc2Vycy9sZWFuL2RldmVsb3BtZW50L2xvZHBpIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IE5ldyBmcm9tICcuL05ldyc7XG5pbXBvcnQgWm9vbSBmcm9tICcuLi9jb250YWluZXJzL1pvb20nO1xuaW1wb3J0IFRvZ2dsZUdyaWQgZnJvbSAnLi4vY29udGFpbmVycy9Ub2dnbGVHcmlkJztcbi8vIGltcG9ydCBDb2xvclBpY2tlciBmcm9tICcuL0NvbG9yUGlja2VyJztcblxuY29uc3QgVG9vbGJhciA9IChwcm9wcykgPT4gKFxuICA8ZGl2PlxuICAgIDxOZXcgLz5cbiAgICA8Wm9vbSAvPlxuICAgIDxUb2dnbGVHcmlkIC8+XG4gICAgPHN0eWxlIGpzeD57YFxuICAgICAgZGl2IHtcbiAgICAgICAgei1pbmRleDogOTk7XG4gICAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgIH1cbiAgICBgfTwvc3R5bGU+XG4gIDwvZGl2PlxuKTtcblxuZXhwb3J0IGRlZmF1bHQgVG9vbGJhcjtcbiJdfQ== */\n/*@ sourceURL=components/Toolbar.js */"
+    css: "div.jsx-1146633035{z-index:99;position:absolute;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvVG9vbGJhci5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFZZ0IsQUFHb0IsV0FDTyxrQkFDcEIiLCJmaWxlIjoiY29tcG9uZW50cy9Ub29sYmFyLmpzIiwic291cmNlUm9vdCI6Ii9Vc2Vycy9sZWFuL2RldmVsb3BtZW50L2xvZHBpIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IE5ldyBmcm9tICcuL05ldyc7XG5pbXBvcnQgWm9vbSBmcm9tICcuLi9jb250YWluZXJzL1pvb20nO1xuaW1wb3J0IFRvZ2dsZUdyaWQgZnJvbSAnLi4vY29udGFpbmVycy9Ub2dnbGVHcmlkJztcbmltcG9ydCBDb2xvclBpY2tlciBmcm9tICcuLi9jb250YWluZXJzL0NvbG9yUGlja2VyJztcblxuY29uc3QgVG9vbGJhciA9IChwcm9wcykgPT4gKFxuICA8ZGl2PlxuICAgIDxOZXcgLz5cbiAgICA8Wm9vbSAvPlxuICAgIDxUb2dnbGVHcmlkIC8+XG4gICAgPENvbG9yUGlja2VyIC8+XG5cbiAgICA8c3R5bGUganN4PntgXG4gICAgICBkaXYge1xuICAgICAgICB6LWluZGV4OiA5OTtcbiAgICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgfVxuICAgIGB9PC9zdHlsZT5cbiAgPC9kaXY+XG4pO1xuXG5leHBvcnQgZGVmYXVsdCBUb29sYmFyO1xuIl19 */\n/*@ sourceURL=components/Toolbar.js */"
   }));
 };
 
@@ -613,6 +646,66 @@ var list = Object.keys(tools);
 
 /***/ }),
 
+/***/ "./containers/ColorPicker.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__("react-redux");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_redux__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store__ = __webpack_require__("./store.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_ColorPicker__ = __webpack_require__("./components/ColorPicker.js");
+var _jsxFileName = "/Users/lean/development/lodpi/containers/ColorPicker.js";
+
+
+
+
+var palette = {
+  'Black': '#000',
+  'White': '#fff',
+  'Red': '#f00',
+  'Green': '#0f0',
+  'Blue': '#00f'
+};
+
+var ColorPickerContainer = function ColorPickerContainer(_ref) {
+  var color = _ref.color,
+      selectColor = _ref.selectColor;
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 14
+    }
+  }, Object.keys(palette).map(function (name) {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_ColorPicker__["a" /* default */], {
+      key: name,
+      onMouseDown: function onMouseDown() {
+        return selectColor(palette[name]);
+      },
+      name: name,
+      selected: color === palette[name],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 16
+      }
+    });
+  }));
+};
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    color: state.color
+  };
+};
+
+var mapDispatchToProps = {
+  selectColor: __WEBPACK_IMPORTED_MODULE_2__store__["d" /* selectColor */]
+};
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(mapStateToProps, mapDispatchToProps)(ColorPickerContainer));
+
+/***/ }),
+
 /***/ "./containers/Grid.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -823,7 +916,7 @@ var mapStateToProps = function mapStateToProps(state) {
 };
 
 var mapDispatchToProps = {
-  toggleGrid: __WEBPACK_IMPORTED_MODULE_2__store__["d" /* toggleGrid */]
+  toggleGrid: __WEBPACK_IMPORTED_MODULE_2__store__["e" /* toggleGrid */]
 };
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(mapStateToProps, mapDispatchToProps)(ToggleGridContainer));
 
@@ -1025,7 +1118,7 @@ var mapStateToProps = function mapStateToProps(state) {
 };
 
 var mapDispatchToProps = {
-  updateCanvas: __WEBPACK_IMPORTED_MODULE_4__store__["e" /* updateCanvas */]
+  updateCanvas: __WEBPACK_IMPORTED_MODULE_4__store__["f" /* updateCanvas */]
 };
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_redux__["connect"])(mapStateToProps, mapDispatchToProps)(WorkspaceContainer));
 
@@ -1199,12 +1292,12 @@ function () {
 
 "use strict";
 /* unused harmony export reducer */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return toggleGrid; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return toggleGrid; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return increaseScale; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return decreaseScale; });
 /* unused harmony export selectTool */
-/* unused harmony export selectColor */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return updateCanvas; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return selectColor; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return updateCanvas; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__("redux");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_redux__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_redux_devtools_extension__ = __webpack_require__("redux-devtools-extension");
