@@ -1,11 +1,13 @@
 import Toolbar from '../components/Toolbar';
 import Workspace from '../containers/Workspace';
-// import Toolbox from '../components/Toolbox';
+import Toolbox from '../containers/Toolbox';
 
 const App = ({ id, sync, preloaded }) => (
   <div>
     <Toolbar />
     <Workspace sync={sync}/>
+    <Toolbox />
+
     <style jsx global>{`
       *,
       *::before,

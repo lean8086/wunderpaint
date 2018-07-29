@@ -93,11 +93,13 @@ module.exports =
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Toolbar__ = __webpack_require__("./components/Toolbar.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__containers_Workspace__ = __webpack_require__("./containers/Workspace.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__containers_Toolbox__ = __webpack_require__("./containers/Toolbox.js");
 var _jsxFileName = "/Users/lean/development/lodpi/components/App.js";
 
 
 
- // import Toolbox from '../components/Toolbox';
+
+
 
 var App = function App(_ref) {
   var id = _ref.id,
@@ -120,9 +122,14 @@ var App = function App(_ref) {
       fileName: _jsxFileName,
       lineNumber: 8
     }
+  }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__containers_Toolbox__["a" /* default */], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9
+    }
   }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0_styled_jsx_style___default.a, {
     styleId: "1818130120",
-    css: "*,*::before,*::after{box-sizing:border-box;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvQXBwLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQVF1QixBQUsrQixzQkFDeEIiLCJmaWxlIjoiY29tcG9uZW50cy9BcHAuanMiLCJzb3VyY2VSb290IjoiL1VzZXJzL2xlYW4vZGV2ZWxvcG1lbnQvbG9kcGkiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgVG9vbGJhciBmcm9tICcuLi9jb21wb25lbnRzL1Rvb2xiYXInO1xuaW1wb3J0IFdvcmtzcGFjZSBmcm9tICcuLi9jb250YWluZXJzL1dvcmtzcGFjZSc7XG4vLyBpbXBvcnQgVG9vbGJveCBmcm9tICcuLi9jb21wb25lbnRzL1Rvb2xib3gnO1xuXG5jb25zdCBBcHAgPSAoeyBpZCwgc3luYywgcHJlbG9hZGVkIH0pID0+IChcbiAgPGRpdj5cbiAgICA8VG9vbGJhciAvPlxuICAgIDxXb3Jrc3BhY2Ugc3luYz17c3luY30vPlxuICAgIDxzdHlsZSBqc3ggZ2xvYmFsPntgXG4gICAgICAqLFxuICAgICAgKjo6YmVmb3JlLFxuICAgICAgKjo6YWZ0ZXIge1xuICAgICAgICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xuICAgICAgfVxuICAgIGB9PC9zdHlsZT5cbiAgPC9kaXY+XG4pO1xuXG5leHBvcnQgZGVmYXVsdCBBcHA7XG4iXX0= */\n/*@ sourceURL=components/App.js */"
+    css: "*,*::before,*::after{box-sizing:border-box;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvQXBwLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQVV1QixBQUsrQixzQkFDeEIiLCJmaWxlIjoiY29tcG9uZW50cy9BcHAuanMiLCJzb3VyY2VSb290IjoiL1VzZXJzL2xlYW4vZGV2ZWxvcG1lbnQvbG9kcGkiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgVG9vbGJhciBmcm9tICcuLi9jb21wb25lbnRzL1Rvb2xiYXInO1xuaW1wb3J0IFdvcmtzcGFjZSBmcm9tICcuLi9jb250YWluZXJzL1dvcmtzcGFjZSc7XG5pbXBvcnQgVG9vbGJveCBmcm9tICcuLi9jb250YWluZXJzL1Rvb2xib3gnO1xuXG5jb25zdCBBcHAgPSAoeyBpZCwgc3luYywgcHJlbG9hZGVkIH0pID0+IChcbiAgPGRpdj5cbiAgICA8VG9vbGJhciAvPlxuICAgIDxXb3Jrc3BhY2Ugc3luYz17c3luY30vPlxuICAgIDxUb29sYm94IC8+XG5cbiAgICA8c3R5bGUganN4IGdsb2JhbD57YFxuICAgICAgKixcbiAgICAgICo6OmJlZm9yZSxcbiAgICAgICo6OmFmdGVyIHtcbiAgICAgICAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbiAgICAgIH1cbiAgICBgfTwvc3R5bGU+XG4gIDwvZGl2PlxuKTtcblxuZXhwb3J0IGRlZmF1bHQgQXBwO1xuIl19 */\n/*@ sourceURL=components/App.js */"
   }));
 };
 
@@ -246,6 +253,39 @@ var _jsxFileName = "/Users/lean/development/lodpi/components/ToggleGrid.js";
       lineNumber: 2
     }
   }, "Grid");
+});
+
+/***/ }),
+
+/***/ "./components/Tool.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_styled_jsx_style__ = __webpack_require__("styled-jsx/style");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_styled_jsx_style___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_styled_jsx_style__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__("react");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
+var _jsxFileName = "/Users/lean/development/lodpi/components/Tool.js";
+
+
+/* harmony default export */ __webpack_exports__["a"] = (function (_ref) {
+  var name = _ref.name,
+      onMouseDown = _ref.onMouseDown,
+      selected = _ref.selected;
+  return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("button", {
+    onMouseDown: onMouseDown,
+    style: selected ? {
+      background: 'cyan'
+    } : null,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 2
+    },
+    className: "jsx-3717475008"
+  }, name, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0_styled_jsx_style___default.a, {
+    styleId: "3717475008",
+    css: "button.jsx-3717475008{cursor:pointer;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvVG9vbC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFPZ0IsQUFHd0IsZUFDakIiLCJmaWxlIjoiY29tcG9uZW50cy9Ub29sLmpzIiwic291cmNlUm9vdCI6Ii9Vc2Vycy9sZWFuL2RldmVsb3BtZW50L2xvZHBpIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGRlZmF1bHQgKHsgbmFtZSwgb25Nb3VzZURvd24sIHNlbGVjdGVkIH0pID0+IChcbiAgPGJ1dHRvblxuICAgIG9uTW91c2VEb3duPXtvbk1vdXNlRG93bn1cbiAgICBzdHlsZT17c2VsZWN0ZWQgPyB7IGJhY2tncm91bmQ6ICdjeWFuJyB9IDogbnVsbH1cbiAgPlxuICAgIHtuYW1lfVxuXG4gICAgPHN0eWxlIGpzeD57YFxuICAgICAgYnV0dG9uIHtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgfVxuICAgIGB9PC9zdHlsZT5cbiAgPC9idXR0b24+XG4pO1xuIl19 */\n/*@ sourceURL=components/Tool.js */"
+  }));
 });
 
 /***/ }),
@@ -432,12 +472,12 @@ function end(_ref3) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-function erase(_ref) {
+var erase = function erase(_ref) {
   var x = _ref.x,
       y = _ref.y,
-      layer = _ref.layer;
-  layer.ctx.clearRect(x, y, 1, 1);
-}
+      ctx = _ref.ctx;
+  ctx.clearRect(x, y, 1, 1);
+};
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   handleMouseDown: erase,
@@ -634,7 +674,6 @@ function end(_ref3) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export list */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Pencil__ = __webpack_require__("./components/tools/Pencil.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Eraser__ = __webpack_require__("./components/tools/Eraser.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Line__ = __webpack_require__("./components/tools/Line.js");
@@ -645,15 +684,13 @@ function end(_ref3) {
 
 
 
-var tools = {
+/* harmony default export */ __webpack_exports__["a"] = ({
   Pencil: __WEBPACK_IMPORTED_MODULE_0__Pencil__["a" /* default */],
   Eraser: __WEBPACK_IMPORTED_MODULE_1__Eraser__["a" /* default */],
   Line: __WEBPACK_IMPORTED_MODULE_2__Line__["a" /* default */],
   Rectangle: __WEBPACK_IMPORTED_MODULE_3__Rectangle__["a" /* default */],
   Ellipse: __WEBPACK_IMPORTED_MODULE_4__Ellipse__["a" /* default */]
-};
-/* harmony default export */ __webpack_exports__["a"] = (tools);
-var list = Object.keys(tools);
+});
 
 /***/ }),
 
@@ -964,9 +1001,71 @@ var mapStateToProps = function mapStateToProps(state) {
 };
 
 var mapDispatchToProps = {
-  toggleGrid: __WEBPACK_IMPORTED_MODULE_2__store__["e" /* toggleGrid */]
+  toggleGrid: __WEBPACK_IMPORTED_MODULE_2__store__["f" /* toggleGrid */]
 };
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(mapStateToProps, mapDispatchToProps)(ToggleGridContainer));
+
+/***/ }),
+
+/***/ "./containers/Toolbox.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_styled_jsx_style__ = __webpack_require__("styled-jsx/style");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_styled_jsx_style___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_styled_jsx_style__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__("react");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux__ = __webpack_require__("react-redux");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_redux__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store__ = __webpack_require__("./store.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_tools__ = __webpack_require__("./components/tools/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_Tool__ = __webpack_require__("./components/Tool.js");
+var _jsxFileName = "/Users/lean/development/lodpi/containers/Toolbox.js";
+
+
+
+
+
+
+
+var Toolbox = function Toolbox(_ref) {
+  var tool = _ref.tool,
+      selectTool = _ref.selectTool;
+  return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7
+    },
+    className: "jsx-1368063466"
+  }, Object.keys(__WEBPACK_IMPORTED_MODULE_4__components_tools__["a" /* default */]).map(function (name) {
+    return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__components_Tool__["a" /* default */], {
+      key: name,
+      name: name,
+      onMouseDown: function onMouseDown() {
+        return selectTool(name);
+      },
+      selected: tool === name,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 9
+      }
+    });
+  }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0_styled_jsx_style___default.a, {
+    styleId: "1368063466",
+    css: "div.jsx-1368063466{z-index:99;position:absolute;bottom:20px;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbnRhaW5lcnMvVG9vbGJveC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFnQmdCLEFBR29CLFdBQ08sa0JBQ04sWUFDZCIsImZpbGUiOiJjb250YWluZXJzL1Rvb2xib3guanMiLCJzb3VyY2VSb290IjoiL1VzZXJzL2xlYW4vZGV2ZWxvcG1lbnQvbG9kcGkiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBjb25uZWN0IH0gZnJvbSAncmVhY3QtcmVkdXgnO1xuaW1wb3J0IHsgc2VsZWN0VG9vbCB9IGZyb20gJy4uL3N0b3JlJztcbmltcG9ydCB0b29scyBmcm9tICcuLi9jb21wb25lbnRzL3Rvb2xzJztcbmltcG9ydCBUb29sIGZyb20gJy4uL2NvbXBvbmVudHMvVG9vbCc7XG5cbmNvbnN0IFRvb2xib3ggPSAoeyB0b29sLCBzZWxlY3RUb29sIH0pID0+IChcbiAgPGRpdj5cbiAgICB7T2JqZWN0LmtleXModG9vbHMpLm1hcChuYW1lID0+IChcbiAgICAgIDxUb29sXG4gICAgICAgIGtleT17bmFtZX1cbiAgICAgICAgbmFtZT17bmFtZX1cbiAgICAgICAgb25Nb3VzZURvd249eygpID0+IHNlbGVjdFRvb2wobmFtZSl9XG4gICAgICAgIHNlbGVjdGVkPXt0b29sID09PSBuYW1lfVxuICAgICAgLz5cbiAgICApKX1cblxuICAgIDxzdHlsZSBqc3g+e2BcbiAgICAgIGRpdiB7XG4gICAgICAgIHotaW5kZXg6IDk5O1xuICAgICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICAgIGJvdHRvbTogMjBweDtcbiAgICAgIH1cbiAgICAgIGB9PC9zdHlsZT5cbiAgPC9kaXY+XG4pO1xuXG5jb25zdCBtYXBTdGF0ZVRvUHJvcHMgPSAoc3RhdGUpID0+ICh7XG4gIHRvb2w6IHN0YXRlLnRvb2wsXG59KTtcblxuY29uc3QgbWFwRGlzcGF0Y2hUb1Byb3BzID0ge1xuICBzZWxlY3RUb29sLFxufTtcblxuZXhwb3J0IGRlZmF1bHQgY29ubmVjdChtYXBTdGF0ZVRvUHJvcHMsIG1hcERpc3BhdGNoVG9Qcm9wcykoVG9vbGJveCk7XG4iXX0= */\n/*@ sourceURL=containers/Toolbox.js */"
+  }));
+};
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    tool: state.tool
+  };
+};
+
+var mapDispatchToProps = {
+  selectTool: __WEBPACK_IMPORTED_MODULE_3__store__["e" /* selectTool */]
+};
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_redux__["connect"])(mapStateToProps, mapDispatchToProps)(Toolbox));
 
 /***/ }),
 
@@ -1157,7 +1256,7 @@ var mapStateToProps = function mapStateToProps(state) {
 };
 
 var mapDispatchToProps = {
-  updateCanvas: __WEBPACK_IMPORTED_MODULE_4__store__["f" /* updateCanvas */]
+  updateCanvas: __WEBPACK_IMPORTED_MODULE_4__store__["g" /* updateCanvas */]
 };
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_redux__["connect"])(mapStateToProps, mapDispatchToProps)(WorkspaceContainer));
 
@@ -1331,12 +1430,12 @@ function () {
 
 "use strict";
 /* unused harmony export reducer */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return toggleGrid; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return toggleGrid; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return increaseScale; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return decreaseScale; });
-/* unused harmony export selectTool */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return selectTool; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return selectColor; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return updateCanvas; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return updateCanvas; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__("redux");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_redux__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_redux_devtools_extension__ = __webpack_require__("redux-devtools-extension");
