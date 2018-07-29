@@ -3,13 +3,13 @@ let y0 = 0;
 let x1 = 0;
 let y1 = 0;
 
-function start({ x, y, color, shadowLayer }) {
-  shadowLayer.ctx.fillStyle = color;
+const start = ({ x, y, color, ctx }) => {
+  ctx.fillStyle = color;
   x0 = x;
   y0 = y;
-}
+};
 
-function render(x, y, layer) {
+const render = (x, y, ctx) => {
   // Semimajor (biggest radius) axes and semiminor (smallest radius) axes
   const rx = Math.round((x - x0) / 2);
   const ry = Math.round((y - y0) / 2);
@@ -29,28 +29,28 @@ function render(x, y, layer) {
     if (lastX !== X || lastY !== Y){
       lastX = X;
       lastY = Y;
-      layer.ctx.fillRect(X, Y, 1, 1);
+      ctx.fillRect(X, Y, 1, 1);
     };
   }
-}
+};
 
-function move({ x, y, shadowLayer }) {
+const move = ({ x, y, ctx, clear }) => {
   if (x1 !== x || y1 !== y) {
-    shadowLayer.clear();
-    render(x, y, shadowLayer);
+    clear();
+    render(x, y, ctx);
     x1 = x;
     y1 = y;
   }
-}
+};
 
-function end({ x, y, color, shadowLayer, layer }) {
-  layer.ctx.fillStyle = color;
-  render(x, y, layer);
-  shadowLayer.clear();
-}
+const end = ({ x, y, color, ctx }) => {
+  ctx.fillStyle = color;
+  render(x, y, ctx);
+};
 
 export default {
-  handleMouseDown: start,
-  handleMouseMove: move,
+  handleMouseDownShadow: start,
+  handleMouseMoveShadow: move,
   handleMouseUp: end,
+  handleMouseUpShadow: ({ clear }) => clear(),
 };

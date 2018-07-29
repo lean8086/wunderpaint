@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { updateCanvas } from '../store';
 import bus from '../bus';
 import Layer from './Layer';
+import ShadowLayer from './ShadowLayer';
 import Grid from './Grid';
 
 class WorkspaceContainer extends Component {
@@ -64,8 +65,8 @@ class WorkspaceContainer extends Component {
           width: `${this.props.width * this.props.scale}px`,
           height: `${this.props.height * this.props.scale}px`,
         }}>
-          <Layer ref={l => this.layer = l} />
-          <Layer ref={l => this.shadowLayer = l} />
+          <Layer />
+          <Layer shadow />
           <Grid />
         </div>
 

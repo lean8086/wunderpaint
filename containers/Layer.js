@@ -11,9 +11,16 @@ class LayerContainer extends Component {
 
   executeToolAction({ type, x, y }) {
     const { scale, tool, color } = this.props;
-    const action = tools[tool][type];
+    // handleMouseDown vs. handleMouseDownShadow
+    const action = tools[tool][`${type}${this.props.shadow ? 'Shadow' : ''}`];
     if (!action) return;
-    action({ x, y, color, scale, ctx: this.ctx });
+    action({
+      x, y,
+      color,
+      scale,
+      ctx: this.ctx,
+      clear: () => this.clear(),
+    });
   }
 
   clear() {
