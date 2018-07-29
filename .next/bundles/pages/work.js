@@ -295,28 +295,28 @@ var _jsxFileName = "/Users/lean/development/lodpi/components/Zoom.js";
     }
   }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
     onMouseDown: function onMouseDown() {
-      return props.increaseScale();
+      return props.decreaseScale();
     },
-    disabled: props.blockIncrease,
+    disabled: props.blockDecrease,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 3
     }
-  }, "+"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", {
+  }, "-"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 7
     }
   }, props.percentage, "%"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
     onMouseDown: function onMouseDown() {
-      return props.decreaseScale();
+      return props.increaseScale();
     },
-    disabled: props.blockDecrease,
+    disabled: props.blockIncrease,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 8
     }
-  }, "-"));
+  }, "+"));
 });
 
 /***/ }),
@@ -954,7 +954,7 @@ var _jsxFileName = "/Users/lean/development/lodpi/containers/Toolbox.js";
 
 
 
-var Toolbox = function Toolbox(_ref) {
+var ToolboxContainer = function ToolboxContainer(_ref) {
   var tool = _ref.tool,
       selectTool = _ref.selectTool;
   return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
@@ -978,7 +978,7 @@ var Toolbox = function Toolbox(_ref) {
     });
   }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0_styled_jsx_style___default.a, {
     styleId: "1368063466",
-    css: "div.jsx-1368063466{z-index:99;position:absolute;bottom:20px;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbnRhaW5lcnMvVG9vbGJveC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFnQmdCLEFBR29CLFdBQ08sa0JBQ04sWUFDZCIsImZpbGUiOiJjb250YWluZXJzL1Rvb2xib3guanMiLCJzb3VyY2VSb290IjoiL1VzZXJzL2xlYW4vZGV2ZWxvcG1lbnQvbG9kcGkiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBjb25uZWN0IH0gZnJvbSAncmVhY3QtcmVkdXgnO1xuaW1wb3J0IHsgc2VsZWN0VG9vbCB9IGZyb20gJy4uL3N0b3JlJztcbmltcG9ydCB0b29scyBmcm9tICcuLi9jb21wb25lbnRzL3Rvb2xzJztcbmltcG9ydCBUb29sIGZyb20gJy4uL2NvbXBvbmVudHMvVG9vbCc7XG5cbmNvbnN0IFRvb2xib3ggPSAoeyB0b29sLCBzZWxlY3RUb29sIH0pID0+IChcbiAgPGRpdj5cbiAgICB7T2JqZWN0LmtleXModG9vbHMpLm1hcChuYW1lID0+IChcbiAgICAgIDxUb29sXG4gICAgICAgIGtleT17bmFtZX1cbiAgICAgICAgbmFtZT17bmFtZX1cbiAgICAgICAgb25Nb3VzZURvd249eygpID0+IHNlbGVjdFRvb2wobmFtZSl9XG4gICAgICAgIHNlbGVjdGVkPXt0b29sID09PSBuYW1lfVxuICAgICAgLz5cbiAgICApKX1cblxuICAgIDxzdHlsZSBqc3g+e2BcbiAgICAgIGRpdiB7XG4gICAgICAgIHotaW5kZXg6IDk5O1xuICAgICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICAgIGJvdHRvbTogMjBweDtcbiAgICAgIH1cbiAgICAgIGB9PC9zdHlsZT5cbiAgPC9kaXY+XG4pO1xuXG5jb25zdCBtYXBTdGF0ZVRvUHJvcHMgPSAoc3RhdGUpID0+ICh7XG4gIHRvb2w6IHN0YXRlLnRvb2wsXG59KTtcblxuY29uc3QgbWFwRGlzcGF0Y2hUb1Byb3BzID0ge1xuICBzZWxlY3RUb29sLFxufTtcblxuZXhwb3J0IGRlZmF1bHQgY29ubmVjdChtYXBTdGF0ZVRvUHJvcHMsIG1hcERpc3BhdGNoVG9Qcm9wcykoVG9vbGJveCk7XG4iXX0= */\n/*@ sourceURL=containers/Toolbox.js */"
+    css: "div.jsx-1368063466{z-index:99;position:absolute;bottom:20px;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbnRhaW5lcnMvVG9vbGJveC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFnQmdCLEFBR29CLFdBQ08sa0JBQ04sWUFDZCIsImZpbGUiOiJjb250YWluZXJzL1Rvb2xib3guanMiLCJzb3VyY2VSb290IjoiL1VzZXJzL2xlYW4vZGV2ZWxvcG1lbnQvbG9kcGkiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBjb25uZWN0IH0gZnJvbSAncmVhY3QtcmVkdXgnO1xuaW1wb3J0IHsgc2VsZWN0VG9vbCB9IGZyb20gJy4uL3N0b3JlJztcbmltcG9ydCB0b29scyBmcm9tICcuLi9jb21wb25lbnRzL3Rvb2xzJztcbmltcG9ydCBUb29sIGZyb20gJy4uL2NvbXBvbmVudHMvVG9vbCc7XG5cbmNvbnN0IFRvb2xib3hDb250YWluZXIgPSAoeyB0b29sLCBzZWxlY3RUb29sIH0pID0+IChcbiAgPGRpdj5cbiAgICB7T2JqZWN0LmtleXModG9vbHMpLm1hcChuYW1lID0+IChcbiAgICAgIDxUb29sXG4gICAgICAgIGtleT17bmFtZX1cbiAgICAgICAgbmFtZT17bmFtZX1cbiAgICAgICAgb25Nb3VzZURvd249eygpID0+IHNlbGVjdFRvb2wobmFtZSl9XG4gICAgICAgIHNlbGVjdGVkPXt0b29sID09PSBuYW1lfVxuICAgICAgLz5cbiAgICApKX1cblxuICAgIDxzdHlsZSBqc3g+e2BcbiAgICAgIGRpdiB7XG4gICAgICAgIHotaW5kZXg6IDk5O1xuICAgICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICAgIGJvdHRvbTogMjBweDtcbiAgICAgIH1cbiAgICAgIGB9PC9zdHlsZT5cbiAgPC9kaXY+XG4pO1xuXG5jb25zdCBtYXBTdGF0ZVRvUHJvcHMgPSAoc3RhdGUpID0+ICh7XG4gIHRvb2w6IHN0YXRlLnRvb2wsXG59KTtcblxuY29uc3QgbWFwRGlzcGF0Y2hUb1Byb3BzID0ge1xuICBzZWxlY3RUb29sLFxufTtcblxuZXhwb3J0IGRlZmF1bHQgY29ubmVjdChtYXBTdGF0ZVRvUHJvcHMsIG1hcERpc3BhdGNoVG9Qcm9wcykoVG9vbGJveENvbnRhaW5lcik7XG4iXX0= */\n/*@ sourceURL=containers/Toolbox.js */"
   }));
 };
 
@@ -991,7 +991,7 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = {
   selectTool: __WEBPACK_IMPORTED_MODULE_3__store__["e" /* selectTool */]
 };
-/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(Toolbox));
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(ToolboxContainer));
 
 /***/ }),
 

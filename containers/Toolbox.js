@@ -3,7 +3,7 @@ import { selectTool } from '../store';
 import tools from '../components/tools';
 import Tool from '../components/Tool';
 
-const Toolbox = ({ tool, selectTool }) => (
+const ToolboxContainer = ({ tool, selectTool }) => (
   <div>
     {Object.keys(tools).map(name => (
       <Tool
@@ -32,4 +32,4 @@ const mapDispatchToProps = {
   selectTool,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Toolbox);
+export default connect(mapStateToProps, mapDispatchToProps)(ToolboxContainer);
