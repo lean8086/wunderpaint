@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux';
 import { updateCanvas } from '../store';
 import bus from '../bus';
 import Layer from './Layer';
-import ShadowLayer from './ShadowLayer';
 import Grid from './Grid';
 
 class WorkspaceContainer extends Component {

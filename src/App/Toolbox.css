@@ -1,9 +1,0 @@
-.Toolbox {
-  z-index: 99;
-  position: absolute;
-  bottom: 20px;
-}
-
-.Tool {
-  cursor: pointer;
-}
