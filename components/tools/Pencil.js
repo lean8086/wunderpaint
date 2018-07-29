@@ -1,7 +1,7 @@
-function render({ x, y, color, layer }) {
-  layer.ctx.fillStyle = color;
-  layer.ctx.fillRect(x, y, 1, 1);
-}
+const render = ({ x, y, color, ctx }) => {
+  ctx.fillStyle = color;
+  ctx.fillRect(x, y, 1, 1);
+};
 
 export default {
   handleMouseDown: render,

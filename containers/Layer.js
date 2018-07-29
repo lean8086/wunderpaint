@@ -1,21 +1,31 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
+import bus from '../bus';
+import tools from '../components/tools';
 
 class LayerContainer extends Component {
   componentDidMount() {
     this.ctx = this.canvas.getContext('2d');
+    bus.on('workspaceaction', (data) => this.executeToolAction(data));
+  }
+
+  executeToolAction({ type, x, y }) {
+    const { scale, tool, color } = this.props;
+    const action = tools[tool][type];
+    if (!action) return;
+    action({ x, y, color, scale, ctx: this.ctx });
   }
 
   clear() {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.clearRect(0, 0, this.props.width, this.props.height);
   }
 
   getImageData() {
-    return this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height).data;
+    return this.ctx.getImageData(0, 0, this.props.width, this.props.height).data;
   }
 
   putImageData(data) {
-    const { width, height } = this.canvas;
+    const { width, height } = this.props;
     for (let y = 0; y < height; y += 1) {
       for (let x = 0; x < width; x += 1) {
         const pos = (y * width + x) * 4;
@@ -27,7 +37,7 @@ class LayerContainer extends Component {
   }
 
   slowAndSafePutImageData(data) {
-    const { width, height } = this.canvas;
+    const { width, height } = this.props;
     for (let y = 0; y < height; y += 1) {
       for (let x = 0; x < width; x += 1) {
         const pos = (y * width + x) * 4;
@@ -70,6 +80,8 @@ class LayerContainer extends Component {
 
 const mapStateToProps = state => ({
   scale: state.scale,
+  tool: state.tool,
+  color: state.color,
   width: state.width,
   height: state.height,
 });
