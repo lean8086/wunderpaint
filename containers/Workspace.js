@@ -17,14 +17,14 @@ class WorkspaceContainer extends Component {
     // this.timer = setTimeout(() => this.props.sync(), 3 * 1000);
   }
 
-  handleEvent(actionName, ev) {
-    const pageX = ev.pageX || ev.touches[0].pageX || 0;
-    const pageY = ev.pageY || ev.touches[0].pageY || 0;
+  handleEvent(actionName, { pageX, pageY, touches, target }) {
+    const X = pageX || touches[0].pageX || 0;
+    const Y = pageY || touches[0].pageY || 0;
 
     bus.emit('workspaceaction', {
       type: actionName,
-      x: Math.round((pageX - this.element.offsetLeft) / this.props.scale - .5),
-      y: Math.round((pageY - this.element.offsetTop) / this.props.scale - .5),
+      x: Math.round((X - target.offsetLeft) / this.props.scale - .5),
+      y: Math.round((Y - target.offsetTop) / this.props.scale - .5),
     });
   }
 
@@ -54,7 +54,6 @@ class WorkspaceContainer extends Component {
   render() {
     return (
       <section
-        ref={w => this.element = w}
         onClick={(ev) => this.handleClick(ev)}
         onMouseDown={(ev) => this.handleMouseDown(ev)}
         onMouseUp={(ev) => this.handleMouseUp(ev)}
