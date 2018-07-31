@@ -2,17 +2,23 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import bus from '../bus';
 import tools from '../components/tools';
+import Layer from '../components/Layer';
 
 class LayerContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.layer = React.createRef();
+  }
+
   componentDidMount() {
-    this.ctx = this.canvas.getContext('2d');
+    this.ctx = this.layer.current.getCtx();
     bus.on('workspaceaction', (data) => this.executeToolAction(data));
   }
 
   executeToolAction({ type, x, y }) {
     const { scale, tool, color } = this.props;
     // handleMouseDown vs. handleMouseDownShadow
-    const action = tools[tool][`${type}${this.props.shadow ? 'Shadow' : ''}`];
+    const action = tools[tool][!this.props.shadow ? type : `${type}Shadow`];
     if (!action) return;
     action({
       x, y,
@@ -61,26 +67,14 @@ class LayerContainer extends Component {
   }
 
   render() {
+    const { width, height, scale } = this.props;
     return (
-      <canvas
-        width={this.props.width}
-        height={this.props.height}
-        style={{ transform: `scale(${this.props.scale})` }}
-        ref={c => this.canvas = c}
-      >
-        <style jsx>{`
-          canvas {
-            position: absolute;
-            left: 0;
-            top: 0;
-            transform-origin: 0 0;
-            image-rendering: -moz-crisp-edges; /* Firefox */
-            image-rendering: -webkit-crisp-edges; /* Webkit */
-            -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard property) */
-            image-rendering: pixelated; /* Chrome */
-          }
-        `}</style>
-      </canvas>
+      <Layer
+        ref={this.layer}
+        width={width}
+        height={height}
+        scale={scale}
+      />
     );
   }
 }

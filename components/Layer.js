@@ -4,7 +4,11 @@ class Layer extends Component {
   constructor(props) {
     super(props);
     this.canvas = React.createRef();
-    this.props.setContext(this.canvas.getContext('2d'));
+    this.getCtx = this.getCtx.bind(this);
+  }
+
+  getCtx() {
+    return this.canvas.current.getContext('2d');
   }
 
   render() {
@@ -15,19 +19,22 @@ class Layer extends Component {
         height={height}
         style={{ transform: `scale(${scale})` }}
         ref={this.canvas}
-      />
-      <style jsx>{`
-        canvas {
-          position: absolute;
-          left: 0;
-          top: 0;
-          transform-origin: 0 0;
-          image-rendering: -moz-crisp-edges; /* Firefox */
-          image-rendering: -webkit-crisp-edges; /* Webkit */
-          -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard property) */
-          image-rendering: pixelated; /* Chrome */
-        }
-      `}</style>
+      >
+        <style jsx>{`
+          canvas {
+            position: absolute;
+            left: 0;
+            top: 0;
+            transform-origin: 0 0;
+            image-rendering: -moz-crisp-edges; /* Firefox */
+            image-rendering: -webkit-crisp-edges; /* Webkit */
+            -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard property) */
+            image-rendering: pixelated; /* Chrome */
+          }
+        `}</style>
+      </canvas>
     );
   }
 };
+
+export default Layer;
