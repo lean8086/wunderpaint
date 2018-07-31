@@ -3,18 +3,12 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { updateCanvas } from '../store';
 import bus from '../bus';
-import Layer from './Layer';
-import Grid from './Grid';
+import Workspace from '../components/Workspace';
 
 class WorkspaceContainer extends Component {
   constructor(props) {
     super(props);
     this.state = { executing: false };
-  }
-
-  snapshot() {
-    // this.props.sync(this.layer.getImageData());
-    // this.timer = setTimeout(() => this.props.sync(), 3 * 1000);
   }
 
   handleEvent(actionName, { pageX, pageY, touches, target }) {
@@ -42,7 +36,7 @@ class WorkspaceContainer extends Component {
   handleMouseUp(ev) {
     this.setState({ executing: false });
     this.handleEvent('handleMouseUp', ev);
-    this.snapshot();
+    // this.snapshot();
   }
 
   handleMouseMove(ev) {
@@ -53,29 +47,12 @@ class WorkspaceContainer extends Component {
 
   render() {
     return (
-      <section
+      <Workspace
         onClick={(ev) => this.handleClick(ev)}
         onMouseDown={(ev) => this.handleMouseDown(ev)}
         onMouseUp={(ev) => this.handleMouseUp(ev)}
         onMouseMove={(ev) => this.handleMouseMove(ev)}
-      >
-        <Layer />
-        <Layer shadow />
-        <Grid />
-
-        <style jsx>{`
-          section {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 1;
-            cursor: crosshair;
-            overflow: scroll;
-          }
-        `}</style>
-      </section>
+      />
     );
   };
 };

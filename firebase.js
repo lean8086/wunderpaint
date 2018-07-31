@@ -7,4 +7,8 @@ const config = {
   // storageBucket: '<BUCKET>.appspot.com',
 };
 
-export default !firebase.apps.length ? firebase.initializeApp(config) : firebase.app();
+const app = !firebase.apps.length ? firebase.initializeApp(config) : firebase.app();
+
+export const getRefById = id => app.database().ref(`works/${id}`);
+
+export default app;

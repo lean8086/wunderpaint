@@ -2,10 +2,10 @@ import Toolbar from '../components/Toolbar';
 import Workspace from '../containers/Workspace';
 import Toolbox from '../containers/Toolbox';
 
-const App = ({ id, sync, preloaded }) => (
+const App = () => (
   <div>
     <Toolbar />
-    <Workspace sync={sync}/>
+    <Workspace />
     <Toolbox />
 
     <style jsx global>{`
