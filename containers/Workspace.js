@@ -59,14 +59,9 @@ class WorkspaceContainer extends Component {
         onMouseUp={(ev) => this.handleMouseUp(ev)}
         onMouseMove={(ev) => this.handleMouseMove(ev)}
       >
-        <div style={{
-          width: `${this.props.width * this.props.scale}px`,
-          height: `${this.props.height * this.props.scale}px`,
-        }}>
-          <Layer />
-          <Layer shadow />
-          <Grid />
-        </div>
+        <Layer />
+        <Layer shadow />
+        <Grid />
 
         <style jsx>{`
           section {
@@ -87,13 +82,6 @@ class WorkspaceContainer extends Component {
 
 const mapStateToProps = (state) => ({
   scale: state.scale,
-  canvas: state.canvas,
-  width: state.width,
-  height: state.height,
 });
 
-const mapDispatchToProps = {
-  updateCanvas,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(WorkspaceContainer);
+export default connect(mapStateToProps)(WorkspaceContainer);
