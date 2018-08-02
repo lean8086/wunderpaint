@@ -1,5 +1,4 @@
 import Layer from '../containers/Layer';
-import Grid from '../containers/Grid';
 
 export default (props) => (
   <section
@@ -7,21 +6,39 @@ export default (props) => (
     onMouseDown={props.onMouseDown}
     onMouseUp={props.onMouseUp}
     onMouseMove={props.onMouseMove}
+    style={{
+      width: props.width,
+      height: props.height,
+    }}
   >
     <Layer />
     <Layer shadow />
-    <Grid />
+    {props.grid &&
+      <div
+        style={{ backgroundSize: `${props.gridSize}px ${props.gridSize}px` }}
+        className="grid"
+      />
+    }
 
     <style jsx>{`
-      section {
+      section,
+      .grid {
         position: absolute;
         top: 0;
         left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 1;
         cursor: crosshair;
-        overflow: scroll;
+      }
+
+      section {
+        box-shadow: 1px 0 0 #eee, 0 1px 0 #eee, 1px 1px 0 #eee, inset 1px 1px 0 #eee;
+      }
+
+      .grid {
+        background-image:
+          linear-gradient(#eee 1px, transparent 1px),
+          linear-gradient(90deg, #eee 1px, transparent 1px);
+        bottom: 0;
+        right: 0;
       }
     `}</style>
   </section>

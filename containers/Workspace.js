@@ -46,12 +46,17 @@ class WorkspaceContainer extends Component {
   }
 
   render() {
+    const { width, height, scale, grid } = this.props;
     return (
       <Workspace
         onClick={(ev) => this.handleClick(ev)}
         onMouseDown={(ev) => this.handleMouseDown(ev)}
         onMouseUp={(ev) => this.handleMouseUp(ev)}
         onMouseMove={(ev) => this.handleMouseMove(ev)}
+        grid={grid}
+        gridSize={scale}
+        width={width * scale}
+        height={height * scale}
       />
     );
   };
@@ -59,6 +64,9 @@ class WorkspaceContainer extends Component {
 
 const mapStateToProps = (state) => ({
   scale: state.scale,
+  grid: state.grid,
+  width: state.width,
+  height: state.height,
 });
 
 export default connect(mapStateToProps)(WorkspaceContainer);
