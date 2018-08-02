@@ -11,14 +11,11 @@ class WorkspaceContainer extends Component {
     this.state = { executing: false };
   }
 
-  handleEvent(actionName, { pageX, pageY, touches, target }) {
-    const X = pageX || touches[0].pageX || 0;
-    const Y = pageY || touches[0].pageY || 0;
-
+  handleEvent(actionName, { pageX = 0, pageY = 0, target }) {
     bus.emit('workspaceaction', {
       type: actionName,
-      x: Math.round((X - target.offsetLeft) / this.props.scale - .5),
-      y: Math.round((Y - target.offsetTop) / this.props.scale - .5),
+      x: Math.round((pageX - target.offsetLeft) / this.props.scale - .5),
+      y: Math.round((pageY - target.offsetTop) / this.props.scale - .5),
     });
   }
 
