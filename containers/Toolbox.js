@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { selectTool } from '../store';
-import tools from '../components/tools';
+import tools from '../tools';
 import Tool from '../components/Tool';
 
 const ToolboxContainer = ({ tool, selectTool }) => (

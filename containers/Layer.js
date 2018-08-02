@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import bus from '../bus';
-import tools from '../components/tools';
+import tools from '../tools';
 import Layer from '../components/Layer';
 
 class LayerContainer extends Component {
