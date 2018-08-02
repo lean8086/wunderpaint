@@ -1,13 +1,13 @@
 export default (props) => (
-  <div className='Zoom'>
+  <div>
     <button
-      onMouseDown={() => props.decreaseScale()}
-      disabled={props.blockDecrease}
+      onMouseDown={props.decreaseScale}
+      disabled={!props.allowDecrease}
     >-</button>
     <span>{props.percentage}%</span>
     <button
-      onMouseDown={() => props.increaseScale()}
-      disabled={props.blockIncrease}
+      onMouseDown={props.increaseScale}
+      disabled={!props.allowIncrease}
     >+</button>
   </div>
 );
