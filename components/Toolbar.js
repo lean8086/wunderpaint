@@ -13,7 +13,7 @@ const Toolbar = (props) => (
     <style jsx>{`
       div {
         z-index: 99;
-        position: absolute;
+        position: fixed;
       }
     `}</style>
   </div>

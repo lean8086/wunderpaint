@@ -17,7 +17,7 @@ const ToolboxContainer = ({ tool, selectTool }) => (
     <style jsx>{`
       div {
         z-index: 99;
-        position: absolute;
+        position: fixed;
         bottom: 20px;
       }
       `}</style>
