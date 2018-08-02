@@ -13,9 +13,9 @@ Work.getInitialProps = async ({ query }) => {
   let preloaded;
   await getRefById(query.id)
     .once('value')
-    .then((snapshot) => {
-      if (snapshot.exists()) preloaded = snapshot.val();
-    });
+    .then(snapshot => (
+      preloaded = snapshot.exists() ? snapshot.val() : { id: query.id }
+    ));
   return { preloaded };
 };
 

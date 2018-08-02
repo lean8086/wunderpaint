@@ -12,7 +12,8 @@ class WorkspaceContainer extends Component {
   }
 
   sync() {
-    this.syncRef.set(this.props.stateToSync);
+    const { width, height, layers, id } = this.props;
+    this.syncRef.set({ width, height, layers, id });
   }
 
   handleEvent(actionName, { pageX = 0, pageY = 0, target }) {
@@ -64,11 +65,11 @@ class WorkspaceContainer extends Component {
 };
 
 const mapStateToProps = (state) => ({
-  stateToSync: state,
   grid: state.grid,
   scale: state.scale,
   width: state.width,
   height: state.height,
+  layers: state.layers,
   id: state.id,
 });
 

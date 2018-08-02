@@ -1,17 +1,14 @@
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
-import { generate } from 'shortid';
 
 const initialState = {
   grid: true,
   scale: 10,
   tool: 'pencil',
   color: '#000',
-  layers: {},
   width: 32,
   height: 32,
-  id: generate(),
 };
 
 /**
@@ -71,11 +68,12 @@ export const updateLayer = (layer) => dispatch => (
 
 /**
  * Init
+ * param preloadedState May contain an 'id' from the URL or data from ddbb
  */
-export default (preloadedState = initialState) => (
+export default (preloadedState) => (
   createStore(
     reducer,
-    preloadedState,
+    {...preloadedState, ...initialState},
     composeWithDevTools(applyMiddleware(thunkMiddleware)),
   )
 );

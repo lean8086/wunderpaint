@@ -16,7 +16,7 @@ class LayerContainer extends Component {
     // Set context to manipulate from now on
     this.ctx = this.layer.current.getCtx();
     // Preloaded data from ddbb for this particular layer
-    if (layers[order]) this.slowAndSafePutImageData(layers[order]);
+    if (layers && layers[order]) this.slowAndSafePutImageData(layers[order]);
     // Tool execution
     bus.on('workspaceaction', (data) => {
       this.executeToolAction(data);
