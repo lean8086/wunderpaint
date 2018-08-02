@@ -3,7 +3,7 @@ export default ({ name, onMouseDown, selected }) => (
     onMouseDown={onMouseDown}
     style={selected ? { background: 'cyan' } : null}
   >
-    {name}
+    {`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
 
     <style jsx>{`
       button {
