@@ -1,7 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { updateCanvas } from '../store';
+import { getRefById } from '../firebase';
 import bus from '../bus';
 import Workspace from '../components/Workspace';
 
@@ -9,6 +8,11 @@ class WorkspaceContainer extends Component {
   constructor(props) {
     super(props);
     this.state = { executing: false };
+    this.syncRef = getRefById(props.id);
+  }
+
+  sync() {
+    this.syncRef.set(this.props.stateToSync);
   }
 
   handleEvent(actionName, { pageX = 0, pageY = 0, target }) {
@@ -33,7 +37,7 @@ class WorkspaceContainer extends Component {
   handleMouseUp(ev) {
     this.setState({ executing: false });
     this.handleEvent('handleMouseUp', ev);
-    this.timer = setTimeout(() => bus.emit('save'), 3000);
+    this.timer = setTimeout(() => this.sync(), 3000);
   }
 
   handleMouseMove(ev) {
@@ -60,10 +64,12 @@ class WorkspaceContainer extends Component {
 };
 
 const mapStateToProps = (state) => ({
-  scale: state.scale,
+  stateToSync: state,
   grid: state.grid,
+  scale: state.scale,
   width: state.width,
   height: state.height,
+  id: state.id,
 });
 
 export default connect(mapStateToProps)(WorkspaceContainer);

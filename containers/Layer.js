@@ -12,12 +12,16 @@ class LayerContainer extends Component {
   }
 
   componentDidMount() {
+    const { layers, order, shadow } = this.props;
+    // Set context to manipulate from now on
     this.ctx = this.layer.current.getCtx();
+    // Preloaded data from ddbb for this particular layer
+    if (layers[order]) this.slowAndSafePutImageData(layers[order]);
+    // Tool execution
     bus.on('workspaceaction', (data) => {
       this.executeToolAction(data);
-      if (!this.props.shadow && data.type === 'handleMouseUp') {
-        this.updateStore();
-      }
+      // Store update on finish
+      if (!shadow && data.type === 'handleMouseUp') this.updateStore();
     });
   }
 
@@ -99,6 +103,7 @@ const mapStateToProps = state => ({
   color: state.color,
   width: state.width,
   height: state.height,
+  layers: state.layers,
 });
 
 const mapDispatchToProps = {
