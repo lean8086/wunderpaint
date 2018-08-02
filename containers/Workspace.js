@@ -16,11 +16,12 @@ class WorkspaceContainer extends Component {
     this.syncRef.set({ width, height, layers, id });
   }
 
-  handleEvent(actionName, { pageX = 0, pageY = 0, target }) {
+  handleEvent(actionName, { clientX = 0, clientY = 0, target }) {
+    const { left, top } = target.getBoundingClientRect();
     bus.emit('workspaceaction', {
       type: actionName,
-      x: Math.round((pageX - target.offsetLeft) / this.props.scale - .5),
-      y: Math.round((pageY - target.offsetTop) / this.props.scale - .5),
+      x: Math.round((clientX - left) / this.props.scale - .5),
+      y: Math.round((clientY - top) / this.props.scale - .5),
     });
   }
 

@@ -4,16 +4,19 @@ import ToggleGrid from '../containers/ToggleGrid';
 import ColorPicker from '../containers/ColorPicker';
 
 const Toolbar = (props) => (
-  <div>
+  <div className="toolbar">
     <New />
     <Zoom />
     <ToggleGrid />
     <ColorPicker />
 
     <style jsx>{`
-      div {
+      .toolbar {
         z-index: 99;
         position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
       }
     `}</style>
   </div>

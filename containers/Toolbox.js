@@ -4,7 +4,7 @@ import tools from '../tools';
 import Tool from '../components/Tool';
 
 const ToolboxContainer = ({ tool, selectTool }) => (
-  <div>
+  <div className="toolbox">
     {Object.keys(tools).map(name => (
       <Tool
         key={name}
@@ -15,10 +15,12 @@ const ToolboxContainer = ({ tool, selectTool }) => (
     ))}
 
     <style jsx>{`
-      div {
+      .toolbox {
         z-index: 99;
         position: fixed;
         bottom: 20px;
+        left: 0;
+        right: 0;
       }
       `}</style>
   </div>
