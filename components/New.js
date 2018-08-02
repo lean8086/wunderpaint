@@ -5,6 +5,6 @@ const id = generate();
 
 export default () => (
   <Link as={`/w/${id}`} href={`/work?id=${id}`}>
-    <a>New</a>
+    <button>New</button>
   </Link>
 );
