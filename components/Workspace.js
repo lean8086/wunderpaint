@@ -11,8 +11,8 @@ export default (props) => (
       height: props.height,
     }}
   >
-    <Layer />
-    <Layer shadow />
+    <Layer order={0}/>
+    <Layer shadow/>
     {props.grid &&
       <div
         style={{ backgroundSize: `${props.gridSize}px ${props.gridSize}px` }}

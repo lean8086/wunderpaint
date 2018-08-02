@@ -33,7 +33,7 @@ class WorkspaceContainer extends Component {
   handleMouseUp(ev) {
     this.setState({ executing: false });
     this.handleEvent('handleMouseUp', ev);
-    // this.snapshot();
+    this.timer = setTimeout(() => bus.emit('save'), 3000);
   }
 
   handleMouseMove(ev) {

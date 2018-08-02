@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
+import { updateLayer } from '../store';
 import bus from '../bus';
 import tools from '../tools';
 import Layer from '../components/Layer';
@@ -12,7 +13,12 @@ class LayerContainer extends Component {
 
   componentDidMount() {
     this.ctx = this.layer.current.getCtx();
-    bus.on('workspaceaction', (data) => this.executeToolAction(data));
+    bus.on('workspaceaction', (data) => {
+      this.executeToolAction(data);
+      if (!this.props.shadow && data.type === 'handleMouseUp') {
+        this.updateStore();
+      }
+    });
   }
 
   executeToolAction({ type, x, y }) {
@@ -26,6 +32,14 @@ class LayerContainer extends Component {
       scale,
       ctx: this.ctx,
       clear: () => this.clear(),
+    });
+  }
+
+  updateStore() {
+    const { order, updateLayer } = this.props;
+    updateLayer({
+      order,
+      data: this.getImageData(),
     });
   }
 
@@ -87,4 +101,8 @@ const mapStateToProps = state => ({
   height: state.height,
 });
 
-export default connect(mapStateToProps)(LayerContainer);
+const mapDispatchToProps = {
+  updateLayer,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LayerContainer);

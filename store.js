@@ -1,15 +1,17 @@
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
+import { generate } from 'shortid';
 
 const initialState = {
   grid: true,
   scale: 10,
   tool: 'pencil',
   color: '#000',
-  canvas: [],
+  layers: {},
   width: 32,
   height: 32,
+  id: generate(),
 };
 
 /**
@@ -27,8 +29,14 @@ export const reducer = (state = initialState, action) => {
       return { ...state, tool: action.tool };
     case 'SELECT_COLOR':
       return { ...state, color: action.color };
-    case 'UPDATE_CANVAS':
-      return { ...state, canvas: action.data };
+    case 'UPDATE_LAYER':
+      return {
+        ...state,
+        layers: {
+          ...state.layers,
+          [action.layer.order]: action.layer.data,
+        },
+      };
     default:
       return state;
   }
@@ -57,15 +65,17 @@ export const selectColor = (color) => dispatch => (
   dispatch({ type: 'SELECT_COLOR', color })
 );
 
-export const updateCanvas = (data) => dispatch => (
-  dispatch({ type: 'UPDATE_CANVAS', data })
+export const updateLayer = (layer) => dispatch => (
+  dispatch({ type: 'UPDATE_LAYER', layer })
 );
 
 /**
  * Init
  */
-export default createStore(
-  reducer,
-  initialState,
-  composeWithDevTools(applyMiddleware(thunkMiddleware)),
+export default (preloadedState = initialState) => (
+  createStore(
+    reducer,
+    preloadedState,
+    composeWithDevTools(applyMiddleware(thunkMiddleware)),
+  )
 );
