@@ -14,6 +14,10 @@ const App = () => (
       *::after {
         box-sizing: border-box;
       }
+
+      body {
+        margin: 0;
+      }
     `}</style>
   </div>
 );
