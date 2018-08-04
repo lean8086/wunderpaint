@@ -1,24 +1,24 @@
+import { Fragment } from 'react';
 import Link from 'next/link';
 import { generate } from 'shortid';
+import New from '../components/New'
 
 const blankId = generate();
 
 const Landing = () => (
-  <div>
+  <Fragment>
     <p>Hello</p>
     <ul>
       <li>
-        <Link as={`/w/${blankId}`} href={`/work?id=${blankId}`}>
-          <a>New</a>
-        </Link>
+        <New />
       </li>
       <li>
-        <Link as={`/w/${'rJKkFx0DM'}`} href={`/work?id=${'rJKkFx0DM'}`}>
-          <a>rJKkFx0DM</a>
+        <Link as="/w/0Rlm5q5BF" href="/work?id=0Rlm5q5BF">
+          <a>0Rlm5q5BF</a>
         </Link>
       </li>
     </ul>
-  </div>
+  </Fragment>
 );
 
 export default Landing;

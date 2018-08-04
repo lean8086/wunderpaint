@@ -1,9 +1,10 @@
+import { Fragment } from 'react';
 import Toolbar from '../components/Toolbar';
 import Workspace from '../containers/Workspace';
 import Toolbox from '../containers/Toolbox';
 
 const App = () => (
-  <div>
+  <Fragment>
     <Toolbar />
     <Workspace />
     <Toolbox />
@@ -25,7 +26,7 @@ const App = () => (
         background: #fff;
       }
     `}</style>
-  </div>
+  </Fragment>
 );
 
 export default App;
