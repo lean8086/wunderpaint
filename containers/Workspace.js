@@ -5,15 +5,13 @@ import bus from '../bus';
 import Workspace from '../components/Workspace';
 
 class WorkspaceContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { executing: false };
-    this.syncRef = getRefById(props.id);
+  state = {
+    executing: false,
   }
 
   sync() {
     const { width, height, layers, id } = this.props;
-    this.syncRef.set({ width, height, layers, id });
+    getRefById(props.id).set({ width, height, layers, id });
   }
 
   handleEvent(actionName, { clientX = 0, clientY = 0, target }) {
