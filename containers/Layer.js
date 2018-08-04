@@ -18,17 +18,14 @@ class LayerContainer extends Component {
     // Preloaded data from ddbb for this particular layer
     if (layers && layers[order]) this.slowAndSafePutImageData(layers[order]);
     // Tool execution
-    bus.on('workspaceaction', (data) => {
-      this.executeToolAction(data);
-      // Store update on finish
-      if (!shadow && data.type === 'handleMouseUp') this.updateStore();
-    });
+    bus.on('workspaceaction', data => this.executeToolAction(data));
   }
 
   executeToolAction({ type, x, y }) {
-    const { scale, tool, color } = this.props;
+    const { scale, tool, color, shadow } = this.props;
     // handleMouseDown vs. handleMouseDownShadow
-    const action = tools[tool][!this.props.shadow ? type : `${type}Shadow`];
+    const actionName = !shadow ? type : `${type}Shadow`;
+    const action = tools[tool][actionName];
     if (!action) return;
     action({
       x, y,
@@ -37,6 +34,8 @@ class LayerContainer extends Component {
       ctx: this.ctx,
       clear: () => this.clear(),
     });
+    // Store update on finish
+    if (actionName === 'handleMouseUp') this.updateStore();
   }
 
   updateStore() {
