@@ -2,9 +2,10 @@ import { connect } from 'react-redux';
 import { selectTool } from '../store';
 import tools from '../tools';
 import Tool from '../components/Tool';
+import Toolbox from '../components/Toolbox';
 
 const ToolboxContainer = ({ tool, selectTool }) => (
-  <div className="toolbox">
+  <Toolbox>
     {Object.keys(tools).map(name => (
       <Tool
         key={name}
@@ -13,17 +14,7 @@ const ToolboxContainer = ({ tool, selectTool }) => (
         selected={tool === name}
       />
     ))}
-
-    <style jsx>{`
-      .toolbox {
-        z-index: 99;
-        position: fixed;
-        bottom: 20px;
-        left: 0;
-        right: 0;
-      }
-      `}</style>
-  </div>
+  </Toolbox>
 );
 
 const mapStateToProps = (state) => ({

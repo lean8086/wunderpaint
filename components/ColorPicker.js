@@ -1,6 +1,5 @@
-export default ({ name, onMouseDown, selected }) => (
-  <button
-    onMouseDown={onMouseDown}
-    style={selected ? { background: 'cyan' } : null}
-  >{name}</button>
+export default ({ children }) => (
+  <div className="color-picker">
+    {children}
+  </div>
 );

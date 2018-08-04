@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { selectColor } from '../store';
-import ColorPicker from '../components/ColorPicker'
+import Color from '../components/Color';
+import ColorPicker from '../components/ColorPicker';
 
 const palette = {
   'Black': '#000',
@@ -11,16 +12,16 @@ const palette = {
 };
 
 const ColorPickerContainer = ({ color, selectColor }) => (
-  <div>
+  <ColorPicker>
     {Object.keys(palette).map(name => (
-      <ColorPicker
+      <Color
         key={name}
-        onMouseDown={() => selectColor(palette[name])}
         name={name}
+        onMouseDown={() => selectColor(palette[name])}
         selected={color === palette[name]}
       />
     ))}
-  </div>
+  </ColorPicker>
 );
 
 const mapStateToProps = (state) => ({
