@@ -14,10 +14,10 @@ class WorkspaceContainer extends Component {
     getRefById(id).set({ width, height, layers, id });
   }
 
-  handleEvent(actionName, { clientX = 0, clientY = 0, target }) {
+  handleEvent(type, { clientX = 0, clientY = 0, target }) {
     const { left, top } = target.getBoundingClientRect();
     bus.emit('workspaceaction', {
-      type: actionName,
+      type,
       x: Math.round((clientX - left) / this.props.scale - .5),
       y: Math.round((clientY - top) / this.props.scale - .5),
     });
