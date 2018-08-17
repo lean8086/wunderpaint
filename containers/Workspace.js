@@ -12,10 +12,10 @@ class WorkspaceContainer extends Component {
   }
 
   sync() {
-    const { width, height, layers, id } = this.props;
+    const { width, height, layers, id, preloaded } = this.props;
     workReference(id)
       .set({ width, height, layers, id })
-      .then(!this.props.preloaded ? history.replaceState({}, '', `/w/${id}`) : null);
+      .then(!preloaded ? history.replaceState({}, '', `/w/${id}`) : null);
   }
 
   handleEvent(type, { clientX = 0, clientY = 0, target }) {
