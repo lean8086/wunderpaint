@@ -10,12 +10,13 @@ const Work = ({ preloaded }) => (
 );
 
 Work.getInitialProps = async ({ query }) => {
-  let preloaded;
+  let preloaded = {};
   await getRefById(query.id)
     .once('value')
-    .then(snapshot => (
-      preloaded = snapshot.exists() ? snapshot.val() : { id: query.id }
-    ));
+    .then(snapshot => preloaded = {
+      ...snapshot.val(),
+      preloaded: true,
+    });
   return { preloaded };
 };
 

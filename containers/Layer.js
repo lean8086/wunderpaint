@@ -26,14 +26,15 @@ class LayerContainer extends Component {
     // handleMouseDown vs. handleMouseDownShadow
     const actionName = !shadow ? type : `${type}Shadow`;
     const action = tools[tool][actionName];
-    if (!action) return;
-    action({
-      x, y,
-      color,
-      scale,
-      ctx: this.ctx,
-      clear: () => this.clear(),
-    });
+    if (action) {
+      action({
+        x, y,
+        color,
+        scale,
+        ctx: this.ctx,
+        clear: () => this.clear(),
+      });
+    }
     // Store update on finish
     if (actionName === 'handleMouseUp') this.updateStore();
   }
