@@ -9,6 +9,6 @@ const config = {
 
 const app = !firebase.apps.length ? firebase.initializeApp(config) : firebase.app();
 
-export const getRefById = id => app.database().ref(`works/${id}`);
+export const workReference = id => app.database().ref(`works/${id}`);
 
 export default app;

@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { getRefById } from '../firebase';
+import { workReference } from '../firebase';
 import { generate } from 'shortid';
 import bus from '../bus';
 import Router from 'next/router';
@@ -13,7 +13,7 @@ class WorkspaceContainer extends Component {
 
   sync() {
     const { width, height, layers, id } = this.props;
-    getRefById(id)
+    workReference(id)
       .set({ width, height, layers, id })
       .then(!this.props.preloaded ? history.replaceState({}, '', `/w/${id}`) : null);
   }
