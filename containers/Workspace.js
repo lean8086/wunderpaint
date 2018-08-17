@@ -1,7 +1,9 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { getRefById } from '../firebase';
+import { workReference } from '../firebase';
+import { generate } from 'shortid';
 import bus from '../bus';
+import Router from 'next/router';
 import Workspace from '../components/Workspace';
 
 class WorkspaceContainer extends Component {
@@ -10,8 +12,10 @@ class WorkspaceContainer extends Component {
   }
 
   sync() {
-    const { width, height, layers, id } = this.props;
-    getRefById(id).set({ width, height, layers, id });
+    const { width, height, layers, id, preloaded } = this.props;
+    workReference(id)
+      .set({ width, height, layers, id })
+      .then(!preloaded ? history.replaceState({}, '', `/w/${id}`) : null);
   }
 
   handleEvent(type, { clientX = 0, clientY = 0, target }) {
@@ -69,6 +73,7 @@ const mapStateToProps = (state) => ({
   width: state.width,
   height: state.height,
   layers: state.layers,
+  blank: state.blank,
   id: state.id,
 });
 

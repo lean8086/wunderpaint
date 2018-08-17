@@ -10,7 +10,9 @@ const Landing = () => (
     <p>Hello</p>
     <ul>
       <li>
-        <New />
+        <Link href="/new">
+          <a>New</a>
+        </Link>
       </li>
       <li>
         <Link as="/w/0Rlm5q5BF" href="/work?id=0Rlm5q5BF">

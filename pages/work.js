@@ -1,5 +1,5 @@
 import { Provider } from 'react-redux';
-import { getRefById } from '../firebase';
+import { workReference } from '../firebase';
 import createStore from '../store';
 import App from '../components/App';
 
@@ -10,12 +10,13 @@ const Work = ({ preloaded }) => (
 );
 
 Work.getInitialProps = async ({ query }) => {
-  let preloaded;
-  await getRefById(query.id)
+  let preloaded = {};
+  await workReference(query.id)
     .once('value')
-    .then(snapshot => (
-      preloaded = snapshot.exists() ? snapshot.val() : { id: query.id }
-    ));
+    .then(snapshot => preloaded = {
+      ...snapshot.val(),
+      preloaded: true,
+    });
   return { preloaded };
 };
 

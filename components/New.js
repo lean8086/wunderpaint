@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import { generate } from 'shortid';
 
 export default () => (
-  <a href={`/w/${generate()}`}>New</a>
+  <Link href="/new">
+    <a>New</a>
+  </Link>
 );

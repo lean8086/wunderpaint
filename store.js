@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { generate } from 'shortid';
 import thunkMiddleware from 'redux-thunk';
 
 const initialState = {
@@ -9,6 +10,9 @@ const initialState = {
   color: '#000',
   width: 32,
   height: 32,
+  layers: {},
+  id: generate(),
+  preloaded: false,
 };
 
 /**
@@ -73,7 +77,7 @@ export const updateLayer = (layer) => dispatch => (
 export default (preloadedState) => (
   createStore(
     reducer,
-    {...preloadedState, ...initialState},
+    {...initialState, ...preloadedState},
     composeWithDevTools(applyMiddleware(thunkMiddleware)),
   )
 );
