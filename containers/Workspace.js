@@ -41,7 +41,7 @@ class WorkspaceContainer extends Component {
   handleMouseUp(ev) {
     this.setState({ executing: false });
     this.handleEvent('handleMouseUp', ev);
-    this.timer = setTimeout(() => this.sync(), 3000);
+    this.timer = setTimeout(() => this.sync(), 1000);
   }
 
   handleMouseMove(ev) {
