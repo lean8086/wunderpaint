@@ -17,7 +17,7 @@ app.prepare()
   .then(() => {
     const server = express();
 
-    server.get('/w/:id', checkValidId, (req, res) => (
+    server.get('/p/:id', checkValidId, (req, res) => (
       app.render(req, res, '/work', { id: req.params.id })
     ));
 
