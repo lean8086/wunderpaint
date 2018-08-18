@@ -1,11 +1,7 @@
 import { Fragment } from 'react';
 import Link from 'next/link';
-import { generate } from 'shortid';
-import New from '../components/New'
 
-const blankId = generate();
-
-const Landing = () => (
+export default () => (
   <Fragment>
     <p>Hello</p>
     <ul>
@@ -20,5 +16,3 @@ const Landing = () => (
     </ul>
   </Fragment>
 );
-
-export default Landing;
