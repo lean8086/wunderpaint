@@ -7,8 +7,17 @@ const config = {
   // storageBucket: '<BUCKET>.appspot.com',
 };
 
+/**
+ * App instance
+ */
 const app = !firebase.apps.length ? firebase.initializeApp(config) : firebase.app();
-
+/**
+ * Allow to interact with database until the user authenticates
+ */
+// app.auth().signInAnonymously();
+/**
+ * Reference to the realtime database
+ */
 export const workReference = id => app.database().ref(`works/${id}`);
 
 export default app;

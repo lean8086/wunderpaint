@@ -7,9 +7,7 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 
 const checkValidId = (req, res, next) => {
-  if (!req.params.id || !shortid.isValid(req.params.id)) {
-    return;
-  }
+  if (!req.params.id || !shortid.isValid(req.params.id)) return;
   next();
 };
 
@@ -21,9 +19,15 @@ app.prepare()
       app.render(req, res, '/work', { id: req.params.id })
     ));
 
-    server.get('*', (req, res) => (
-      handle(req, res)
+    server.get('/login', (req, res) => (
+      app.render(req, res, '/auth', { type: 'login' })
     ));
+
+    server.get('/signup', (req, res) => (
+      app.render(req, res, '/auth', { type: 'signup' })
+    ));
+
+    server.get('*', (req, res) => handle(req, res));
 
     server.listen(3000, (err) => {
       if (err) throw err;
