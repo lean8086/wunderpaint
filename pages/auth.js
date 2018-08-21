@@ -2,12 +2,7 @@ import { Fragment, Component } from 'react';
 import firebase from '../firebase';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
-import Confirm from '../components/Confirm';
-
-const actionCodeSettings = {
-  url: 'http://localhost:3000/confirm',
-  handleCodeInApp: true,
-};
+import AwaitingConfirmation from '../components/AwaitingConfirmation';
 
 export default class extends Component {
   state = {
@@ -19,6 +14,10 @@ export default class extends Component {
     return { type: query.type };
   }
 
+  componentDidMount() {
+    // firebase.auth().onAuthStateChanged(user => console.log(user));
+  }
+
   handleEmail({ target }) {
     this.setState({ email: target.value });
   }
@@ -26,8 +25,10 @@ export default class extends Component {
   handleSubmit(ev) {
     ev.preventDefault();
     firebase.auth()
-      .sendSignInLinkToEmail(this.state.email, actionCodeSettings)
-      .then(() => localStorage.setItem('emailForSignIn', this.state.email))
+      .sendSignInLinkToEmail(this.state.email, {
+        url: `http://localhost:3000/confirm?email=${encodeURIComponent(this.state.email)}`,
+        handleCodeInApp: true,
+      })
       .then(() => this.setState({ sent: true }));
   }
 
@@ -39,6 +40,9 @@ export default class extends Component {
         onSubmit={(ev) => this.handleSubmit(ev)}
       />
       :
-      <Confirm email={this.state.email}/>
+      <AwaitingConfirmation
+        email={this.state.email}
+        type={this.props.type}
+      />
   }
 };

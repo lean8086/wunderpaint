@@ -1,36 +1,23 @@
-import firebase from 'firebase';
-import firebaseApp from '../firebase';
-import { Component } from 'react';
+import { Fragment, Component } from 'react';
+import firebase from '../firebase';
 
 export default class extends Component {
-  componentDidMount() {
-    const email = localStorage.getItem('emailForSignIn');
-    var credential = firebase.auth.EmailAuthProvider.credentialWithLink(email, location.href);
-    // firebase.auth().currentUser.linkAndRetrieveDataWithCredential(credential)
-    // .then(function(usercred) {
-    //   // The provider is now successfully linked.
-    //   // The phone user can now sign in with their phone number or email.
-    //   console.log(usercred)
-    // });
-    // const credential = firebase.auth.EmailAuthProvider.credential(email, 'password');
-    // firebaseApp.auth().currentUser.linkAndRetrieveDataWithCredential(credential).then(function(usercred) {
-    //   var user = usercred.user;
-    //   console.log("Anonymous account successfully upgraded", user);
-    // }, function(error) {
-    //   console.log("Error upgrading anonymous account", error);
-    // });
+  static async getInitialProps({ query }) {
+    return { email: query.email };
   }
 
-  getInitialProps({ query }) {
-    console.log(query);
-    return { awe: true };
+  componentDidMount() {
+    firebase.auth()
+      .signInWithEmailLink(this.props.email, location.href)
+      .then((algo) => console.log(algo));
   }
 
   render() {
     return (
-      <div>
-        nada
-      </div>
+      <Fragment>
+        <h1>Email Address Confirmed</h1>
+        <p>You have been correctly authenticated. You may now close this window!</p>
+      </Fragment>
     );
   }
 };

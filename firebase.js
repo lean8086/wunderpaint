@@ -1,4 +1,5 @@
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 const config = {
   apiKey: 'AIzaSyCJnfKVhoBw6aoupX1xhbb0X_w-nGqJpC8',
@@ -14,7 +15,12 @@ const app = !firebase.apps.length ? firebase.initializeApp(config) : firebase.ap
 /**
  * Allow to interact with database until the user authenticates
  */
-// app.auth().signInAnonymously();
+// const user = async () => {
+//   let u;
+//   await firebase.auth().onAuthStateChanged(user => u = user);
+//   console.log(u);
+// };
+
 /**
  * Reference to the realtime database
  */

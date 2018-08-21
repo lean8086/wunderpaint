@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { workReference } from '../firebase';
 import { generate } from 'shortid';
 import bus from '../bus';
-import Router from 'next/router';
 import Workspace from '../components/Workspace';
 
 class WorkspaceContainer extends Component {
