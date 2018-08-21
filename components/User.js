@@ -1,9 +1,10 @@
-import { Component } from 'react';
+import { Fragment, Component } from 'react';
 import { getUser } from '../firebase';
+import Link from 'next/link';
 
 export default class extends Component {
   state = {
-    email: '',
+    email: null,
   }
 
   componentDidMount() {
@@ -11,8 +12,19 @@ export default class extends Component {
   }
 
   render() {
+    const { email } = this.state;
     return (
-      <div>{this.state.email}</div>
+      <div>{
+        email ? email :
+        <Fragment>
+          <Link href="/login">
+            <a>Login</a>
+          </Link>
+          <Link href="/signup">
+            <a>Join free</a>
+          </Link>
+        </Fragment>
+      }</div>
     );
   }
 };
