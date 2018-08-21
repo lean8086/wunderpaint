@@ -3,16 +3,16 @@ import { getUser } from '../firebase';
 
 export default class extends Component {
   state = {
-    user: null,
+    email: '',
   }
 
   componentDidMount() {
-    getUser().then(user => this.setState({ user }));
+    getUser().then(({ email }) => this.setState({ email }));
   }
 
   render() {
     return (
-      <div>{this.state.user ? this.state.user.email : 'nope'}</div>
+      <div>{this.state.email}</div>
     );
   }
 };
