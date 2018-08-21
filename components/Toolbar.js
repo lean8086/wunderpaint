@@ -2,6 +2,7 @@ import New from './New';
 import Zoom from '../containers/Zoom';
 import ToggleGrid from '../containers/ToggleGrid';
 import ColorPicker from '../containers/ColorPicker';
+import User from '../components/User';
 
 const Toolbar = (props) => (
   <div className="toolbar">
@@ -9,6 +10,7 @@ const Toolbar = (props) => (
     <Zoom />
     <ToggleGrid />
     <ColorPicker />
+    <User />
 
     <style jsx>{`
       .toolbar {

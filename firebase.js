@@ -1,5 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/database';
 
 const config = {
   apiKey: 'AIzaSyCJnfKVhoBw6aoupX1xhbb0X_w-nGqJpC8',
@@ -13,14 +14,9 @@ const config = {
  */
 const app = !firebase.apps.length ? firebase.initializeApp(config) : firebase.app();
 /**
- * Allow to interact with database until the user authenticates
+ * User
  */
-// const user = async () => {
-//   let u;
-//   await firebase.auth().onAuthStateChanged(user => u = user);
-//   console.log(u);
-// };
-
+export const getUser = () => new Promise(res => app.auth().onAuthStateChanged(res));
 /**
  * Reference to the realtime database
  */

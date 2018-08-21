@@ -1,9 +1,11 @@
 import { Fragment } from 'react';
 import Link from 'next/link';
+import User from '../components/User';
 
 export default () => (
   <Fragment>
     <p>Hello</p>
+    <User />
     <ul>
       <li>
         <a href="/new">New</a>
