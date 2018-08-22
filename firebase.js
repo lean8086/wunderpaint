@@ -16,7 +16,7 @@ const app = !firebase.apps.length ? firebase.initializeApp(config) : firebase.ap
 /**
  * User
  */
-export const getUser = () => new Promise((resolve, reject) => (
+export const getUser = () => new Promise(resolve => (
   app.auth().onAuthStateChanged(user => resolve(user || {}))
 ));
 /**
