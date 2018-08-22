@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { workReference } from '../firebase';
+import { workReference, getUser } from '../firebase';
 import { generate } from 'shortid';
 import bus from '../bus';
 import Workspace from '../components/Workspace';
@@ -8,12 +8,17 @@ import Workspace from '../components/Workspace';
 class WorkspaceContainer extends Component {
   state = {
     executing: false,
+    author: '',
+  }
+
+  componentDidMount() {
+    getUser().then(({ uid }) => this.setState({ author: uid }));
   }
 
   sync() {
     const { width, height, layers, id, preloaded } = this.props;
     workReference(id)
-      .set({ width, height, layers, id })
+      .set({ width, height, layers, id, author: this.state.author })
       .then(!preloaded ? history.replaceState({}, '', `/p/${id}`) : null);
   }
 
