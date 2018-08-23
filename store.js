@@ -10,8 +10,8 @@ const initialState = {
   width: 32,
   height: 32,
   layers: {},
-  id: generate(),
-  preloaded: false,
+  id: '',
+  user: null,
 };
 
 /**
@@ -29,6 +29,15 @@ export const reducer = (state = initialState, action) => {
       return { ...state, tool: action.tool };
     case 'SELECT_COLOR':
       return { ...state, color: action.color };
+    case 'SET_USER':
+      return {
+        ...state,
+        user: {
+          uid: action.user.uid,
+          email: action.user.email,
+          displayName: action.user.email ? action.user.email.split('@')[0]: '',
+        },
+      };
     case 'UPDATE_LAYER':
       return {
         ...state,
@@ -36,6 +45,18 @@ export const reducer = (state = initialState, action) => {
           ...state.layers,
           [action.layer.order]: action.layer.data,
         },
+      };
+    case 'RESET_STATE':
+      return {
+        ...initialState,
+        id: generate(),
+        user: state.user,
+      };
+    case 'POPULATE_STATE':
+      return {
+        ...initialState,
+        ...action.preloadedData,
+        user: state.user,
       };
     default:
       return state;
@@ -65,18 +86,26 @@ export const selectColor = (color) => dispatch => (
   dispatch({ type: 'SELECT_COLOR', color })
 );
 
+export const setUser = (user) => dispatch => (
+  dispatch({ type: 'SET_USER', user })
+);
+
 export const updateLayer = (layer) => dispatch => (
   dispatch({ type: 'UPDATE_LAYER', layer })
+);
+
+export const resetState = () => dispatch => (
+  dispatch({ type: 'RESET_STATE' })
+);
+
+export const populateState = (preloadedData) => dispatch => (
+  dispatch({ type: 'POPULATE_STATE', preloadedData })
 );
 
 /**
  * Init
  * param preloadedState May contain an 'id' from the URL or data from ddbb
  */
-export default (preloadedState) => (
-  createStore(
-    reducer,
-    {...initialState, ...preloadedState},
-    applyMiddleware(thunkMiddleware),
-  )
+export default (state = initialState) => (
+  createStore(reducer, state, applyMiddleware(thunkMiddleware))
 );

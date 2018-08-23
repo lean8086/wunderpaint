@@ -1,9 +1,5 @@
-import { Provider } from 'react-redux';
-import createStore from '../store';
-import App from '../components/App';
+import App from '../containers/App';
 
 export default () => (
-  <Provider store={createStore()}>
-    <App />
-  </Provider>
+  <App />
 );

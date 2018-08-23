@@ -1,23 +1,16 @@
-import { Provider } from 'react-redux';
+import { Component } from 'react';
 import { workReference } from '../firebase';
-import createStore from '../store';
-import App from '../components/App';
+import App from '../containers/App';
 
-const Work = ({ preloaded }) => (
-  <Provider store={createStore(preloaded)}>
-    <App />
-  </Provider>
+const Work = ({ preloadedData }) => (
+  <App preloadedData={preloadedData} />
 );
 
 Work.getInitialProps = async ({ query }) => {
-  let preloaded = {};
-  await workReference(query.id)
-    .once('value')
-    .then(snapshot => preloaded = {
-      ...snapshot.val(),
-      preloaded: true,
-    });
-  return { preloaded };
+  let preloadedData = {};
+  await workReference(query.id).once('value')
+    .then(snapshot => preloadedData = snapshot.val());
+  return { preloadedData };
 };
 
 export default Work;

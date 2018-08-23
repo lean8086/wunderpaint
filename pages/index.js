@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import Link from 'next/link';
-import User from '../components/User';
+import User from '../containers/User';
 
 export default () => (
   <Fragment>
@@ -8,7 +8,9 @@ export default () => (
     <User />
     <ul>
       <li>
-        <a href="/new">New</a>
+        <Link href="/new">
+          <a>New</a>
+        </Link>
       </li>
       <li>
         <Link as="/p/0Rlm5q5BF" href="/work?id=0Rlm5q5BF">

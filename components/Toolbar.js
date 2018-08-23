@@ -1,11 +1,13 @@
+import Logo from './Logo';
 import New from './New';
 import Zoom from '../containers/Zoom';
 import ToggleGrid from '../containers/ToggleGrid';
 import ColorPicker from '../containers/ColorPicker';
-import User from '../components/User';
+import User from '../containers/User';
 
 const Toolbar = (props) => (
   <div className="toolbar">
+    <Logo />
     <New />
     <Zoom />
     <ToggleGrid />

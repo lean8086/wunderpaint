@@ -1,10 +1,11 @@
 import { Fragment, Component } from 'react';
+import { connect } from 'react-redux';
 import firebase from '../firebase';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
 import AwaitingConfirmation from '../components/AwaitingConfirmation';
 
-export default class extends Component {
+class Auth extends Component {
   state = {
     email: '',
     sent: false,
@@ -33,6 +34,7 @@ export default class extends Component {
   }
 
   render() {
+    console.log('login', this.props.user);
     const Auth = this.props.type === 'login' ? Login : Signup;
     return !this.state.sent ?
       <Auth
@@ -46,3 +48,9 @@ export default class extends Component {
       />
   }
 };
+
+const mapStateToProps = state => ({
+  user: state.user,
+});
+
+export default connect(mapStateToProps)(Auth);
