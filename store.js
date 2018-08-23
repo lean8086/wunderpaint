@@ -1,5 +1,4 @@
 import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
 import { generate } from 'shortid';
 import thunkMiddleware from 'redux-thunk';
 
@@ -78,6 +77,6 @@ export default (preloadedState) => (
   createStore(
     reducer,
     {...initialState, ...preloadedState},
-    composeWithDevTools(applyMiddleware(thunkMiddleware)),
+    applyMiddleware(thunkMiddleware),
   )
 );
