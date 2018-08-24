@@ -10,13 +10,17 @@ class ConfirmContainer extends Component {
   }
 
   componentDidMount() {
+    if (!firebase.auth().isSignInWithEmailLink(location.href)) return;
     firebase.auth()
       .signInWithEmailLink(this.props.email, location.href)
-      .then(({ uid, email }) => this.props.setUser({ uid, email }));
+      .then(({ user }) => this.props.setUser({
+        uid: user.uid,
+        email: user.email,
+      }));
   }
 
   render() {
-    return <Confirm {...this.props.user}/>;
+    return <Confirm verified={!!this.props.user} />;
   }
 };
 

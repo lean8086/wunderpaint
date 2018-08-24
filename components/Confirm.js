@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 
-export default ({ email }) => (
-  !email ?
+export default ({ verified }) => (
+  !verified ?
     <Fragment>
       <h1>Verifying...</h1>
     </Fragment>

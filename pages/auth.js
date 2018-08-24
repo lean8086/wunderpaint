@@ -1,11 +1,10 @@
 import { Fragment, Component } from 'react';
 import { connect } from 'react-redux';
 import firebase from '../firebase';
-import Login from '../components/Login';
-import Signup from '../components/Signup';
-import AwaitingConfirmation from '../components/AwaitingConfirmation';
+import Auth from '../components/Auth';
+import Router from 'next/router';
 
-class Auth extends Component {
+class AuthContainer extends Component {
   state = {
     email: '',
     sent: false,
@@ -16,7 +15,7 @@ class Auth extends Component {
   }
 
   componentDidMount() {
-    // firebase.auth().onAuthStateChanged(user => console.log(user));
+    firebase.auth().onAuthStateChanged(user => !!user ? Router.push('/') : null);
   }
 
   handleEmail({ target }) {
@@ -34,18 +33,14 @@ class Auth extends Component {
   }
 
   render() {
-    console.log('login', this.props.user);
-    const Auth = this.props.type === 'login' ? Login : Signup;
-    return !this.state.sent ?
+    return (
       <Auth
+        {...this.state}
+        type={this.props.type}
         onChange={(ev) => this.handleEmail(ev)}
         onSubmit={(ev) => this.handleSubmit(ev)}
       />
-      :
-      <AwaitingConfirmation
-        email={this.state.email}
-        type={this.props.type}
-      />
+    );
   }
 };
 
@@ -53,4 +48,4 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-export default connect(mapStateToProps)(Auth);
+export default connect(mapStateToProps)(AuthContainer);

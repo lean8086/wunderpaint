@@ -20,6 +20,8 @@ class WorkspaceContainer extends Component {
     workReference(id)
       .set({ width, height, layers, id, author: this.state.author })
       .then(!preloaded ? history.replaceState({}, '', `/p/${id}`) : null);
+    // userReference(user.uid)
+    //   .set({ works: {} })
   }
 
   handleEvent(type, { clientX = 0, clientY = 0, target }) {
