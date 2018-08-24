@@ -19,8 +19,8 @@ class WorkspaceContainer extends Component {
   firstSync() {
     const { width, height, layers, id, user } = this.props;
     history.replaceState({}, '', `/p/${id}`);
-    workReference(id).set({ width, height, layers, id, author: user.uid });
     userReference(user.uid, id).set(true);
+    workReference(id).set({ width, height, layers, id, author: user.uid });
     this.setState({ firstSync: false });
   }
 
