@@ -22,7 +22,9 @@ export const getUser = () => new Promise(resolve => (
 /**
  * Reference to the realtime database
  */
-export const workReference = id => app.database().ref(`works/${id}`);
-export const userReference = id => app.database().ref(`users/${id}`);
+export const workReference = workId => app.database().ref(`works/${workId}`);
+export const userReference = (userId, workId) => (
+  app.database().ref(`users/${userId}/works/${workId}`)
+);
 
 export default app;

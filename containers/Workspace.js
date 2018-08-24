@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { workReference, getUser } from '../firebase';
+import { workReference, userReference } from '../firebase';
 import { generate } from 'shortid';
 import bus from '../bus';
 import Workspace from '../components/Workspace';
@@ -8,20 +8,20 @@ import Workspace from '../components/Workspace';
 class WorkspaceContainer extends Component {
   state = {
     executing: false,
-    author: '',
-  }
-
-  componentDidMount() {
-    getUser().then(({ uid }) => this.setState({ author: uid }));
+    firstSync: true,
   }
 
   sync() {
-    const { width, height, layers, id, preloaded } = this.props;
-    workReference(id)
-      .set({ width, height, layers, id, author: this.state.author })
-      .then(!preloaded ? history.replaceState({}, '', `/p/${id}`) : null);
-    // userReference(user.uid)
-    //   .set({ works: {} })
+    const { width, height, layers, id } = this.props;
+    workReference(id).set({ width, height, layers });
+  }
+
+  firstSync() {
+    const { width, height, layers, id, user } = this.props;
+    history.replaceState({}, '', `/p/${id}`);
+    workReference(id).set({ width, height, layers, id, author: user.uid });
+    userReference(user.uid, id).set(true);
+    this.setState({ firstSync: false });
   }
 
   handleEvent(type, { clientX = 0, clientY = 0, target }) {
@@ -47,7 +47,11 @@ class WorkspaceContainer extends Component {
   handleMouseUp(ev) {
     this.setState({ executing: false });
     this.handleEvent('handleMouseUp', ev);
-    this.timer = setTimeout(() => this.sync(), 1000);
+    if (!this.state.firstSync) {
+      this.timer = setTimeout(() => this.sync(), 3000);
+    } else {
+      this.firstSync();
+    }
   }
 
   handleMouseMove(ev) {
@@ -80,6 +84,7 @@ const mapStateToProps = (state) => ({
   height: state.height,
   layers: state.layers,
   blank: state.blank,
+  user: state.user,
   id: state.id,
 });
 
