@@ -1,1 +1,24 @@
-<script type="module" src="./src/app.mjs"></script>
+<section class="toolbar">
+  <tool-select type="brush"></tool-select>
+  <tool-select type="line"></tool-select>
+  <tool-select type="eraser"></tool-select>
+  <tool-select type="ellipse"></tool-select>
+  <tool-select type="rectangle"></tool-select>
+  <tool-palette></tool-palette>
+</section>
+
+<template id="tool-tmp">
+  <label class="tool">
+    <input type="radio" name="tool" class="tool__input"/>
+  </label>
+</template>
+
+<template id="layers-tmp">  
+  <button class="trigger"></button>
+  <div class="dialog" hidden>
+    <header>Palette <span class="selected-color"></span></header>
+  </div>
+</template>
+
+<script type="module" src="./src/Tool.mjs"></script>
+<script type="module" src="./src/Palette.mjs"></script>

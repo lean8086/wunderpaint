@@ -2,7 +2,7 @@ import initialState from './initialState.mjs';
 import {
   setSelectedTool,
   setSelectedColor,
-} from './storeActions.mjs';
+} from './actions.mjs';
 
 let state = initialState;
 

@@ -1,28 +1,32 @@
-import { dispatch, getState } from './store.mjs';
+import { dispatch } from './store.mjs';
+import initialState from './initialState.mjs';
 
-function input({ name }) {
-  const radio = document.createElement('input');
-  radio.type = 'radio';
-  radio.name = 'tool';
-  radio.checked = name === getState().selectedTool;
-  radio.className = 'tool__input';
-  radio.value = name;
-  radio.addEventListener('change', () => dispatch({
-    type: 'setSelectedTool',
-    selectedTool: name,
-  }));
+class Tool extends HTMLElement {
+  get type() {
+    return this.getAttribute('type');
+  }
 
-  return radio;
+  onChange() {
+    dispatch({
+      type: 'setSelectedTool',
+      selectedTool: this.type,
+    })
+  }
+  
+  connectedCallback() {
+    const template = document.querySelector('#tool-tmp');
+    const node = document.importNode(template.content, true);
+    const tool = node.querySelector('.tool');
+
+    tool.classList.add(`tool--${this.type}`);
+    tool.insertAdjacentHTML('beforeend', this.type);
+    tool.addEventListener('change', () => this.onChange());
+
+    // Default behavior
+    tool.querySelector('input').checked = this.type === initialState.selectedTool;
+
+    this.appendChild(node);
+  }
 }
 
-function tool({ name }) {
-  const label = document.createElement('label');
-  label.textContent = name;
-  label.className = `tool tool--${name}`;
-
-  label.appendChild(input({ name }));
-
-  return label;
-}
-
-export default tool;
+customElements.define('tool-select', Tool);
