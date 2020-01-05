@@ -21,4 +21,4 @@ class Palette extends HTMLElement {
   }
 }
 
-customElements.define('tool-palette', Palette);
+customElements.define('da-palette', Palette);

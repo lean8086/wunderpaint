@@ -1,11 +1,13 @@
 <section class="toolbar">
-  <tool-select type="brush"></tool-select>
-  <tool-select type="line"></tool-select>
-  <tool-select type="eraser"></tool-select>
-  <tool-select type="ellipse"></tool-select>
-  <tool-select type="rectangle"></tool-select>
-  <tool-palette></tool-palette>
+  <da-tool type="brush"></da-tool>
+  <da-tool type="line"></da-tool>
+  <da-tool type="eraser"></da-tool>
+  <da-tool type="ellipse"></da-tool>
+  <da-tool type="rectangle"></da-tool>
+  <da-palette></da-palette>
 </section>
+
+<da-workspace></da-workspace>
 
 <template id="tool-tmp">
   <label class="tool">
@@ -22,3 +24,4 @@
 
 <script type="module" src="./src/Tool.mjs"></script>
 <script type="module" src="./src/Palette.mjs"></script>
+<script type="module" src="./src/Workspace.mjs"></script>

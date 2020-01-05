@@ -29,4 +29,4 @@ class Tool extends HTMLElement {
   }
 }
 
-customElements.define('tool-select', Tool);
+customElements.define('da-tool', Tool);
