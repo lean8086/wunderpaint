@@ -16,14 +16,16 @@ class Tool extends HTMLElement {
   connectedCallback() {
     const template = document.querySelector('#tool-tmp');
     const node = document.importNode(template.content, true);
+    
     const tool = node.querySelector('.tool');
-
-    tool.classList.add(`tool--${this.type}`);
-    tool.insertAdjacentHTML('beforeend', this.type);
-    tool.addEventListener('change', () => this.onChange());
-
-    // Default behavior
-    tool.querySelector('input').checked = this.type === initialState.selectedTool;
+    tool.setAttribute('for', `tool--${this.type}`);
+    tool.innerHTML += this.innerHTML;
+    this.innerHTML = '';
+    
+    const input = node.querySelector('input')
+    input.addEventListener('change', () => this.onChange());
+    input.checked = this.type === initialState.selectedTool;
+    input.id = `tool--${this.type}`;
 
     this.appendChild(node);
   }

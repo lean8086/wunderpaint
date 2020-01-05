@@ -10,14 +10,14 @@ class Palette extends HTMLElement {
   }
   
   connectedCallback() {
-    const input = document.createElement('input');
-    input.type = 'color';
-    input.addEventListener('change', () => this.onChange(input.value))
-
-    // Default behavior
+    const template = document.querySelector('#tool-palette-tmp');
+    const node = document.importNode(template.content, true);
+    
+    const input = node.querySelector('input');
     input.value = initialState.selectedColor;
+    input.addEventListener('change', () => this.onChange(input.value));
 
-    this.appendChild(input);
+    this.appendChild(node);
   }
 }
 

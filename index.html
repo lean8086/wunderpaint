@@ -1,25 +1,85 @@
+<style>
+  :root {
+    --color-background: #222;
+  }
+
+  body {
+    background: var(--color-background);
+    color: #ddd;
+    margin: 0;
+  }
+</style>
+
 <section class="toolbar">
-  <da-tool type="brush"></da-tool>
-  <da-tool type="line"></da-tool>
-  <da-tool type="eraser"></da-tool>
-  <da-tool type="ellipse"></da-tool>
-  <da-tool type="rectangle"></da-tool>
+  <da-tool type="brush"><img src="/assets/pencil.png"/></da-tool>
+  <da-tool type="line"><img src="/assets/ruler.png"/></da-tool>
+  <da-tool type="eraser"><img src="/assets/eraser.png"/></da-tool>
+  <da-tool type="ellipse"><img src="/assets/ellipse.png"/></da-tool>
+  <da-tool type="rectangle"><img src="/assets/rectangle.png"/></da-tool>
   <da-palette></da-palette>
+
+  <style>
+    .toolbar {
+      background: var(--color-background);
+    }
+
+    .tool:not(:last-child) {
+      margin-right: 8px;
+    }
+  </style>
 </section>
 
 <da-workspace></da-workspace>
 
 <template id="tool-tmp">
-  <label class="tool">
-    <input type="radio" name="tool" class="tool__input"/>
-  </label>
+  <input type="radio" name="tool" hidden/>
+  <label class="tool"></label>
+
+  <style>
+    .tool {
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+    }
+ 
+    img {
+      filter: invert(1);
+      width: 16px;
+      height: 16px;
+    }
+  </style>
 </template>
 
-<template id="layers-tmp">  
-  <button class="trigger"></button>
-  <div class="dialog" hidden>
-    <header>Palette <span class="selected-color"></span></header>
-  </div>
+<template id="tool-palette-tmp">
+  <div class="tool">
+    <input type="color"/>
+  </di>
+
+  <style>
+    input {
+      border: none;
+      background: none;
+      width: 24px;
+      height: 24px;
+      padding: 0;
+    }
+  </style>
+</template>
+
+<template id="workspace-tmp">
+  <section class="workspace">
+    <div class="layers"></div>
+    <div class="phantom"></div>
+    <div class="grid"></div>
+  </section>
+
+  <style>
+    .workspace {
+      background: #fff;
+    }
+  </style>
 </template>
 
 <script type="module" src="./src/Tool.mjs"></script>

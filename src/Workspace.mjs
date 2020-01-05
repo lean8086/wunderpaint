@@ -1,32 +1,25 @@
-// import { dispatch } from './store.mjs';
-// import initialState from './initialState.mjs';
+import initialState from './initialState.mjs';
 
-// class Workspace extends HTMLElement {
-//   get type() {
-//     return this.getAttribute('type');
-//   }
+class Workspace extends HTMLElement {
+  connectedCallback() {
+    const template = document.querySelector('#workspace-tmp');
+    const node = document.importNode(template.content, true);
+    
+    const workspace = node.querySelector('.workspace');
+    workspace.style.width = initialState.width;
+    workspace.style.height = initialState.height;
+    
+    this.layers = workspace.querySelector('.layers');
+    this.phatom = workspace.querySelector('.phatom');
+    this.grid = workspace.querySelector('.grid');
 
-//   onChange() {
-//     dispatch({
-//       type: 'setSelectedTool',
-//       selectedTool: this.type,
-//     })
-//   }
-  
-//   connectedCallback() {
-//     const template = document.querySelector('#tool-tmp');
-//     const node = document.importNode(template.content, true);
-//     const tool = node.querySelector('.tool');
+    // node.addEventListener('click', (ev) => this.onClick(ev));
+    // node.addEventListener('mousedown', (ev) => this.onMouseDown(ev));
+    // node.addEventListener('mouseup', (ev) => this.onMouseUp(ev));
+    // node.addEventListener('mousemove', (ev) => this.onMouseMove(ev));
 
-//     tool.classList.add(`tool--${this.type}`);
-//     tool.insertAdjacentHTML('beforeend', this.type);
-//     tool.addEventListener('change', () => this.onChange());
+    this.appendChild(node);
+  }
+}
 
-//     // Default behavior
-//     tool.querySelector('input').checked = this.type === initialState.selectedTool;
-
-//     this.appendChild(node);
-//   }
-// }
-
-// customElements.define('da-workspace', Workspace);
+customElements.define('da-workspace', Workspace);
