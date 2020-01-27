@@ -2,25 +2,39 @@ import { dispatch, getState } from './store.mjs';
 import initialState from './initialState.mjs';
 
 class Workspace extends HTMLElement {
-  // executingEvent = false;
+  shouldExecuteMoveEvent = false;
 
-  onMouseDown(workspace) {
-    return (event) => {
-      // this.executingEvent = true;
-      dispatch({ type: 'draw', event, workspace });
+  onMouseDown(event) {
+    this.shouldExecuteMoveEvent = true;
+    dispatch({ type: 'draw', event, workspace: this.workspace });
+    this.renderLayers();
+  }
+
+  onMouseMove(event) {
+    if (this.shouldExecuteMoveEvent) {
+      dispatch({ type: 'draw', event, workspace: this.workspace });
       this.renderLayers();
     }
   }
 
+  onMouseUp(event) {
+    this.shouldExecuteMoveEvent = false;
+    // dispatch({ type: 'draw', event, workspace: this.workspace });
+    // this.renderLayers();
+  }
+
+  // TODO: this should be triggered by an event (dispatched) and/or in a Layer component
+  // TODO: instead of creating layers every time, this should ONLY update the already created selectedLayer
   renderLayers() {
     const { layers, width, height } = getState();
-    this.layers.innerHTML = '';
+
+    this.workspace.innerHTML = '';
     for (const layer of layers) {
       const img = new Image();
       img.src = layer.src;
       img.width = width;
       img.height = height;
-      this.layers.appendChild(img);
+      this.workspace.appendChild(img);
     }
   }
 
@@ -28,19 +42,14 @@ class Workspace extends HTMLElement {
     const template = document.querySelector('#workspace-tmp');
     const node = document.importNode(template.content, true);
 
-    const workspace = node.querySelector('.workspace');
-    workspace.style.width = initialState.width;
-    workspace.style.height = initialState.height;
+    this.workspace = node.querySelector('.workspace');
+    this.workspace.style.width = initialState.width;
+    this.workspace.style.height = initialState.height;
 
     const container = node.querySelector('.container');
-    container.addEventListener('mousedown', this.onMouseDown(workspace));
-    // node.addEventListener('mousemove', (ev) => this.onMouseMove(ev));
-    // node.addEventListener('mouseup', (ev) => this.onMouseUp(ev));
-    // node.addEventListener('click', (ev) => this.onClick(ev));
-
-    this.layers = workspace.querySelector('.layers');
-    this.phantomLayer = workspace.querySelector('.phantomLayer');
-    this.grid = workspace.querySelector('.grid');
+    container.addEventListener('mousedown', event => this.onMouseDown(event));
+    container.addEventListener('mousemove', event => this.onMouseMove(event));
+    container.addEventListener('mouseup', event => this.onMouseUp(event));
 
     this.appendChild(node);
   }

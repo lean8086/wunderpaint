@@ -6,6 +6,13 @@
     --color-lowlight: #eee;
   }
 
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    user-select: none;
+  }
+
   body {
     background: var(--color-background);
     color: var(--color-font);
@@ -85,11 +92,7 @@
 
 <template id="workspace-tmp">
   <div class="container">
-    <section class="workspace">
-      <div class="layers"></div>
-      <div class="phantomLayer"></div>
-      <div class="grid"></div>
-    </section>
+    <section class="workspace"></section>
   </div>
 
   <style>
@@ -108,6 +111,14 @@
 
     .workspace {
       background: var(--color-lowlight);
+    }
+
+    .workspace img {
+      pointer-events: none;
+      -ms-interpolation-mode: nearest-neighbor;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: pixelated;
     }
   </style>
 </template>
