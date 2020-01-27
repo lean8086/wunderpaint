@@ -1,11 +1,14 @@
 <style>
   :root {
-    --color-background: #222;
+    --color-background: #fff;
+    --color-font: #000;
+    --color-highlight: #0ff;
+    --color-lowlight: #eee;
   }
 
   body {
     background: var(--color-background);
-    color: #ddd;
+    color: var(--color-font);
     margin: 0;
   }
 </style>
@@ -21,10 +24,22 @@
   <style>
     .toolbar {
       background: var(--color-background);
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      z-index: 2;
     }
 
     .tool:not(:last-child) {
       margin-right: 8px;
+    }
+
+    .tool {
+      border-radius: 100%;
+    }
+
+    [name=tool]:checked + .tool {
+      background-color: var(--color-highlight);
     }
   </style>
 </section>
@@ -37,47 +52,62 @@
 
   <style>
     .tool {
-      width: 32px;
-      height: 32px;
+      width: 2rem;
+      height: 2rem;
       display: inline-flex;
       justify-content: center;
       align-items: center;
     }
- 
-    img {
-      filter: invert(1);
-      width: 16px;
-      height: 16px;
+
+    .tool img {
+      /* filter: invert(1); */
+      width: 1rem;
+      height: 1rem;
     }
   </style>
 </template>
 
 <template id="tool-palette-tmp">
-  <div class="tool">
+  <div class="tool tool--palette">
     <input type="color"/>
   </di>
 
   <style>
-    input {
+    .tool--palette input {
       border: none;
       background: none;
-      width: 24px;
-      height: 24px;
+      width: 1.5rem;
+      height: 1.5rem;
       padding: 0;
     }
   </style>
 </template>
 
 <template id="workspace-tmp">
-  <section class="workspace">
-    <div class="layers"></div>
-    <div class="phantom"></div>
-    <div class="grid"></div>
-  </section>
+  <div class="container">
+    <section class="workspace">
+      <div class="layers"></div>
+      <div class="phantomLayer"></div>
+      <div class="grid"></div>
+    </section>
+  </div>
 
   <style>
+    .container {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background: var(--color-background);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: crosshair;
+    }
+
     .workspace {
-      background: #fff;
+      background: var(--color-lowlight);
     }
   </style>
 </template>
