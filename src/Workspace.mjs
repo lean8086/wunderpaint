@@ -4,22 +4,31 @@ import initialState from './initialState.mjs';
 class Workspace extends HTMLElement {
   shouldExecuteMoveEvent = false;
 
+  dispatchAction(subtype, event) {
+    dispatch({
+      type: 'draw',
+      subtype,
+      event,
+      workspace: this.workspace,
+    });
+  }
+
   onMouseDown(event) {
     this.shouldExecuteMoveEvent = true;
-    dispatch({ type: 'draw', event, workspace: this.workspace });
+    this.dispatchAction('down', event);
     this.renderLayers();
   }
 
   onMouseMove(event) {
     if (this.shouldExecuteMoveEvent) {
-      dispatch({ type: 'draw', event, workspace: this.workspace });
+      this.dispatchAction('move', event);
       this.renderLayers();
     }
   }
 
   onMouseUp(event) {
     this.shouldExecuteMoveEvent = false;
-    // dispatch({ type: 'draw', event, workspace: this.workspace });
+    this.dispatchAction('up', event);
     // this.renderLayers();
   }
 

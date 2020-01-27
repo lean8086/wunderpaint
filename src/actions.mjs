@@ -1,3 +1,5 @@
+import toolActions from './tools/index.js';
+
 export function setSelectedTool(state, action) {
   return { ...state, selectedTool: action.selectedTool };
 }
@@ -6,6 +8,7 @@ export function setSelectedColor(state, action) {
   return { ...state, selectedColor: action.selectedColor };
 }
 
+// TODO: break down into multiple functions
 export function draw(state, action) {
   // Calculate coordinates of the intention to draw
   const { clientX = 0, clientY = 0, target } = action.event;
@@ -21,7 +24,7 @@ export function draw(state, action) {
   // TODO: this should be defined by every tool
   if (!coords.isInsideWorkspace) { return state; }
 
-  const { width, height, layers, selectedColor } = state;
+  const { width, height, layers, selectedColor, selectedTool } = state;
 
   // Process tool with a context and coords, and get a base 64 as output
   // TODO: it's expensive to create a canvas on every click or move.
@@ -32,14 +35,20 @@ export function draw(state, action) {
   const ctx = canvas.getContext('2d');
 
   // TODO: very expensive process. The DOM layer is an Image so try to use that
+  // TODO: Or keep the canvas updated so there's no need to reapply anything
   const img = new Image();
   img.src = layers[0].src;
   ctx.drawImage(img, 0, 0, width, height);
 
   // TODO: this is the pencil, so apply tool separately
-  ctx.fillStyle = selectedColor;
-  ctx.fillRect(coords.x, coords.y, 1, 1);
-
+  const toolAction = toolActions[selectedTool][action.subtype];
+  if (!toolAction) { return state }
+  toolAction({
+    x: coords.x,
+    y: coords.y,
+    color: selectedColor,
+    ctx,
+  });
   const src = canvas.toDataURL();
 
   // TODO: Use selectedLayer
