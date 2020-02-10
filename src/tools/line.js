@@ -17,7 +17,6 @@ function start({ x, y, color }) {
 function move({ x, y }) {
   return function (ctx) {
     if (x1 !== x || y1 !== y) {
-      // ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
       for (const point of bresenham(x0, y0, x, y)) {
         ctx.fillRect(point.x, point.y, 1, 1);
       }
@@ -39,10 +38,5 @@ function end({ x, y, color }) {
 export default {
   downShadow: start,
   moveShadow: move,
-  // shadow__up: () => ctx => ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height),
   up: end,
-  // handleMouseDownShadow: start,
-  // handleMouseMoveShadow: move,
-  // handleMouseUp: end,
-  // handleMouseUpShadow: ({ clear }) => clear(),
 };

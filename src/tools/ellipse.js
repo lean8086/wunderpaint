@@ -1,15 +1,16 @@
-let x0 = 0;
-let y0 = 0;
-let x1 = 0;
-let y1 = 0;
+let x0;
+let y0;
+let x1;
+let y1;
 
-const start = ({ x, y, color, ctx }) => {
-  ctx.fillStyle = color;
-  x0 = x;
-  y0 = y;
-};
+function start({ x, y }) {
+  return function () {
+    x0 = x;
+    y0 = y;
+  };
+}
 
-const render = (x, y, ctx) => {
+function render({ x, y, ctx, color }) {
   // Semimajor (biggest radius) axes and semiminor (smallest radius) axes
   const rx = Math.round((x - x0) / 2);
   const ry = Math.round((y - y0) / 2);
@@ -22,6 +23,7 @@ const render = (x, y, ctx) => {
   let angle = 0;
   const steps = (Math.PI / 720);
 
+  ctx.fillStyle = color;
   for (; angle <= 720; angle += 1) {
     const delta = angle * 2 * steps;
     const X = parseInt(xp + (rx * Math.cos(delta)) + .5, 10);
@@ -32,25 +34,26 @@ const render = (x, y, ctx) => {
       ctx.fillRect(X, Y, 1, 1);
     };
   }
-};
+}
 
-const move = ({ x, y, ctx, clear }) => {
-  if (x1 !== x || y1 !== y) {
-    clear();
-    render(x, y, ctx);
-    x1 = x;
-    y1 = y;
-  }
-};
+function move({ x, y, color }) {
+  return function (ctx) {
+    if (x1 !== x || y1 !== y) {
+      render({ x, y, ctx, color });
+      x1 = x;
+      y1 = y;
+    }
+  };
+}
 
-const end = ({ x, y, color, ctx }) => {
-  ctx.fillStyle = color;
-  render(x, y, ctx);
-};
+function end({ x, y, color }) {
+  return function (ctx) {
+    render({ x, y, ctx, color });
+  };
+}
 
 export default {
-  handleMouseDownShadow: start,
-  handleMouseMoveShadow: move,
-  handleMouseUp: end,
-  handleMouseUpShadow: ({ clear }) => clear(),
+  downShadow: start,
+  moveShadow: move,
+  up: end,
 };

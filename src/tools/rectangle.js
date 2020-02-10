@@ -1,43 +1,41 @@
-let x0 = 0;
-let y0 = 0;
-let x1 = 0;
-let y1 = 0;
+let x0;
+let y0;
+let x1;
+let y1;
 
-const start = ({ x, y, color, ctx }) => {
-  ctx.fillStyle = color;
-  ctx.fillRect(x, y, 1, 1);
-  x0 = x;
-  y0 = y;
+function start({ x, y }) {
+  return function () {
+    x0 = x;
+    y0 = y;
+  };
+}
+
+function render({ x, y, ctx, color }) {
+  ctx.lineWidth = 1;
+  ctx.strokeStyle = color;
+  ctx.beginPath();
+  // To get crisp line of width `1` rectangle should start from the half of a pixel
+  ctx.strokeRect(x0 - .5, y0 - .5, x - x0, y - y0);
 };
 
-const render = (x, y, ctx) => {
-  // Horizontal
-  const hSize = x - x0 + 1;
-  ctx.fillRect(x0, y0, hSize, 1);
-  ctx.fillRect(x0, y, hSize, 1);
-  // Vertical
-  const vSize = y - y0 + 1;
-  ctx.fillRect(x0, y0, 1, vSize);
-  ctx.fillRect(x, y0, 1, vSize);
-};
-
-const move = ({ x, y, ctx, clear }) => {
-  if (x1 !== x || y1 !== y) {
-    clear();
-    render(x, y, ctx);
-    x1 = x;
-    y1 = y;
+function move({ x, y, color }) {
+  return function (ctx) {
+    if (x1 !== x || y1 !== y) {
+      render({ x, y, ctx, color });
+      x1 = x;
+      y1 = y;
+    }
   }
 };
 
-const end = ({ x, y, color, ctx }) => {
-  ctx.fillStyle = color;
-  render(x, y, ctx);
+function end({ x, y, color }) {
+  return function (ctx) {
+    render({ x, y, ctx, color });
+  }
 };
 
 export default {
-  handleMouseDownShadow: start,
-  handleMouseMoveShadow: move,
-  handleMouseUp: end,
-  handleMouseUpShadow: ({ clear }) => clear(),
+  downShadow: start,
+  moveShadow: move,
+  up: end,
 };
