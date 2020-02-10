@@ -1,5 +1,5 @@
 export default {
-  selectedTool: 'brush',
+  selectedTool: 'line',
   width: 100,
   height: 100,
   selectedColor: '#000000',

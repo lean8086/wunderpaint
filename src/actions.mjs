@@ -25,19 +25,23 @@ export function draw(state, action) {
     // TODO: when more layers use selectedLayer
     preloadedData: layers[0].src,
     useTool: prepareToolAction({
-      x: Math.round(clientX - left),
-      y: Math.round(clientY - top),
+      x: Math.floor(clientX - left),
+      y: Math.floor(clientY - top),
       color: selectedColor,
     }),
   });
 
-  // TODO: when more layers use selectedLayer
-  const updatedLayers = [{ ...layers[0], src: imageData }];
-
+  /**
+   * IMPORTANT NOTE: using general `preview` as a shadow layer!
+   * If this is a shadowing action then `preview` will be updated but the reference that is stored
+   * in the `selectedLayer` won't. This way next iteration will continue fresh while preview is
+   * showing something unfinished.
+   */
   return {
     ...state,
     // TODO when more layers use compose({ width, height, layers: updatedLayers }),
     preview: imageData,
-    layers: updatedLayers,
+    // TODO: when more layers use selectedLayer
+    layers: action.shadow ? layers : [{ ...layers[0], src: imageData }],
   };
 }

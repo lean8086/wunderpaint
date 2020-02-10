@@ -6,12 +6,9 @@ class Workspace extends HTMLElement {
   shouldExecuteMoveEvent = false;
 
   dispatchAction(subtype, event) {
-    dispatch({
-      type: 'draw',
-      subtype,
-      event,
-      workspace: this.workspace,
-    });
+    const action = { type: 'draw', event, workspace: this.workspace };
+    dispatch({ ...action, subtype: `${subtype}Shadow`, shadow: true });
+    dispatch({ ...action, subtype });
   }
 
   onMouseDown(event) {

@@ -1,9 +1,9 @@
 import bresenham from '../utils/bresenham.mjs';
 
-let x0 = 0;
-let y0 = 0;
-let x1 = 0;
-let y1 = 0;
+let x0;
+let y0;
+let x1;
+let y1;
 
 function start({ x, y, color }) {
   return function (ctx) {
@@ -37,8 +37,9 @@ function end({ x, y, color }) {
 }
 
 export default {
-  down: start,
-  move,
+  downShadow: start,
+  moveShadow: move,
+  // shadow__up: () => ctx => ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height),
   up: end,
   // handleMouseDownShadow: start,
   // handleMouseMoveShadow: move,

@@ -9,7 +9,7 @@ export function processToImageData({ width, height, preloadedData, useTool }) {
   ctx.clearRect(0, 0, width, height);
 
   img.src = preloadedData;
-  ctx.drawImage(img, 0, 0, width, height);
+  ctx.drawImage(img, 0, 0);
 
   useTool(ctx);
 
@@ -23,7 +23,12 @@ export function compose({ width, height, layers }) {
 
   for (const layer of layers) {
     img.src = layer.src;
-    ctx.drawImage(img, 0, 0, width, height);
+    ctx.drawImage(img, 0, 0);
+
+    if (layer.shadow) {
+      img.src = layer.shadow;
+      ctx.drawImage(img, 0, 0);
+    }
   }
 
   return canvas.toDataURL();

@@ -9,7 +9,7 @@ let state = initialState;
 
 export function dispatch(action) {
   state = reducer(state, action);
-  console.log('dispatched', state);
+  console.log(`dispatched ${action.type} ${action.subtype || ''}`, state);
 };
 
 export function reducer(state, action) {
