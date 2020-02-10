@@ -1,5 +1,5 @@
 import toolActions from './tools/index.js';
-import { processToImageData } from './processImage.mjs';
+import { processToImageData } from './utils/processImage.mjs';
 
 export function setSelectedTool(state, action) {
   return { ...state, selectedTool: action.selectedTool };
@@ -11,13 +11,8 @@ export function setSelectedColor(state, action) {
 
 export function draw(state, action) {
   // Avoid to execute if there is no tool action for this event
-  const toolAction = toolActions[state.selectedTool][action.subtype];
-  if (!toolAction) { return state; }
-
-  // Avoid to execute if this event is happening outside workspace
-  // TODO: this should be defined by every tool
-  const isInsideWorkspace = action.event.target === action.workspace;
-  if (!isInsideWorkspace) { return state; }
+  const prepareToolAction = toolActions[state.selectedTool][action.subtype];
+  if (!prepareToolAction) { return state; }
 
   // Calculate coordinates of the intention to draw
   const { clientX, clientY } = action.event;
@@ -29,7 +24,7 @@ export function draw(state, action) {
     height,
     // TODO: Use selectedLayer
     preloadedData: layers[0].src,
-    useTool: toolAction({
+    useTool: prepareToolAction({
       x: Math.round(clientX - left),
       y: Math.round(clientY - top),
       color: selectedColor,
