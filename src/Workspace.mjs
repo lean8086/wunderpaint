@@ -1,5 +1,6 @@
 import { dispatch, getState } from './store.mjs';
 import initialState from './initialState.mjs';
+import { compose } from './utils/processImage.mjs';
 
 class Workspace extends HTMLElement {
   shouldExecuteMoveEvent = false;
@@ -16,39 +17,25 @@ class Workspace extends HTMLElement {
   onMouseDown(event) {
     this.shouldExecuteMoveEvent = true;
     this.dispatchAction('down', event);
-    this.renderLayers();
+    this.renderPreview();
   }
 
   onMouseMove(event) {
     if (this.shouldExecuteMoveEvent) {
       this.dispatchAction('move', event);
-      this.renderLayers();
+      this.renderPreview();
     }
   }
 
   onMouseUp(event) {
     this.shouldExecuteMoveEvent = false;
     this.dispatchAction('up', event);
-    // this.renderLayers();
+    this.renderPreview();
   }
 
-  // TODO: this should be triggered by an event (dispatched) and/or in a Layer component
-  // TODO: instead of creating layers every time, this should ONLY update the already created selectedLayer
-  renderLayers() {
-    // const { width, height, layers } = getState();
-    // const imageData = compose({ width, height, layers });
-    // if (imageData === this.composition.src) { return; }
-    // this.composition.src = imageData;
-    const { layers, width, height } = getState();
-
-    this.workspace.innerHTML = '';
-    for (const layer of layers) {
-      const img = new Image();
-      img.src = layer.src;
-      img.width = width;
-      img.height = height;
-      this.workspace.appendChild(img);
-    }
+  renderPreview() {
+    const { preview } = getState();
+    this.composition.src = preview;
   }
 
   connectedCallback() {
@@ -60,7 +47,6 @@ class Workspace extends HTMLElement {
     this.workspace.style.height = initialState.height;
 
     this.composition = node.querySelector('.composition');
-    // this.renderLayers();
 
     const container = node.querySelector('.container');
     container.addEventListener('mousedown', event => this.onMouseDown(event));

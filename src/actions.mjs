@@ -1,5 +1,5 @@
 import toolActions from './tools/index.js';
-import { processToImageData } from './utils/processImage.mjs';
+import { processToImageData, compose } from './utils/processImage.mjs';
 
 export function setSelectedTool(state, action) {
   return { ...state, selectedTool: action.selectedTool };
@@ -22,7 +22,7 @@ export function draw(state, action) {
   const imageData = processToImageData({
     width,
     height,
-    // TODO: Use selectedLayer
+    // TODO: when more layers use selectedLayer
     preloadedData: layers[0].src,
     useTool: prepareToolAction({
       x: Math.round(clientX - left),
@@ -31,6 +31,13 @@ export function draw(state, action) {
     }),
   });
 
-  // TODO: Use selectedLayer
-  return { ...state, layers: [{ ...layers[0], src: imageData }] };
+  // TODO: when more layers use selectedLayer
+  const updatedLayers = [{ ...layers[0], src: imageData }];
+
+  return {
+    ...state,
+    // TODO when more layers use compose({ width, height, layers: updatedLayers }),
+    preview: imageData,
+    layers: updatedLayers,
+  };
 }
