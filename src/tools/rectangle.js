@@ -10,10 +10,10 @@ function start({ x, y }) {
   };
 }
 
+// TODO make an option to draw a filled rectangle using `fillRect` instead of `strokeRect`
 function render({ x, y, ctx, color }) {
   ctx.lineWidth = 1;
   ctx.strokeStyle = color;
-  ctx.beginPath();
   // To get crisp line of width `1` rectangle should start from the half of a pixel
   ctx.strokeRect(x0 - .5, y0 - .5, x - x0, y - y0);
 };

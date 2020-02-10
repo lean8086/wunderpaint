@@ -1,5 +1,5 @@
 // TODO add some es6 love
-export default function*(x0, y0, x1, y1) {
+export default function* (x0, y0, x1, y1) {
   var dx = x1 - x0;
   var dy = y1 - y0;
   var adx = Math.abs(dx);
