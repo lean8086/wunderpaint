@@ -35,6 +35,10 @@ class Workspace extends HTMLElement {
   // TODO: this should be triggered by an event (dispatched) and/or in a Layer component
   // TODO: instead of creating layers every time, this should ONLY update the already created selectedLayer
   renderLayers() {
+    // const { width, height, layers } = getState();
+    // const imageData = compose({ width, height, layers });
+    // if (imageData === this.composition.src) { return; }
+    // this.composition.src = imageData;
     const { layers, width, height } = getState();
 
     this.workspace.innerHTML = '';
@@ -54,6 +58,9 @@ class Workspace extends HTMLElement {
     this.workspace = node.querySelector('.workspace');
     this.workspace.style.width = initialState.width;
     this.workspace.style.height = initialState.height;
+
+    this.composition = node.querySelector('.composition');
+    // this.renderLayers();
 
     const container = node.querySelector('.container');
     container.addEventListener('mousedown', event => this.onMouseDown(event));

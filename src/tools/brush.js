@@ -1,6 +1,8 @@
-function draw({ x, y, color, ctx }) {
-  ctx.fillStyle = color;
-  ctx.fillRect(x, y, 1, 1);
+function draw({ x, y, color }) {
+  return function (ctx) {
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, 1, 1);
+  };
 };
 
 export default {
