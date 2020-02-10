@@ -3,14 +3,12 @@ import { plotLine } from '../utils/bresenham.mjs';
 let x0;
 let y0;
 
-function start({ x, y, color }) {
-  return function (ctx) {
-    ctx.fillStyle = color;
-    ctx.fillRect(x, y, 1, 1);
-    x0 = x;
-    y0 = y;
-  };
-}
+const downShadow = ({ x, y, color }) => (ctx) => {
+  ctx.fillStyle = color;
+  ctx.fillRect(x, y, 1, 1);
+  x0 = x;
+  y0 = y;
+};
 
 function render({ x, y, ctx, color }) {
   ctx.fillStyle = color;
@@ -19,20 +17,12 @@ function render({ x, y, ctx, color }) {
   }
 }
 
-function move({ x, y, color }) {
-  return function (ctx) {
-    render({ x, y, ctx, color });
-  };
-}
-
-function end({ x, y, color }) {
-  return function (ctx) {
-    render({ x, y, ctx, color });
-  };
-}
-
-export default {
-  downShadow: start,
-  moveShadow: move,
-  up: end,
+const moveShadow = ({ x, y, color }) => (ctx) => {
+  render({ x, y, ctx, color });
 };
+
+const up = ({ x, y, color }) => (ctx) => {
+  render({ x, y, ctx, color });
+};
+
+export default { downShadow, moveShadow, up };
