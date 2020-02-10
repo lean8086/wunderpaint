@@ -1,9 +1,7 @@
-import bresenham from '../utils/bresenham.mjs';
+import { plotLine } from '../utils/bresenham.mjs';
 
 let x0;
 let y0;
-let x1;
-let y1;
 
 function start({ x, y, color }) {
   return function (ctx) {
@@ -14,24 +12,22 @@ function start({ x, y, color }) {
   };
 }
 
-function move({ x, y }) {
+function render({ x, y, ctx, color }) {
+  ctx.fillStyle = color;
+  for (const point of plotLine(x0, y0, x, y)) {
+    ctx.fillRect(point.x, point.y, 1, 1);
+  }
+}
+
+function move({ x, y, color }) {
   return function (ctx) {
-    if (x1 !== x || y1 !== y) {
-      for (const point of bresenham(x0, y0, x, y)) {
-        ctx.fillRect(point.x, point.y, 1, 1);
-      }
-      x1 = x;
-      y1 = y;
-    }
+    render({ x, y, ctx, color });
   };
 }
 
 function end({ x, y, color }) {
   return function (ctx) {
-    ctx.fillStyle = color;
-    for (const point of bresenham(x0, y0, x, y)) {
-      ctx.fillRect(point.x, point.y, 1, 1);
-    }
+    render({ x, y, ctx, color });
   };
 }
 

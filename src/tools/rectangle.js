@@ -1,7 +1,5 @@
 let x0;
 let y0;
-let x1;
-let y1;
 
 function start({ x, y }) {
   return function () {
@@ -10,7 +8,6 @@ function start({ x, y }) {
   };
 }
 
-// TODO make an option to draw a filled rectangle using `fillRect` instead of `strokeRect`
 function render({ x, y, ctx, color }) {
   ctx.lineWidth = 1;
   ctx.strokeStyle = color;
@@ -20,11 +17,7 @@ function render({ x, y, ctx, color }) {
 
 function move({ x, y, color }) {
   return function (ctx) {
-    if (x1 !== x || y1 !== y) {
-      render({ x, y, ctx, color });
-      x1 = x;
-      y1 = y;
-    }
+    render({ x, y, ctx, color });
   }
 };
 
