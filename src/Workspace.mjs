@@ -26,10 +26,11 @@ class Workspace extends HTMLElement {
     this.dispatchAction('up', event);
   }
 
-  renderPreview() {
-    const { preview, scale } = getState();
+  render() {
+    const { preview, scale, backgroundColor } = getState();
     this.composition.src = preview;
     this.workspace.style.transform = `scale(${scale})`;
+    this.workspace.style.backgroundColor = backgroundColor;
   }
 
   connectedCallback() {
@@ -39,6 +40,7 @@ class Workspace extends HTMLElement {
     this.workspace = node.querySelector('.workspace');
     this.workspace.style.width = initialState.width;
     this.workspace.style.height = initialState.height;
+    this.workspace.style.transform = `scale(${initialState.scale})`;
     
     this.composition = node.querySelector('.composition');
     
@@ -47,7 +49,7 @@ class Workspace extends HTMLElement {
     container.addEventListener('mousemove', event => this.onMouseMove(event));
     container.addEventListener('mouseup', event => this.onMouseUp(event));
     
-    window.addEventListener('stateUpdate', () => this.renderPreview());
+    window.addEventListener('stateUpdate', () => this.render());
 
     this.appendChild(node);
   }

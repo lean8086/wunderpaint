@@ -13,6 +13,10 @@ export function setScale(state, action) {
   return { ...state, scale: parseInt(action.scale, 10) };
 }
 
+export function setBackgroundColor(state, action) {
+  return { ...state, backgroundColor: action.backgroundColor };
+}
+
 export function draw(state, action) {
   // Avoid to execute if there is no tool action for this event
   const prepareToolAction = toolActions[state.selectedTool][action.subtype];
