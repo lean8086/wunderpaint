@@ -1,7 +1,7 @@
 <style>
   :root {
-    --color-background: #fff;
-    --color-font: #000;
+    --color-light: #fff;
+    --color-dark: #222;
     --color-highlight: #0ff;
     --color-lowlight: #eee;
   }
@@ -14,54 +14,44 @@
   }
 
   body {
-    background: var(--color-background);
-    color: var(--color-font);
+    background: var(--color-light);
+    color: var(--color-dark);
     margin: 0;
   }
 </style>
 
 <section class="toolbar">
-  <da-tool type="brush"><img src="/assets/pencil.png"/></da-tool>
-  <da-tool type="line"><img src="/assets/ruler.png"/></da-tool>
-  <da-tool type="eraser"><img src="/assets/eraser.png"/></da-tool>
-  <da-tool type="ellipse"><img src="/assets/ellipse.png"/></da-tool>
-  <da-tool type="rectangle"><img src="/assets/rectangle.png"/></da-tool>
-  <da-palette sets="selectedColor"></da-palette>
+  <section class="toolbar__tools">
+    <da-tool type="brush"><img src="/assets/pencil.png"/></da-tool>
+    <da-tool type="line"><img src="/assets/ruler.png"/></da-tool>
+    <da-tool type="eraser"><img src="/assets/eraser.png"/></da-tool>
+    <da-tool type="ellipse"><img src="/assets/ellipse.png"/></da-tool>
+    <da-tool type="rectangle"><img src="/assets/rectangle.png"/></da-tool>
+    <da-palette sets="selectedColor"></da-palette>
+  </section>
+
+  <section class="toolbar__tweaks">
+
+  </section>
+
+  <section class="toolbar__more">
+    <da-zoom></da-zoom>
+    <da-palette sets="backgroundColor"></da-palette>
+  </section>
 
   <style>
     .toolbar {
-      background: var(--color-background);
-      position: absolute;
-      right: 1rem;
-      top: 1rem;
+      position: fixed;
       z-index: 2;
-    }
-
-    .tool:not(:last-child) {
-      margin-right: 8px;
-    }
-
-    .tool {
-      border-radius: 100%;
-    }
-
-    [name=tool]:checked + .tool {
-      background-color: var(--color-highlight);
-    }
-  </style>
-</section>
-
-<section class="infobar">
-  <da-zoom></da-zoom>
-  <da-palette sets="backgroundColor"></da-palette>
-
-  <style>
-    .infobar {
-      background: var(--color-background);
-      position: absolute;
-      left: 1rem;
-      bottom: 1rem;
-      z-index: 2;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3rem;
+      background: var(--color-dark);
+      color: var(--color-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
   </style>
 </section>
@@ -74,15 +64,24 @@
 
   <style>
     .tool {
-      width: 2rem;
-      height: 2rem;
+      width: 3rem;
+      height: 3rem;
       display: inline-flex;
       justify-content: center;
       align-items: center;
     }
 
+    [name=tool]:checked + .tool {
+      background-color: var(--color-highlight);
+    }
+
+    /* TODO: improve */
+    [name=tool]:checked + .tool img {
+      filter: invert(0);
+    }
+
     .tool img {
-      /* filter: invert(1); */
+      filter: invert(1);
       width: 1rem;
       height: 1rem;
     }
@@ -134,7 +133,7 @@
       top: 0;
       width: 100vw;
       height: 100vh;
-      background: var(--color-background);
+      background: var(--color-light);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -142,7 +141,7 @@
     }
 
     .workspace {
-      background: var(--color-background);
+      background: var(--color-light);
       box-shadow: 0 0 1rem var(--color-lowlight);
     }
 
