@@ -1,5 +1,4 @@
 import { dispatch, getState } from './store.mjs';
-import initialState from './initialState.mjs';
 
 class Workspace extends HTMLElement {
   shouldExecuteMoveEvent = false;
@@ -37,10 +36,11 @@ class Workspace extends HTMLElement {
     const template = document.querySelector('#workspace-tmp');
     const node = document.importNode(template.content, true);
 
+    const { width, height, scale } = getState();
+
     this.workspace = node.querySelector('.workspace');
-    this.workspace.style.width = initialState.width;
-    this.workspace.style.height = initialState.height;
-    this.workspace.style.transform = `scale(${initialState.scale})`;
+    this.workspace.style.width = width;
+    this.workspace.style.height = height;
     
     this.composition = node.querySelector('.composition');
     
@@ -50,7 +50,8 @@ class Workspace extends HTMLElement {
     container.addEventListener('mouseup', event => this.onMouseUp(event));
     
     window.addEventListener('stateUpdate', () => this.render());
-
+    
+    this.render();
     this.appendChild(node);
   }
 }

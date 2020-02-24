@@ -1,5 +1,5 @@
-import toolActions from './tools/index.js';
-import { processToImageData, compose } from './utils/processImage.mjs';
+import toolActions from './tools/index.mjs';
+import { processToImageData } from './utils/processImage.mjs';
 
 export function setSelectedTool(state, action) {
   return { ...state, selectedTool: action.selectedTool };

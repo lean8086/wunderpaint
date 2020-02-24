@@ -1,4 +1,3 @@
-import initialState from './initialState.mjs';
 import {
   setSelectedTool,
   setSelectedColor,
@@ -7,13 +6,26 @@ import {
   draw,
 } from './actions.mjs';
 
-let state = initialState;
 const stateUpdateEvent = new Event('stateUpdate');
+
+let state = {
+  selectedTool: 'brush',
+  width: 100,
+  height: 100,
+  selectedColor: '#000000',
+  backgroundColor: '#ffffff',
+  scale: 1,
+  preview: '',
+  layers: [
+    {
+      src: '',
+    }
+  ]
+};
 
 export function dispatch(action) {
   state = reducer(state, action);
   dispatchEvent(stateUpdateEvent);
-  console.log(`dispatched ${action.type} ${action.subtype || ''}`, state);
 };
 
 export function reducer(state, action) {

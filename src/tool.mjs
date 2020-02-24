@@ -1,5 +1,4 @@
-import { dispatch } from './store.mjs';
-import initialState from './initialState.mjs';
+import { dispatch, getState } from './store.mjs';
 
 class Tool extends HTMLElement {
   get type() {
@@ -22,7 +21,7 @@ class Tool extends HTMLElement {
 
     const input = node.querySelector('input')
     input.addEventListener('change', () => this.onChange());
-    input.checked = this.type === initialState.selectedTool;
+    input.checked = this.type === getState().selectedTool;
     input.id = `tool--${this.type}`;
 
     this.appendChild(node);
