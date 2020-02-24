@@ -16,6 +16,7 @@ class Zoom extends HTMLElement {
     const node = document.importNode(template.content, true);
 
     const input = node.querySelector('input');
+    input.value = getState().scale;
     input.addEventListener('input', () => this.onChange(input.value));
     
     this.label = node.querySelector('span');

@@ -10,11 +10,11 @@ const stateUpdateEvent = new Event('stateUpdate');
 
 let state = {
   selectedTool: 'brush',
-  width: 100,
-  height: 100,
+  width: window.innerWidth / 5,
+  height: window.innerHeight / 5,
   selectedColor: '#000000',
   backgroundColor: '#ffffff',
-  scale: 1,
+  scale: 5,
   preview: '',
   layers: [
     {

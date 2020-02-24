@@ -36,7 +36,7 @@ class Workspace extends HTMLElement {
     const template = document.querySelector('#workspace-tmp');
     const node = document.importNode(template.content, true);
 
-    const { width, height, scale } = getState();
+    const { width, height } = getState();
 
     this.workspace = node.querySelector('.workspace');
     this.workspace.style.width = width;
