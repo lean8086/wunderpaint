@@ -1,4 +1,4 @@
-import { dispatch, getState } from './store.mjs';
+import { dispatch, afterActionDispatches, getState } from './store.mjs';
 
 class Workspace extends HTMLElement {
   shouldExecuteMoveEvent = false;
@@ -49,7 +49,7 @@ class Workspace extends HTMLElement {
     container.addEventListener('mousemove', event => this.onMouseMove(event));
     container.addEventListener('mouseup', event => this.onMouseUp(event));
     
-    window.addEventListener('stateUpdate', () => this.render());
+    afterActionDispatches('draw', () => this.render());
     
     this.render();
     this.appendChild(node);

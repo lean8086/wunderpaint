@@ -31,7 +31,7 @@
   </section>
 
   <section class="toolbar__tweaks">
-
+    <da-tweaks></da-tweaks>
   </section>
 
   <section class="toolbar__more">
@@ -91,16 +91,13 @@
 <template id="tool-zoom-tmp">
   <input type="range" min="1" max="32" value="1" name="zoom"/>
   <label for="zoom"><span class="zoom__value"></span>%</label>
+</template>
 
-  <style>
-    .tool--zoom input {
-      border: none;
-      background: none;
-      width: 1.5rem;
-      height: 1.5rem;
-      padding: 0;
-    }
-  </style>
+<template id="tweaks-range-tmp">
+  <label>
+    <input type="range"/>
+    <span></span>
+  </label>
 </template>
 
 <template id="tool-palette-tmp">
@@ -156,6 +153,7 @@
 </template>
 
 <script type="module" src="./src/Tool.mjs"></script>
+<script type="module" src="./src/Tweaks.mjs"></script>
 <script type="module" src="./src/Palette.mjs"></script>
 <script type="module" src="./src/Zoom.mjs"></script>
 <script type="module" src="./src/Workspace.mjs"></script>

@@ -13,6 +13,19 @@ export function setScale(state, action) {
   return { ...state, scale: parseInt(action.scale, 10) };
 }
 
+export function setTweak(state, action) {
+  return {
+    ...state,
+    tweaks: {
+      ...state.tweaks,
+      [state.selectedTool]: {
+        ...state.tweaks[state.selectedTool],
+        [action.tweak]: action.value,
+      },
+    },
+  };
+}
+
 export function setBackgroundColor(state, action) {
   return { ...state, backgroundColor: action.backgroundColor };
 }
@@ -25,7 +38,7 @@ export function draw(state, action) {
   // Calculate coordinates of the intention to draw
   const { clientX, clientY } = action.event;
   const { left, top } = action.workspace.getBoundingClientRect();
-  const { width, height, scale, layers, selectedColor } = state;
+  const { width, height, scale, layers, selectedColor, selectedTool, tweaks } = state;
 
   const imageData = processToImageData({
     width,
@@ -36,6 +49,7 @@ export function draw(state, action) {
       x: Math.floor((clientX - left) / scale),
       y: Math.floor((clientY - top) / scale),
       color: selectedColor,
+      tweaks: tweaks[selectedTool],
     }),
   });
 
