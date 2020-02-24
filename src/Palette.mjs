@@ -2,11 +2,8 @@ import { dispatch } from './store.mjs';
 import initialState from './initialState.mjs';
 
 class Palette extends HTMLElement {
-  onChange(color) {
-    dispatch({
-      type: 'setSelectedColor',
-      selectedColor: color,
-    })
+  onChange(selectedColor) {
+    dispatch({ type: 'setSelectedColor', selectedColor });
   }
   
   connectedCallback() {

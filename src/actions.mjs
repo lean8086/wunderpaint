@@ -9,6 +9,10 @@ export function setSelectedColor(state, action) {
   return { ...state, selectedColor: action.selectedColor };
 }
 
+export function setScale(state, action) {
+  return { ...state, scale: parseInt(action.scale, 10) };
+}
+
 export function draw(state, action) {
   // Avoid to execute if there is no tool action for this event
   const prepareToolAction = toolActions[state.selectedTool][action.subtype];
@@ -17,7 +21,7 @@ export function draw(state, action) {
   // Calculate coordinates of the intention to draw
   const { clientX, clientY } = action.event;
   const { left, top } = action.workspace.getBoundingClientRect();
-  const { width, height, layers, selectedColor } = state;
+  const { width, height, scale, layers, selectedColor } = state;
 
   const imageData = processToImageData({
     width,
@@ -25,8 +29,8 @@ export function draw(state, action) {
     // TODO: when more layers use selectedLayer
     preloadedData: layers[0].src,
     useTool: prepareToolAction({
-      x: Math.floor(clientX - left),
-      y: Math.floor(clientY - top),
+      x: Math.floor((clientX - left) / scale),
+      y: Math.floor((clientY - top) / scale),
       color: selectedColor,
     }),
   });

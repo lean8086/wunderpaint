@@ -27,8 +27,9 @@ class Workspace extends HTMLElement {
   }
 
   renderPreview() {
-    const { preview } = getState();
+    const { preview, scale } = getState();
     this.composition.src = preview;
+    this.workspace.style.transform = `scale(${scale})`;
   }
 
   connectedCallback() {
