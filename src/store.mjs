@@ -6,9 +6,11 @@ import {
 } from './actions.mjs';
 
 let state = initialState;
+const stateUpdateEvent = new Event('stateUpdate');
 
 export function dispatch(action) {
   state = reducer(state, action);
+  dispatchEvent(stateUpdateEvent);
   console.log(`dispatched ${action.type} ${action.subtype || ''}`, state);
 };
 

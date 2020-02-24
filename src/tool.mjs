@@ -7,10 +7,7 @@ class Tool extends HTMLElement {
   }
 
   onChange() {
-    dispatch({
-      type: 'setSelectedTool',
-      selectedTool: this.type,
-    });
+    dispatch({ type: 'setSelectedTool', selectedTool: this.type });
   }
 
   connectedCallback() {

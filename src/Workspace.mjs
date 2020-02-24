@@ -1,6 +1,5 @@
 import { dispatch, getState } from './store.mjs';
 import initialState from './initialState.mjs';
-import { compose } from './utils/processImage.mjs';
 
 class Workspace extends HTMLElement {
   shouldExecuteMoveEvent = false;
@@ -14,20 +13,17 @@ class Workspace extends HTMLElement {
   onMouseDown(event) {
     this.shouldExecuteMoveEvent = true;
     this.dispatchAction('down', event);
-    this.renderPreview();
   }
 
   onMouseMove(event) {
     if (this.shouldExecuteMoveEvent) {
       this.dispatchAction('move', event);
-      this.renderPreview();
     }
   }
 
   onMouseUp(event) {
     this.shouldExecuteMoveEvent = false;
     this.dispatchAction('up', event);
-    this.renderPreview();
   }
 
   renderPreview() {
@@ -42,13 +38,15 @@ class Workspace extends HTMLElement {
     this.workspace = node.querySelector('.workspace');
     this.workspace.style.width = initialState.width;
     this.workspace.style.height = initialState.height;
-
+    
     this.composition = node.querySelector('.composition');
-
+    
     const container = node.querySelector('.container');
     container.addEventListener('mousedown', event => this.onMouseDown(event));
     container.addEventListener('mousemove', event => this.onMouseMove(event));
     container.addEventListener('mouseup', event => this.onMouseUp(event));
+    
+    window.addEventListener('stateUpdate', () => this.renderPreview());
 
     this.appendChild(node);
   }
