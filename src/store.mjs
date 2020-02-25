@@ -23,9 +23,17 @@ let state = {
   tweaks: {
     brush: {
       strokeWidth: 1,
-      strokeOpacity: 100,
+    },
+    ellipse: {
+      strokeWidth: 1,
     },
     eraser: {
+      strokeWidth: 1,
+    },
+    line: {
+      strokeWidth: 1,
+    },
+    rectangle: {
       strokeWidth: 1,
     },
   }
