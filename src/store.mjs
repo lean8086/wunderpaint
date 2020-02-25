@@ -33,6 +33,8 @@ let state = {
 
 const events = {
   setSelectedTool: new Event('setSelectedTool'),
+  setBackgroundColor: new Event('setBackgroundColor'),
+  setScale: new Event('setScale'),
   draw: new Event('draw'),
 };
 
