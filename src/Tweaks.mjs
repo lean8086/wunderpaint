@@ -21,6 +21,10 @@ class Tweaks extends HTMLElement {
     if (!tweaksByTool) { return; }
 
     for (const [ prop, value ] of Object.entries(tweaksByTool)) {
+      const label = document.createElement('label');
+      label.textContent = prop;
+      this.appendChild(label);
+
       const input = document.createElement('input');
       for (const [ p, v ] of Object.entries(inputsSetup[prop])) {
         input[p] = v;

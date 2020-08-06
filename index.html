@@ -21,7 +21,7 @@
   }
 </style>
 
-<section class="toolbar">
+<section class="bar toolbar">
   <wunder-tool type="brush" shortcut="1" description="Brush"><img src="/assets/edit-24px.svg"/></wunder-tool>
   <wunder-tool type="eraser" shortcut="2" description="Eraser"><img src="/assets/eraser.svg"/></wunder-tool>
   <wunder-tool type="line" shortcut="3" description="Line"><img src="/assets/slash.svg"/></wunder-tool>
@@ -30,27 +30,46 @@
   <wunder-palette sets="selectedColor" description="Color"></wunder-palette>
 </section>
 
-<section class="toolbar__tweaks">
+<!-- <section class="bar tweakbar">
   <wunder-tweaks></wunder-tweaks>
-</section>
+</section> -->
 
-<section class="toolbar__more">
+<section class="bar scenebar">
   <wunder-zoom></wunder-zoom>
   <wunder-palette sets="backgroundColor"></wunder-palette>
 </section>
 
 <style>
-  .toolbar {
+  .bar {
     position: fixed;
     z-index: 2;
-    top: .5rem;
     height: 3rem;
     background-color: rgba(0, 0, 0, .5);
-    left: 50%;
-    transform: translateX(-50%);
     border-radius: 1rem;
     overflow: hidden;
     backdrop-filter: blur(.5rem);
+    color: white;
+  }
+
+  .toolbar {
+    top: .5rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .scenebar {
+    bottom: .5rem;
+    left: .5rem;
+    padding-left: .5rem;
+  }
+
+  .tweakbar {
+    top: .5rem;
+    left: .5rem;
+    padding: .5rem;
+    font-size: .7rem;
+    display: flex;
+    flex-direction: column;
   }
 </style>
 
@@ -85,17 +104,16 @@
       backdrop-filter: blur(.5rem);
     }
 
-    [name=tool]:checked + .tool::after,
+    [name=tool]:checked + .tool::after {
+      filter: invert(1);
+    }
+
     [name=tool]:checked + .tool img {
       filter: invert(0);
     }
 
-    .tool::after,
     .tool img {
       filter: invert(1);
-    }
-
-    .tool img {
       width: 1.1rem;
       height: 1.1rem;
     }
