@@ -22,11 +22,11 @@
 
 <section class="toolbar">
   <section class="toolbar__tools">
-    <wunder-tool type="brush"><img src="/assets/pencil.png"/></wunder-tool>
-    <wunder-tool type="line"><img src="/assets/ruler.png"/></wunder-tool>
-    <wunder-tool type="eraser"><img src="/assets/eraser.png"/></wunder-tool>
-    <wunder-tool type="ellipse"><img src="/assets/ellipse.png"/></wunder-tool>
-    <wunder-tool type="rectangle"><img src="/assets/rectangle.png"/></wunder-tool>
+    <wunder-tool type="brush"><img src="/assets/edit-24px.svg"/></wunder-tool>
+    <wunder-tool type="eraser"><img src="/assets/eraser.svg"/></wunder-tool>
+    <wunder-tool type="line"><img src="/assets/remove-24px.svg"/></wunder-tool>
+    <wunder-tool type="ellipse"><img src="/assets/panorama_fish_eye-24px.svg"/></wunder-tool>
+    <wunder-tool type="rectangle"><img src="/assets/crop_din-24px.svg"/></wunder-tool>
     <wunder-palette sets="selectedColor"></wunder-palette>
   </section>
 
@@ -69,6 +69,7 @@
       display: inline-flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
     }
 
     [name=tool]:checked + .tool {
@@ -82,8 +83,8 @@
 
     .tool img {
       filter: invert(1);
-      width: 1rem;
-      height: 1rem;
+      width: 1.1rem;
+      height: 1.1rem;
     }
   </style>
 </template>
