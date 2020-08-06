@@ -10,7 +10,7 @@ class Palette extends HTMLElement {
     const { prop, type } = this.actionParams;
     dispatch({ type, [prop]: value });
   }
-  
+
   connectedCallback() {
     const template = document.querySelector('#tool-palette-tmp');
     const node = document.importNode(template.content, true);
@@ -23,4 +23,4 @@ class Palette extends HTMLElement {
   }
 }
 
-customElements.define('da-palette', Palette);
+customElements.define('wunder-palette', Palette);

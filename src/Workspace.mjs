@@ -49,18 +49,18 @@ class Workspace extends HTMLElement {
     this.workspace = node.querySelector('.workspace');
     this.workspace.style.width = width;
     this.workspace.style.height = height;
-    
+
     this.composition = node.querySelector('.composition');
-    
+
     const container = node.querySelector('.container');
     container.addEventListener('mousedown', event => this.onMouseDown(event));
     container.addEventListener('mousemove', event => this.onMouseMove(event));
     container.addEventListener('mouseup', event => this.onMouseUp(event));
-    
+
     afterActionDispatches('draw', () => this.render());
     afterActionDispatches('setScale', () => this.updateScale());
     afterActionDispatches('setBackgroundColor', () => this.updateBackgroundColor());
-    
+
     this.render();
     this.updateScale();
     this.updateBackgroundColor();
@@ -68,4 +68,4 @@ class Workspace extends HTMLElement {
   }
 }
 
-customElements.define('da-workspace', Workspace);
+customElements.define('wunder-workspace', Workspace);

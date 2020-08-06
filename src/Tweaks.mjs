@@ -19,7 +19,7 @@ class Tweaks extends HTMLElement {
     const { tweaks, selectedTool } = getState();
     const tweaksByTool = tweaks[selectedTool];
     if (!tweaksByTool) { return; }
-    
+
     for (const [ prop, value ] of Object.entries(tweaksByTool)) {
       const input = document.createElement('input');
       for (const [ p, v ] of Object.entries(inputsSetup[prop])) {
@@ -37,4 +37,4 @@ class Tweaks extends HTMLElement {
   }
 }
 
-customElements.define('da-tweaks', Tweaks);
+customElements.define('wunder-tweaks', Tweaks);

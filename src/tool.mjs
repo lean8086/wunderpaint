@@ -28,4 +28,4 @@ class Tool extends HTMLElement {
   }
 }
 
-customElements.define('da-tool', Tool);
+customElements.define('wunder-tool', Tool);
