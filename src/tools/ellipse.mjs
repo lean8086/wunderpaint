@@ -23,4 +23,10 @@ const up = ({ x, y, color, tweaks }) => (ctx) => {
   render({ x, y, ctx, color, tweaks });
 };
 
-export default { downShadow, moveShadow, up };
+const preview = ({ x, y, color, tweaks }) => (ctx) => {
+  ctx.fillStyle = color;
+  ctx.globalAlpha = tweaks.strokeOpacity / 100;
+  ctx.fillRect(x, y, tweaks.strokeWidth, tweaks.strokeWidth);
+};
+
+export default { downShadow, moveShadow, up, preview };

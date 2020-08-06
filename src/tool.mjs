@@ -19,7 +19,7 @@ class Tool extends HTMLElement {
     tool.innerHTML += this.innerHTML;
     this.innerHTML = '';
 
-    const input = node.querySelector('input')
+    const input = node.querySelector('input');
     input.addEventListener('change', () => this.onChange());
     input.checked = this.type === getState().selectedTool;
     input.id = `tool--${this.type}`;

@@ -17,4 +17,11 @@ const move = ({ x, y, tweaks }) => (ctx) => {
   y0 = y;
 };
 
-export default { down, move };
+const preview = ({ x, y, tweaks, color }) => (ctx) => {
+  ctx.fillStyle = color;
+  // Invert color
+  ctx.globalCompositeOperation = 'difference';
+  ctx.fillRect(x, y, tweaks.strokeWidth, tweaks.strokeWidth);
+};
+
+export default { down, move, preview };

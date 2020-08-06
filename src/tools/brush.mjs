@@ -21,4 +21,10 @@ const move = ({ x, y, color, tweaks }) => (ctx) => {
   y0 = y;
 };
 
-export default { down, move };
+const preview = ({ x, y, color, tweaks }) => (ctx) => {
+  ctx.fillStyle = color;
+  ctx.globalAlpha = tweaks.strokeOpacity / 100;
+  ctx.fillRect(x, y, tweaks.strokeWidth, tweaks.strokeWidth);
+};
+
+export default { down, move, preview };

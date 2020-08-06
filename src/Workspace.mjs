@@ -17,6 +17,8 @@ class Workspace extends HTMLElement {
   onMouseMove(event) {
     if (this.shouldExecuteMoveEvent) {
       this.dispatchAction('move', event);
+    } else {
+      dispatch({ type: 'draw', event, workspace: this.workspace, subtype: 'preview', shadow: true });
     }
   }
 
