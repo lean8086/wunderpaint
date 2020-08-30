@@ -65,7 +65,7 @@ export function reducer(state, action) {
     case 'setScale': return setScale(state, action);
     case 'setTweak': return setTweak(state, action);
     case 'draw': return draw(state, action);
-    default: throw new Error();
+    default: throw new Error(`A reducer for the action '${action.type}' was not found.`);
   }
 };
 

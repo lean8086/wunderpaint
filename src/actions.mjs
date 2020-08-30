@@ -10,7 +10,7 @@ export function setSelectedColor(state, action) {
 }
 
 export function setScale(state, action) {
-  return { ...state, scale: parseInt(action.scale, 10) };
+  return { ...state, scale: action.scale };
 }
 
 export function setTweak(state, action) {

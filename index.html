@@ -22,18 +22,18 @@
 </style>
 
 <section class="topbar">
-  <section class="toolbar">
+  <section class="menubar">
     <img src="/assets/w.png" class="w" alt="Wunderpaint"/>
   </section>
   <section class="toolbar">
-    <wunder-tool type="brush" shortcut="1" description="Brush"><img src="/assets/pencil-alt-solid.svg"/></wunder-tool>
-    <wunder-tool type="eraser" shortcut="2" description="Eraser"><img src="/assets/eraser-solid.svg"/></wunder-tool>
-    <wunder-tool type="line" shortcut="3" description="Line"><img src="/assets/slash-solid.svg"/></wunder-tool>
-    <wunder-tool type="ellipse" shortcut="4" description="Ellipse"><img src="/assets/circle-regular.svg"/></wunder-tool>
-    <wunder-tool type="rectangle" shortcut="5" description="Rectangle"><img src="/assets/square-regular.svg"/></wunder-tool>
+    <wunder-tool type="brush" shortcut="b" description="Brush"><img src="/assets/pencil-alt-solid.svg"/></wunder-tool>
+    <wunder-tool type="eraser" shortcut="e" description="Eraser"><img src="/assets/eraser-solid.svg"/></wunder-tool>
+    <wunder-tool type="line" shortcut="l" description="Line"><img src="/assets/slash-solid.svg"/></wunder-tool>
+    <wunder-tool type="ellipse" shortcut="c" description="Ellipse"><img src="/assets/circle-regular.svg"/></wunder-tool>
+    <wunder-tool type="rectangle" shortcut="r" description="Rectangle"><img src="/assets/square-regular.svg"/></wunder-tool>
     <wunder-palette sets="selectedColor" description="Color"></wunder-palette>
   </section>
-  <section class="toolbar scenebar">
+  <section class="scenebar">
     <wunder-zoom></wunder-zoom>
     <wunder-palette sets="backgroundColor"></wunder-palette>
   </section>
@@ -54,12 +54,24 @@
     align-items: center;
   }
 
+  .topbar section {
+    display: flex;
+    align-items: center;
+  }
+
   .w {
     image-rendering: pixelated;
     transform: scale(3);
     transform-origin: 0;
     filter: invert(1);
     margin: 0 .7rem;
+  }
+
+  .scenebar select {
+    appearance: none;
+    border: none;
+    background: none;
+    color: #efefef;
   }
 </style>
 
@@ -96,11 +108,6 @@
       filter: invert(1);
     }
   </style>
-</template>
-
-<template id="tool-zoom-tmp">
-  <input type="range" min="1" max="32" value="1" name="zoom"/>
-  <label for="zoom"><span class="zoom__value"></span>%</label>
 </template>
 
 <template id="tweaks-range-tmp">

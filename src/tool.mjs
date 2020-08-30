@@ -5,7 +5,7 @@ class Tool extends HTMLElement {
     return this.getAttribute('type');
   }
 
-  select() {
+  setSelectedTool() {
     dispatch({ type: 'setSelectedTool', selectedTool: this.type });
   }
 
@@ -22,13 +22,13 @@ class Tool extends HTMLElement {
     this.innerHTML = '';
 
     const input = node.querySelector('input');
-    input.addEventListener('change', () => this.select());
+    input.addEventListener('change', () => this.setSelectedTool());
     input.checked = this.type === getState().selectedTool;
     input.id = `tool--${this.type}`;
 
     document.addEventListener('keypress', (ev) => {
       if (ev.key === this.getAttribute('shortcut')) {
-        this.select();
+        this.setSelectedTool();
         input.checked = true;
       }
     });

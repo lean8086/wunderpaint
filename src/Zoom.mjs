@@ -1,28 +1,25 @@
 import { dispatch, getState } from './store.mjs';
 
 class Zoom extends HTMLElement {
-  onChange(scale) {
-    dispatch({ type: 'setScale', scale });
-    this.render();
-  }
+  scales = [.25, .5, .75, 1, 2, 3, 4, 5, 10, 20, 30, 50]
 
-  render() {
-    const { scale } = getState();
-    this.label.textContent = scale * 100;
+  setScale(scale) {
+    dispatch({ type: 'setScale', scale });
   }
 
   connectedCallback() {
-    const template = document.querySelector('#tool-zoom-tmp');
-    const node = document.importNode(template.content, true);
+    const select = document.createElement('select');
+    select.addEventListener('change', () => this.setScale(select.value));
 
-    const input = node.querySelector('input');
-    input.value = getState().scale;
-    input.addEventListener('input', () => this.onChange(input.value));
+    this.scales.forEach(scale => {
+      const option = document.createElement('option');
+      option.value = scale;
+      option.selected = scale === getState().scale;
+      option.textContent = `${scale * 100}%`;
+      select.appendChild(option);
+    });
 
-    this.label = node.querySelector('span');
-
-    this.render();
-    this.appendChild(node);
+    this.appendChild(select);
   }
 }
 
