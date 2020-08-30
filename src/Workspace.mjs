@@ -63,6 +63,7 @@ class Workspace extends HTMLElement {
     this.container = container;
 
     afterActionDispatches('draw', () => this.render());
+    afterActionDispatches('setState', () => this.render());
     afterActionDispatches('setScale', () => this.updateScale());
     afterActionDispatches('setBackgroundColor', () => this.updateBackgroundColor());
 

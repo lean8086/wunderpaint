@@ -4,6 +4,7 @@ import {
   setBackgroundColor,
   setScale,
   setTweak,
+  setState,
   draw,
 } from './actions.mjs';
 
@@ -65,6 +66,7 @@ export function reducer(state, action) {
     case 'setBackgroundColor': return setBackgroundColor(state, action);
     case 'setScale': return setScale(state, action);
     case 'setTweak': return setTweak(state, action);
+    case 'setState': return setState(action);
     case 'draw': return draw(state, action);
     default: throw new Error(`A reducer for the action '${action.type}' was not found.`);
   }

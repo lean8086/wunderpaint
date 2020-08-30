@@ -1,4 +1,4 @@
-import './Button.mjs';
+import './Vandelay.mjs';
 import './Tool.mjs';
 import './Tweaks.mjs';
 import './Palette.mjs';

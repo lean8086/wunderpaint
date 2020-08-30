@@ -50,8 +50,7 @@
 
 <section class="topbar">
   <section class="menubar">
-    <wunder-button type="save" description="Save"><img src="/assets/save.png"/></wunder-button>
-    <wunder-button type="export" description="Export image"><img src="/assets/export-image.png"/></wunder-button>
+    <wunder-vandelay></wunder-vandelay>
   </section>
   <section class="toolbar">
     <wunder-tool type="brush" shortcut="b" description="Brush"><img src="/assets/pencil.png"/></wunder-tool>
@@ -84,6 +83,10 @@
     background: none;
   }
 
+  .toolbar-button--compact {
+    margin-right: .2rem;
+  }
+
   .toolbar-button img {
     transform: scale(.5);
     opacity: .8;
@@ -107,6 +110,15 @@
       opacity: 1;
     }
   </style>
+</template>
+
+<template id="vandelay-tmp">
+  <label class="toolbar-button toolbar-button--compact" title="Load">
+    <img src="/assets/load.png"/>
+    <input type="file" accept=".wunder" hidden data-type="load"/>
+  </label>
+  <button class="toolbar-button toolbar-button--compact" data-type="save" title="Save"><img src="/assets/save.png"/></button>
+  <button class="toolbar-button toolbar-button--compact" data-type="export" title="Export image"><img src="/assets/export-image.png"/></button>
 </template>
 
 <template id="tweaks-range-tmp">

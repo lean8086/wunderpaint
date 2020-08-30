@@ -13,6 +13,10 @@ export function setScale(state, action) {
   return { ...state, scale: action.scale };
 }
 
+export function setState(action) {
+  return { ...action.state };
+}
+
 export function setTweak(state, action) {
   return {
     ...state,
