@@ -15,6 +15,7 @@ let state = {
   backgroundColor: '#ffffff',
   scale: 5,
   preview: '',
+  title: 'Untitled Art',
   layers: [
     {
       src: '',

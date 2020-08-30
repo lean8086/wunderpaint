@@ -19,11 +19,39 @@
     margin: 0;
     font-family: sans-serif;
   }
+
+  .topbar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    height: 2.4rem;
+    background-color: #222;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 .7rem;
+  }
+
+  .topbar section {
+    display: flex;
+    align-items: center;
+  }
+
+  .topbar select {
+    appearance: none;
+    border: none;
+    background: none;
+    color: #efefef;
+  }
 </style>
 
 <section class="topbar">
   <section class="menubar">
-    <img src="/assets/w.png" class="w" alt="Wunderpaint"/>
+    <wunder-button type="save" description="Save"><img src="/assets/save.png"/></wunder-button>
+    <wunder-button type="export" description="Export image"><img src="/assets/export-image.png"/></wunder-button>
   </section>
   <section class="toolbar">
     <wunder-tool type="brush" shortcut="b" description="Brush"><img src="/assets/pencil.png"/></wunder-tool>
@@ -39,70 +67,38 @@
   </section>
 </section>
 
+<wunder-workspace></wunder-workspace>
+
 <style>
-  .topbar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    z-index: 2;
-    height: 2.4rem;
-    background-color: #222;
+  .toolbar-button {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .topbar section {
-    display: flex;
-    align-items: center;
-  }
-
-  .w {
-    image-rendering: pixelated;
-    transform: scale(3);
-    transform-origin: 0;
-    filter: invert(1);
-    margin: 0 .7rem;
-  }
-
-  .scenebar select {
-    appearance: none;
+    position: relative;
+    border-radius: .2rem;
+    margin-right: .7rem;
     border: none;
     background: none;
-    color: #efefef;
+  }
+
+  .toolbar-button img {
+    transform: scale(.5);
+    opacity: .8;
+    -ms-interpolation-mode: nearest-neighbor;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: pixelated;
   }
 </style>
 
-<wunder-workspace></wunder-workspace>
-
 <template id="tool-tmp">
   <input type="radio" name="tool" hidden/>
-  <label class="tool"></label>
+  <label class="toolbar-button tool"></label>
 
   <style>
-    .tool {
-      width: 1.5rem;
-      height: 1.5rem;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      position: relative;
-      border-radius: .2rem;
-      margin-right: .7rem;
-    }
-
-    .tool img {
-      transform: scale(.5);
-      opacity: .8;
-      -ms-interpolation-mode: nearest-neighbor;
-      image-rendering: -moz-crisp-edges;
-      image-rendering: -webkit-optimize-contrast;
-      image-rendering: pixelated;
-    }
-
     [name=tool]:checked + .tool {
       background-color: #474747;
     }
@@ -129,8 +125,8 @@
     .tool--palette input {
       border: none;
       background: none;
-      width: 1.5rem;
-      height: 1.5rem;
+      width: 1.2rem;
+      height: 1.4rem;
       padding: 0;
     }
   </style>

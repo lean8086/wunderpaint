@@ -1,3 +1,4 @@
+import './Button.mjs';
 import './Tool.mjs';
 import './Tweaks.mjs';
 import './Palette.mjs';
