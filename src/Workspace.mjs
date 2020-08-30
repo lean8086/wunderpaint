@@ -39,6 +39,7 @@ class Workspace extends HTMLElement {
 
   updateBackgroundColor() {
     const { backgroundColor } = getState();
+    this.container.style.backgroundColor = backgroundColor;
     this.workspace.style.backgroundColor = backgroundColor;
   }
 
@@ -48,9 +49,10 @@ class Workspace extends HTMLElement {
 
     const { width, height } = getState();
 
-    this.workspace = node.querySelector('.workspace');
-    this.workspace.style.width = width;
-    this.workspace.style.height = height;
+    const workspace = node.querySelector('.workspace');
+    workspace.style.width = width;
+    workspace.style.height = height;
+    this.workspace = workspace;
 
     this.composition = node.querySelector('.composition');
 
@@ -58,6 +60,7 @@ class Workspace extends HTMLElement {
     container.addEventListener('mousedown', event => this.onMouseDown(event));
     container.addEventListener('mousemove', event => this.onMouseMove(event));
     container.addEventListener('mouseup', event => this.onMouseUp(event));
+    this.container = container;
 
     afterActionDispatches('draw', () => this.render());
     afterActionDispatches('setScale', () => this.updateScale());
