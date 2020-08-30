@@ -26,11 +26,11 @@
     <img src="/assets/w.png" class="w" alt="Wunderpaint"/>
   </section>
   <section class="toolbar">
-    <wunder-tool type="brush" shortcut="b" description="Brush"><img src="/assets/pencil-alt-solid.svg"/></wunder-tool>
-    <wunder-tool type="eraser" shortcut="e" description="Eraser"><img src="/assets/eraser-solid.svg"/></wunder-tool>
-    <wunder-tool type="line" shortcut="l" description="Line"><img src="/assets/slash-solid.svg"/></wunder-tool>
-    <wunder-tool type="ellipse" shortcut="c" description="Ellipse"><img src="/assets/circle-regular.svg"/></wunder-tool>
-    <wunder-tool type="rectangle" shortcut="r" description="Rectangle"><img src="/assets/square-regular.svg"/></wunder-tool>
+    <wunder-tool type="brush" shortcut="b" description="Brush"><img src="/assets/pencil.png"/></wunder-tool>
+    <wunder-tool type="eraser" shortcut="e" description="Eraser"><img src="/assets/eraser.png"/></wunder-tool>
+    <wunder-tool type="line" shortcut="l" description="Line"><img src="/assets/line.png"/></wunder-tool>
+    <wunder-tool type="ellipse" shortcut="c" description="Ellipse"><img src="/assets/ellipse.png"/></wunder-tool>
+    <wunder-tool type="rectangle" shortcut="r" description="Rectangle"><img src="/assets/rectangle.png"/></wunder-tool>
     <wunder-palette sets="selectedColor" description="Color"></wunder-palette>
   </section>
   <section class="scenebar">
@@ -95,9 +95,12 @@
     }
 
     .tool img {
-      width: 1rem;
-      height: 1rem;
-      filter: invert(.8);
+      transform: scale(.5);
+      opacity: .8;
+      -ms-interpolation-mode: nearest-neighbor;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: pixelated;
     }
 
     [name=tool]:checked + .tool {
@@ -105,7 +108,7 @@
     }
 
     [name=tool]:checked + .tool img {
-      filter: invert(1);
+      opacity: 1;
     }
   </style>
 </template>
