@@ -12,30 +12,26 @@ class Button extends HTMLElement {
   onClick() {
     switch (this.type) {
       case 'save':
-        const textarea = document.createElement('textarea');
-        textarea.textContent = JSON.stringify(getState());
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand('copy');
-        textarea.remove();
+        const snapshot = getState();
+        const blob = new Blob([JSON.stringify(snapshot)], { type: 'text/plain;charset=utf-8' });
+        const saveEl = document.createElement('a');
+        saveEl.download = `${snapshot.title}_${(new Date()).toISOString()}.wunder`;
+        saveEl.href = URL.createObjectURL(blob);
+        saveEl.click();
         break;
       case 'export':
         const { width, height, preview, title } = getState();
-        
         const canvas = document.createElement('canvas');
+        const img = new Image();
+        const ctx = canvas.getContext('2d');
+        const exportEl = document.createElement('a');
         canvas.width = width;
         canvas.height = height;
-        
-        const img = new Image();
         img.src = preview;
-        
-        const ctx = canvas.getContext('2d');
         ctx.drawImage(img, 0, 0);
-        
-        const link = document.createElement('a');
-        link.download = `${title}.png`;
-        link.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        link.click();
+        exportEl.download = `${title}.png`;
+        exportEl.href = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
+        exportEl.click();
         break;
       default: break;
     }
