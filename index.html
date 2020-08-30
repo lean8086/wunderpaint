@@ -21,55 +21,45 @@
   }
 </style>
 
-<section class="bar toolbar">
-  <wunder-tool type="brush" shortcut="1" description="Brush"><img src="/assets/edit-24px.svg"/></wunder-tool>
-  <wunder-tool type="eraser" shortcut="2" description="Eraser"><img src="/assets/eraser.svg"/></wunder-tool>
-  <wunder-tool type="line" shortcut="3" description="Line"><img src="/assets/slash.svg"/></wunder-tool>
-  <wunder-tool type="ellipse" shortcut="4" description="Ellipse"><img src="/assets/panorama_fish_eye-24px.svg"/></wunder-tool>
-  <wunder-tool type="rectangle" shortcut="5" description="Rectangle"><img src="/assets/crop_din-24px.svg"/></wunder-tool>
-  <wunder-palette sets="selectedColor" description="Color"></wunder-palette>
-</section>
-
-<!-- <section class="bar tweakbar">
-  <wunder-tweaks></wunder-tweaks>
-</section> -->
-
-<section class="bar scenebar">
-  <wunder-zoom></wunder-zoom>
-  <wunder-palette sets="backgroundColor"></wunder-palette>
+<section class="topbar">
+  <section class="toolbar">
+    <img src="/assets/w.png" class="w" alt="Wunderpaint"/>
+  </section>
+  <section class="toolbar">
+    <wunder-tool type="brush" shortcut="1" description="Brush"><img src="/assets/pencil-alt-solid.svg"/></wunder-tool>
+    <wunder-tool type="eraser" shortcut="2" description="Eraser"><img src="/assets/eraser-solid.svg"/></wunder-tool>
+    <wunder-tool type="line" shortcut="3" description="Line"><img src="/assets/slash-solid.svg"/></wunder-tool>
+    <wunder-tool type="ellipse" shortcut="4" description="Ellipse"><img src="/assets/circle-regular.svg"/></wunder-tool>
+    <wunder-tool type="rectangle" shortcut="5" description="Rectangle"><img src="/assets/square-regular.svg"/></wunder-tool>
+    <wunder-palette sets="selectedColor" description="Color"></wunder-palette>
+  </section>
+  <section class="toolbar scenebar">
+    <wunder-zoom></wunder-zoom>
+    <wunder-palette sets="backgroundColor"></wunder-palette>
+  </section>
 </section>
 
 <style>
-  .bar {
+  .topbar {
     position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
     z-index: 2;
-    height: 3rem;
-    background-color: rgba(0, 0, 0, .5);
-    border-radius: 1rem;
+    height: 2.4rem;
+    background-color: #222;
     overflow: hidden;
-    backdrop-filter: blur(.5rem);
-    color: white;
-  }
-
-  .toolbar {
-    top: .5rem;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .scenebar {
-    bottom: .5rem;
-    left: .5rem;
-    padding-left: .5rem;
-  }
-
-  .tweakbar {
-    top: .5rem;
-    left: .5rem;
-    padding: .5rem;
-    font-size: .7rem;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .w {
+    image-rendering: pixelated;
+    transform: scale(3);
+    transform-origin: 0;
+    filter: invert(1);
+    margin: 0 .7rem;
   }
 </style>
 
@@ -81,41 +71,29 @@
 
   <style>
     .tool {
-      width: 3rem;
-      height: 3rem;
+      width: 1.5rem;
+      height: 1.5rem;
       display: inline-flex;
       justify-content: center;
       align-items: center;
       overflow: hidden;
       position: relative;
-    }
-
-    .tool::after {
-      content: attr(data-shortcut);
-      position: absolute;
-      bottom: 15%;
-      right: 15%;
-      font-size: .5rem;
-      opacity: .6;
-    }
-
-    [name=tool]:checked + .tool {
-      background-color: var(--color-highlight);
-      backdrop-filter: blur(.5rem);
-    }
-
-    [name=tool]:checked + .tool::after {
-      filter: invert(1);
-    }
-
-    [name=tool]:checked + .tool img {
-      filter: invert(0);
+      border-radius: .2rem;
+      margin-right: .7rem;
     }
 
     .tool img {
+      width: 1rem;
+      height: 1rem;
+      filter: invert(.8);
+    }
+
+    [name=tool]:checked + .tool {
+      background-color: #474747;
+    }
+
+    [name=tool]:checked + .tool img {
       filter: invert(1);
-      width: 1.1rem;
-      height: 1.1rem;
     }
   </style>
 </template>
