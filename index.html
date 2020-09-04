@@ -33,6 +33,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 .7rem;
+    color: #efefef;
+    font-size: .9rem;
   }
 
   .topbar section {
@@ -40,11 +42,14 @@
     align-items: center;
   }
 
-  .topbar select {
+  .topbar select,
+  .topbar input {
+    font: inherit;
     appearance: none;
     border: none;
     background: none;
     color: #efefef;
+    vertical-align: .5rem;
   }
 </style>
 
@@ -82,7 +87,7 @@
     border: none;
     background: none;
   }
-
+  
   .toolbar-button--compact {
     margin-right: .2rem;
   }
@@ -95,6 +100,11 @@
     image-rendering: -webkit-optimize-contrast;
     image-rendering: pixelated;
   }
+
+  .toolbar-button:hover,
+  .toolbar-button:focus {
+    background-color: #474747;
+  }
 </style>
 
 <template id="tool-tmp">
@@ -102,6 +112,8 @@
   <label class="toolbar-button tool"></label>
 
   <style>
+    [name=tool]:hover + .tool,
+    [name=tool]:focus + .tool,
     [name=tool]:checked + .tool {
       background-color: #474747;
     }
@@ -119,6 +131,7 @@
   </label>
   <button class="toolbar-button toolbar-button--compact" data-type="save" title="Save"><img src="/assets/save.png"/></button>
   <button class="toolbar-button toolbar-button--compact" data-type="export" title="Export image"><img src="/assets/export-image.png"/></button>
+  <input data-type="title"/>
 </template>
 
 <template id="tweaks-range-tmp">

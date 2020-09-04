@@ -5,6 +5,7 @@ import {
   setScale,
   setTweak,
   setState,
+  setTitle,
   draw,
 } from './actions.mjs';
 
@@ -65,6 +66,7 @@ export function reducer(state, action) {
     case 'setSelectedColor': return setSelectedColor(state, action);
     case 'setBackgroundColor': return setBackgroundColor(state, action);
     case 'setScale': return setScale(state, action);
+    case 'setTitle': return setTitle(state, action);
     case 'setTweak': return setTweak(state, action);
     case 'setState': return setState(action);
     case 'draw': return draw(state, action);

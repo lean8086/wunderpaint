@@ -31,6 +31,10 @@ class Vandelay extends HTMLElement {
     exportEl.click();
   }
 
+  setTitle(title) {
+    dispatch({ type: 'setTitle', title });
+  }
+
   connectedCallback() {
     const template = document.querySelector('#vandelay-tmp');
     const node = document.importNode(template.content, true);
@@ -39,6 +43,9 @@ class Vandelay extends HTMLElement {
     loadInput.addEventListener('change', () => this.load(loadInput));
     node.querySelector('[data-type="save"]').addEventListener('click', () => this.save());
     node.querySelector('[data-type="export"]').addEventListener('click', () => this.export());
+    const titleEl = node.querySelector('[data-type="title"]');
+    titleEl.value = getState().title;
+    titleEl.addEventListener('input', () => this.setTitle(titleEl.value));
 
     this.appendChild(node);
   }

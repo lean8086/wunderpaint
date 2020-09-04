@@ -13,6 +13,10 @@ export function setScale(state, action) {
   return { ...state, scale: action.scale };
 }
 
+export function setTitle(state, action) {
+  return { ...state, title: action.title };
+}
+
 export function setState(action) {
   return { ...action.state };
 }
