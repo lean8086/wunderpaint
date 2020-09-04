@@ -7,10 +7,10 @@ class Grid extends HTMLElement {
   }
   
   updateElements() {
-    const { grid, scale } = getState();console.log(scale)
+    const { grid, scale } = getState();
     if (scale > 1) {
-      this.container.classList[!grid ? 'remove' : 'add']('grid');
-      this.toggle.classList[!grid ? 'remove' : 'add']('toolbar-button--active');
+      this.container.classList[grid ? 'add' : 'remove']('grid');
+      this.toggle.classList[grid ? 'add' : 'remove']('toolbar-button--active');
     } else {
       this.container.classList.remove('grid');
       this.toggle.classList.remove('toolbar-button--active');

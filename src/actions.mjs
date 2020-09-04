@@ -21,6 +21,10 @@ export function toggleGrid(state) {
   return { ...state, grid: !state.grid };
 }
 
+export function togglePip(state) {
+  return { ...state, pip: !state.pip };
+}
+
 export function setState(action) {
   return { ...action.state };
 }

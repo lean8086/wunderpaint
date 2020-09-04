@@ -67,6 +67,7 @@
     <wunder-palette sets="selectedColor" description="Color"></wunder-palette>
   </section>
   <section class="scenebar">
+    <wunder-pip></wunder-pip>
     <wunder-grid></wunder-grid>
     <wunder-zoom></wunder-zoom>
     <wunder-palette sets="backgroundColor"></wunder-palette>
@@ -108,6 +109,12 @@
   .toolbar-button:focus {
     background-color: #474747;
   }
+  
+  .toolbar-button:hover img,
+  .toolbar-button.toolbar-button--active img,
+  .toolbar-button:focus img {
+    opacity: 1;
+  }
 </style>
 
 <template id="tool-tmp">
@@ -140,6 +147,27 @@
 <template id="history-tmp">
   <button class="toolbar-button toolbar-button--compact" data-type="undo" title="Undo"><img src="/assets/undo.png"/></button>
   <button class="toolbar-button" data-type="redo" title="Redo"><img src="/assets/redo.png"/></button>
+</template>
+
+<template id="pip-tmp">
+  <button class="toolbar-button toolbar-button--compact" title="Preview"><img src="/assets/pip.png"/></button>
+  <img id="pip" data-position="right-bottom"/>
+
+  <style>
+    #pip {
+      position: fixed;
+      -ms-interpolation-mode: nearest-neighbor;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: pixelated;
+      box-shadow: 0 0 5px rgba(0, 0, 0, .25);
+    }
+
+    #pip[data-position="right-bottom"] { right: 1rem; bottom: 1rem; }
+    #pip[data-position="right-top"] { right: 1rem; top: 3.5rem; }
+    #pip[data-position="left-bottom"] { left: 1rem; bottom: 1rem; }
+    #pip[data-position="left-top"] { left: 1rem; top: 3.5rem; }
+  </style>
 </template>
 
 <template id="grid-tmp">

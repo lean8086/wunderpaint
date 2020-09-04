@@ -6,3 +6,4 @@ import './Palette.mjs';
 import './Zoom.mjs';
 import './Workspace.mjs';
 import './Grid.mjs';
+import './Pip.mjs';
