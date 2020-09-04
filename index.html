@@ -43,13 +43,13 @@
   }
 
   .topbar select,
-  .topbar input {
+  .topbar input,
+  .topbar button {
     font: inherit;
     appearance: none;
     border: none;
     background: none;
     color: #efefef;
-    vertical-align: .5rem;
   }
 </style>
 
@@ -58,6 +58,7 @@
     <wunder-vandelay></wunder-vandelay>
   </section>
   <section class="toolbar">
+    <wunder-history></wunder-history>
     <wunder-tool type="brush" shortcut="b" description="Brush"><img src="/assets/pencil.png"/></wunder-tool>
     <wunder-tool type="eraser" shortcut="e" description="Eraser"><img src="/assets/eraser.png"/></wunder-tool>
     <wunder-tool type="line" shortcut="l" description="Line"><img src="/assets/line.png"/></wunder-tool>
@@ -132,6 +133,11 @@
   <button class="toolbar-button toolbar-button--compact" data-type="save" title="Save"><img src="/assets/save.png"/></button>
   <button class="toolbar-button toolbar-button--compact" data-type="export" title="Export image"><img src="/assets/export-image.png"/></button>
   <input data-type="title"/>
+</template>
+
+<template id="history-tmp">
+  <button class="toolbar-button toolbar-button--compact" data-type="undo" title="Undo"><img src="/assets/undo.png"/></button>
+  <button class="toolbar-button" data-type="redo" title="Redo"><img src="/assets/redo.png"/></button>
 </template>
 
 <template id="tweaks-range-tmp">

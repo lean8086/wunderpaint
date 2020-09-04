@@ -46,6 +46,7 @@ const events = {
   setSelectedTool: new Event('setSelectedTool'),
   setBackgroundColor: new Event('setBackgroundColor'),
   setScale: new Event('setScale'),
+  setState: new Event('setState'),
   draw: new Event('draw'),
 };
 

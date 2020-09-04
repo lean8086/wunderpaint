@@ -1,4 +1,5 @@
 import { dispatch, afterActionDispatches, getState } from './store.mjs';
+import history from './utils/history.mjs';
 
 class Workspace extends HTMLElement {
   shouldExecuteMoveEvent = false;
@@ -25,6 +26,7 @@ class Workspace extends HTMLElement {
   onMouseUp(event) {
     this.shouldExecuteMoveEvent = false;
     this.dispatchAction('up', event);
+    history.add(getState());
   }
 
   render() {

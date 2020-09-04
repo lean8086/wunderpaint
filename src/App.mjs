@@ -1,4 +1,5 @@
 import './Vandelay.mjs';
+import './History.mjs';
 import './Tool.mjs';
 import './Tweaks.mjs';
 import './Palette.mjs';
