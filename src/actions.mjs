@@ -17,6 +17,10 @@ export function setTitle(state, action) {
   return { ...state, title: action.title };
 }
 
+export function toggleGrid(state) {
+  return { ...state, grid: !state.grid };
+}
+
 export function setState(action) {
   return { ...action.state };
 }

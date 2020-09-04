@@ -5,7 +5,7 @@ let pointer = -1;
 function add(state) {
   history.length = pointer + 1;
   history.push(state);
-  if (history.length > max) history.unshift();
+  if (history.length > max) history.shift();
   pointer = history.length - 1;
 }
 

@@ -6,6 +6,7 @@ import {
   setTweak,
   setState,
   setTitle,
+  toggleGrid,
   draw,
 } from './actions.mjs';
 
@@ -16,6 +17,7 @@ let state = {
   height: window.innerHeight / 5,
   backgroundColor: '#ffffff',
   scale: 5,
+  grid: true,
   preview: '',
   title: 'Untitled Art',
   layers: [
@@ -70,6 +72,7 @@ export function reducer(state, action) {
     case 'setTitle': return setTitle(state, action);
     case 'setTweak': return setTweak(state, action);
     case 'setState': return setState(action);
+    case 'toggleGrid': return toggleGrid(state);
     case 'draw': return draw(state, action);
     default: throw new Error(`A reducer for the action '${action.type}' was not found.`);
   }

@@ -67,6 +67,7 @@
     <wunder-palette sets="selectedColor" description="Color"></wunder-palette>
   </section>
   <section class="scenebar">
+    <wunder-grid></wunder-grid>
     <wunder-zoom></wunder-zoom>
     <wunder-palette sets="backgroundColor"></wunder-palette>
   </section>
@@ -103,6 +104,7 @@
   }
 
   .toolbar-button:hover,
+  .toolbar-button.toolbar-button--active,
   .toolbar-button:focus {
     background-color: #474747;
   }
@@ -138,6 +140,25 @@
 <template id="history-tmp">
   <button class="toolbar-button toolbar-button--compact" data-type="undo" title="Undo"><img src="/assets/undo.png"/></button>
   <button class="toolbar-button" data-type="redo" title="Redo"><img src="/assets/redo.png"/></button>
+</template>
+
+<template id="grid-tmp">
+  <button class="toolbar-button" title="Grid"><img src="/assets/grid.png"/></button>
+
+  <style>
+    .container.grid::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background-image:
+        linear-gradient(#efefef 1px, transparent 1px),
+        linear-gradient(90deg, #efefef 1px, transparent 1px);
+      background-size: var(--scale) var(--scale);
+    }
+  </style>
 </template>
 
 <template id="tweaks-range-tmp">
