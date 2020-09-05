@@ -21,7 +21,7 @@ let state = {
   grid: true,
   pip: true,
   preview: '',
-  title: 'Untitled Art',
+  title: 'Untitled',
   layers: [
     {
       src: '',
