@@ -1,11 +1,13 @@
 import { dispatch, getState, afterActionDispatches } from './store.mjs';
 
 class Grid extends HTMLElement {
+  bgCorrection = { 3: [0, -1], 4: [0, -1], 5: [0, 0], 10: [0, -4], 20: [0, -1], 30: [0, -8], 50: [19, 8] };
+
   toggleGrid() {
     dispatch({ type: 'toggleGrid' });
     this.updateElements();
   }
-  
+
   updateElements() {
     const { grid, scale } = getState();
     if (scale > 1) {
@@ -19,10 +21,12 @@ class Grid extends HTMLElement {
 
   updateScale() {
     const { scale } = getState();
-    if (scale > 1) {
+    if (scale > 2) {
       this.container.classList.add('grid');
-      // this.container.style.backgroundSize = `${scale}px ${scale}px`;
-      this.container.style = `--scale:${scale}px`;
+      let cssVars = `--scale:${scale}px;`;
+      const [ corrX, corrY ] = this.bgCorrection[scale];
+      if (corrX || corrY) cssVars += `--grid-correction:${corrX}px ${corrY}px`;
+      this.container.style = cssVars;
     } else {
       this.container.classList.remove('grid');
     }

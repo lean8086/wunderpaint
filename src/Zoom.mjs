@@ -1,7 +1,7 @@
 import { dispatch, getState } from './store.mjs';
 
 class Zoom extends HTMLElement {
-  scales = [.25, .5, .75, 1, 2, 3, 4, 5, 10, 20, 30, 50]
+  scales = [.25, .5, .75, 1, 2, 3, 4, 5, 10, 20, 30, 50];
 
   setScale(scale) {
     dispatch({ type: 'setScale', scale });

@@ -20,7 +20,7 @@ let state = {
   scale: 5,
   grid: true,
   pip: true,
-  preview: '',
+  preview: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=',
   title: 'Untitled',
   layers: [
     {
