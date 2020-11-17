@@ -68,7 +68,7 @@
   </section>
   <section class="scenebar">
     <wunder-pip></wunder-pip>
-    <wunder-grid></wunder-grid>
+    <!-- <wunder-grid></wunder-grid> -->
     <wunder-zoom></wunder-zoom>
     <wunder-palette sets="backgroundColor"></wunder-palette>
   </section>
@@ -152,7 +152,7 @@
 </template>
 
 <template id="pip-tmp">
-  <button class="toolbar-button toolbar-button--compact" title="Preview"><img src="/assets/pip.png"/></button>
+  <button class="toolbar-button toolbar-button" title="Preview"><img src="/assets/pip.png"/></button>
   <img id="pip" data-position="right-bottom"/>
 
   <style>
@@ -162,7 +162,7 @@
       image-rendering: -moz-crisp-edges;
       image-rendering: -webkit-optimize-contrast;
       image-rendering: pixelated;
-      box-shadow: 0 0 5px rgba(0, 0, 0, .25);
+      border: 1px solid var(--color-dark);
     }
 
     #pip[data-position="right-bottom"] { right: 1rem; bottom: 1rem; }
