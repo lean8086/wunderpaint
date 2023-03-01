@@ -59,11 +59,11 @@
   <wunder-vandelay></wunder-vandelay>
   <section class="toolbar">
     <wunder-history></wunder-history>
-    <wunder-tool type="brush" shortcut="b" description="Brush"><img src="/assets/pencil.png"/></wunder-tool>
-    <wunder-tool type="eraser" shortcut="e" description="Eraser"><img src="/assets/eraser.png"/></wunder-tool>
-    <wunder-tool type="line" shortcut="l" description="Line"><img src="/assets/line.png"/></wunder-tool>
-    <wunder-tool type="ellipse" shortcut="c" description="Ellipse"><img src="/assets/ellipse.png"/></wunder-tool>
-    <wunder-tool type="rectangle" shortcut="r" description="Rectangle"><img src="/assets/rectangle.png"/></wunder-tool>
+    <wunder-tool type="brush" shortcut="b" description="Brush"><img src="./assets/pencil.png"/></wunder-tool>
+    <wunder-tool type="eraser" shortcut="e" description="Eraser"><img src="./assets/eraser.png"/></wunder-tool>
+    <wunder-tool type="line" shortcut="l" description="Line"><img src="./assets/line.png"/></wunder-tool>
+    <wunder-tool type="ellipse" shortcut="c" description="Ellipse"><img src="./assets/ellipse.png"/></wunder-tool>
+    <wunder-tool type="rectangle" shortcut="r" description="Rectangle"><img src="./assets/rectangle.png"/></wunder-tool>
     <wunder-palette sets="selectedColor" description="Color"></wunder-palette>
   </section>
   <section class="scenebar">
@@ -137,22 +137,22 @@
 <template id="vandelay-tmp">
   <section class="menubar">
     <label class="toolbar-button toolbar-button--compact" title="Load">
-      <img src="/assets/load.png"/>
+      <img src="./assets/load.png"/>
       <input type="file" accept=".wunder" hidden data-type="load"/>
     </label>
-    <button class="toolbar-button toolbar-button--compact" data-type="save" title="Save"><img src="/assets/save.png"/></button>
-    <button class="toolbar-button toolbar-button" data-type="export" title="Export image"><img src="/assets/export-image.png"/></button>
+    <button class="toolbar-button toolbar-button--compact" data-type="save" title="Save"><img src="./assets/save.png"/></button>
+    <button class="toolbar-button toolbar-button" data-type="export" title="Export image"><img src="./assets/export-image.png"/></button>
     <input data-type="title"/>
   </section>
 </template>
 
 <template id="history-tmp">
-  <button class="toolbar-button toolbar-button--compact" data-type="undo" title="Undo"><img src="/assets/undo.png"/></button>
-  <button class="toolbar-button" data-type="redo" title="Redo"><img src="/assets/redo.png"/></button>
+  <button class="toolbar-button toolbar-button--compact" data-type="undo" title="Undo"><img src="./assets/undo.png"/></button>
+  <button class="toolbar-button" data-type="redo" title="Redo"><img src="./assets/redo.png"/></button>
 </template>
 
 <template id="pip-tmp">
-  <button class="toolbar-button toolbar-button" title="Preview"><img src="/assets/pip.png"/></button>
+  <button class="toolbar-button toolbar-button" title="Preview"><img src="./assets/pip.png"/></button>
   <img id="pip" data-position="right-bottom"/>
 
   <style>
@@ -173,7 +173,7 @@
 </template>
 
 <template id="grid-tmp">
-  <button class="toolbar-button" title="Grid"><img src="/assets/grid.png"/></button>
+  <button class="toolbar-button" title="Grid"><img src="./assets/grid.png"/></button>
 
   <style>
     .container.grid::after {
